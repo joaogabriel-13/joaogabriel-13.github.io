@@ -5,8 +5,6 @@ title: Atenção Secundária - Arquivos
 
 # Atenção Secundária - Arquivos
 
-Aqui você poderá adicionar links para os arquivos relacionados à Atenção Secundária.
-
 * <a href="/atencao-secundaria/Admissão ou Observação_IgesDF.docx">Admissão ou Observação_IGES-DF</a>
 * <a href="/atencao-secundaria/Evolução_demais_IgesDF.docx">Evolução_demais_IGES-DF</a>
 * <a href="/atencao-secundaria/Informações de DO.docx">Informações de DO</a>
