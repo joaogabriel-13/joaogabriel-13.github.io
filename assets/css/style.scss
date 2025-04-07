@@ -1,1 +1,23 @@
+/* Custom Styles - Adicione suas regras abaixo */
 
+body {
+  background-color: #f9f9f9; /* Um cinza muito claro, mais suave que branco puro */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Fontes modernas padrão de sistema */
+  color: #333; /* Cor de texto padrão um pouco mais escura */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #202020; /* Títulos um pouco mais escuros/fortes */
+  font-family: inherit; /* Usa a mesma família de fontes definida no body */
+}
+
+a {
+  color: #007bff; /* Um azul padrão e vivo para links */
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+a:hover {
+  text-decoration: underline; /* Adiciona sublinhado apenas quando o mouse passa por cima */
+}
+
+/* Adicione mais regras abaixo conforme necessário */
