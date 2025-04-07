@@ -4,57 +4,57 @@
 /* Custom Styles - Inspirado em Todoist (v1) */
 
 body {
-  background-color: #f9f9f9; /* Mantém o cinza claro */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; /* Mantém as fontes do sistema */
+  background-color: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #333;
-  line-height: 1.6; /* Aumenta o espaço entre linhas do texto para melhor leitura */
-  padding: 2em; /* Adiciona um respiro (margem interna) geral na página */
+  line-height: 1.6;
+  padding: 2em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #202020; /* Mantém títulos escuros */
+  color: #202020;
   font-family: inherit;
-  margin-top: 1.8em; /* Aumenta espaço ANTES dos títulos */
-  margin-bottom: 0.8em; /* Aumenta espaço DEPOIS dos títulos */
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
 }
 
 p {
-   margin-bottom: 1.2em; /* Aumenta espaço DEPOIS dos parágrafos */
+   margin-bottom: 1.2em;
 }
 
 a {
-  color: #db4c3f; /* Vermelho Todoist para links */
-  text-decoration: none; /* Sem sublinhado */
-  font-weight: bold; /* Links em negrito para destaque */
+  color: #db4c3f; /* Vermelho Todoist para links PADRÃO */
+  text-decoration: none;
+  font-weight: bold;
 }
 
 a:hover {
-  text-decoration: underline; /* Sublinhado ao passar o mouse */
-  color: #a8382c; /* Vermelho um pouco mais escuro no hover */
+  text-decoration: underline;
+  color: #a8382c;
 }
 
-/* --- Estilo de Botão (Comentado por enquanto) --- */
-/* Para usar, adicione class="button-link" em uma tag <a> específica no HTML/Markdown
+/* --- Estilo de Botão --- */
+/* Para usar, adicione class="button-link" em uma tag <a> específica no HTML/Markdown */
 .button-link {
-  display: inline-block;
-  padding: 0.8em 1.5em;
-  background-color: #db4c3f;
-  color: white !important; // !important para garantir sobreposição da cor do link padrão
-  border-radius: 5px;
+  display: inline-block;        /* Essencial para padding funcionar bem */
+  padding: 0.8em 1.5em;       /* Espaçamento interno (vertical, horizontal) */
+  background-color: #db4c3f;    /* Fundo vermelho */
+  color: white !important;      /* Cor do texto branca (forçada sobre a cor vermelha do 'a' padrão) */
+  border-radius: 5px;         /* Cantos arredondados */
   text-align: center;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none;        /* Garante sem sublinhado */
   border: none;
   cursor: pointer;
-  margin: 0.5em 0; // Espaçamento para o botão
+  margin: 0.5em 0;            /* Espaçamento externo (vertical, horizontal) */
+  transition: background-color 0.2s ease; /* Efeito suave no hover */
 }
 
 .button-link:hover {
-  background-color: #a8382c;
-  text-decoration: none;
+  background-color: #a8382c;    /* Vermelho mais escuro no hover */
+  color: white !important;      /* Mantém texto branco */
+  text-decoration: none;        /* Garante sem sublinhado no hover */
 }
-*/
-
 /* --- Fim do Estilo de Botão --- */
 
 
