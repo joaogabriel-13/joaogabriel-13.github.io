@@ -1,6 +1,8 @@
 ---
 layout: default
-title: IGES-DF - Memorandos
+title: Memorandos (IGES-DF)
+parent: IGES-DF
+nav_order: 1
 ---
 
 # IGES-DF - Memorandos
