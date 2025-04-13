@@ -1,6 +1,8 @@
 ---
 layout: default
-title: SES DF - Memorandos
+title: Memorandos (SES DF)
+parent: SES DF
+nav_order: 1
 ---
 
 # SES DF - Memorandos
