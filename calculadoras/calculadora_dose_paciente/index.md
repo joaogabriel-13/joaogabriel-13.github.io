@@ -155,12 +155,12 @@ function calcularDosePorTaxa(medicamento) {
       break;
     case 'norepinefrina':
       taxa = parseFloat(document.getElementById('taxaNorepinefrina').value);
-      dose = taxa * 65; // 65 mcg/ml (ajuste conforme necessário)
+      dose = taxa * 65; // 65 mcg/ml
       resultado = `Dose administrada: ${dose.toFixed(2)} mcg/h (${(dose/60/peso).toFixed(3)} mcg/kg/min)`;
       break;
     case 'escetamina':
       taxa = parseFloat(document.getElementById('taxaEscetamina').value);
-      dose = taxa * 1; // 1 mg/ml (ajuste conforme necessário)
+      dose = taxa * 1; // 1 mg/ml
       resultado = `Dose administrada: ${dose.toFixed(2)} mg/h (${(dose/peso).toFixed(3)} mg/kg/h)`;
       break;
     case 'propofol':
