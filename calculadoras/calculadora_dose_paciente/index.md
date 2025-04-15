@@ -50,7 +50,7 @@ Informe o peso do paciente para calcular as doses das medicações:
 
 - **Dose mínima:** 0,01 mcg/kg/min
 - **Dose máxima:** 3 mcg/kg/min
-- **Concentrações:** 65 mcg/ml, 160 mcg/ml, 200 mcg/ml
+- **Concentrações:** 64 mcg/ml, 160 mcg/ml, 200 mcg/ml
 
 <div class="form-group">
   <label for="taxaNorepinefrina">Taxa de infusão (ml/h):</label>
@@ -63,8 +63,8 @@ Informe o peso do paciente para calcular as doses das medicações:
 
 ## Escetamina
 
-- **Dose mínima:** mg/kg/h
-- **Dose máxima:** mg/kg/h
+- **Dose mínima:** 0,1 mg/kg/h
+- **Dose máxima:** 0,5 mg/kg/h
 - **Concentrações:** 1 mg/ml, 10 mg/ml
 
 <div class="form-group">
