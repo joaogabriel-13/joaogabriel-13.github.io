@@ -44,11 +44,7 @@ function calcularDosePorTaxa(medicamento) {
       if (!taxa || taxa <= 0) break;
       let doseE1 = taxa * 1;
       let doseE2 = taxa * 10;
-      let doseMin = (0.1 * peso).toFixed(2);
-      let doseMax = (0.5 * peso).toFixed(2);
       resultado = `
-        <strong>Dose mínima:</strong> ${doseMin} mg/h (${(0.1).toFixed(2)} mg/kg/h)<br>
-        <strong>Dose máxima:</strong> ${doseMax} mg/h (${(0.5).toFixed(2)} mg/kg/h)<br>
         <strong>1 mg/ml:</strong> ${doseE1.toFixed(2)} mg/h (${(doseE1/peso).toFixed(3)} mg/kg/h)<br>
         <strong>10 mg/ml:</strong> ${doseE2.toFixed(2)} mg/h (${(doseE2/peso).toFixed(3)} mg/kg/h)
       `;
