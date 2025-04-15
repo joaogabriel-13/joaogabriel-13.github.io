@@ -7,39 +7,11 @@ has_children: true
 
 # Calculadoras
 
-Ferramentas úteis para cálculos rápidos. Escolha uma calculadora abaixo:
+Nesta seção você encontrará ferramentas úteis para cálculos rápidos.
 
-<ul>
-  <li>
-    <details>
-      <summary>Calculadora de Diluições</summary>
-      <ul>
-        <li><a href="/calculadoras/calculadora_diluicoes/">Calculadora de Diluições</a></li>
-      </ul>
-    </details>
-  </li>
-  <li>
-    <details>
-      <summary>Calculadora de Dose por Paciente</summary>
-      <ul>
-        <li><a href="/calculadoras/calculadora_dose_paciente/">Calculadora de Dose por Paciente</a></li>
-      </ul>
-    </details>
-  </li>
-  <li>
-    <details>
-      <summary>Calculadora de Dose e Taxa de Infusão</summary>
-      <ul>
-        <li><a href="/calculadoras/calculadora_dose_taxa_infusão/">Calculadora de Dose e Taxa de Infusão</a></li>
-      </ul>
-    </details>
-  </li>
-  <li>
-    <details>
-      <summary>Outras Calculadoras</summary>
-      <ul>
-        <li><a href="/calculadoras/outras_calculadoras/">Outras Calculadoras</a></li>
-      </ul>
-    </details>
-  </li>
-</ul>
+Navegue pelas subseções:
+
+* [Calculadora de Diluições](/calculadoras/calculadora_diluicoes/)
+* [Calculadora de Dose por Paciente](/calculadoras/calculadora_dose_paciente/)
+* [Calculadora de Dose e Taxa de Infusão](/calculadoras/calculadora_dose_taxa_infusão/)
+* [Outras Calculadoras](/calculadoras/outras_calculadoras/)
