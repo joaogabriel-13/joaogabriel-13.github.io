@@ -30,11 +30,11 @@ function calcularDosePorTaxa(medicamento) {
     case 'norepinefrina':
       taxa = parseFloat(document.getElementById('taxaNorepinefrina').value);
       if (!taxa || taxa <= 0) break;
-      let doseN1 = taxa * 65;
+      let doseN1 = taxa * 64;
       let doseN2 = taxa * 160;
       let doseN3 = taxa * 200;
       resultado = `
-        <strong>65 mcg/ml:</strong> ${doseN1.toFixed(2)} mcg/h (${(doseN1/60/peso).toFixed(3)} mcg/kg/min)<br>
+        <strong>64 mcg/ml:</strong> ${doseN1.toFixed(2)} mcg/h (${(doseN1/60/peso).toFixed(3)} mcg/kg/min)<br>
         <strong>160 mcg/ml:</strong> ${doseN2.toFixed(2)} mcg/h (${(doseN2/60/peso).toFixed(3)} mcg/kg/min)<br>
         <strong>200 mcg/ml:</strong> ${doseN3.toFixed(2)} mcg/h (${(doseN3/60/peso).toFixed(3)} mcg/kg/min)
       `;
@@ -44,7 +44,11 @@ function calcularDosePorTaxa(medicamento) {
       if (!taxa || taxa <= 0) break;
       let doseE1 = taxa * 1;
       let doseE2 = taxa * 10;
+      let doseMin = (0.1 * peso).toFixed(2);
+      let doseMax = (0.5 * peso).toFixed(2);
       resultado = `
+        <strong>Dose mínima:</strong> ${doseMin} mg/h (${(0.1).toFixed(2)} mg/kg/h)<br>
+        <strong>Dose máxima:</strong> ${doseMax} mg/h (${(0.5).toFixed(2)} mg/kg/h)<br>
         <strong>1 mg/ml:</strong> ${doseE1.toFixed(2)} mg/h (${(doseE1/peso).toFixed(3)} mg/kg/h)<br>
         <strong>10 mg/ml:</strong> ${doseE2.toFixed(2)} mg/h (${(doseE2/peso).toFixed(3)} mg/kg/h)
       `;
