@@ -1,38 +1,57 @@
 {%- comment -%}
-Override de sidebar.html:
-• Injeta CSS inline para cores
-• Adiciona <img> do SUS junto ao título
-• Mantém menu e submenu originais
-{%- endcomment -%}
+Override completo de sidebar.html:
+• Usa <div class="sidebar"> correto
+    • Injeção de CSS inline para forçar cores
+    • Logo + título com imagem do SUS
+    • Inclui menu principal e submenu do Just the Docs
+    {%- endcomment -%}
 
-<style>
-    /* ===== Fundo escuro em toda a sidebar ===== */
-    .sidebar {
-        background-color: #0c326f !important;
-    }
+    <div class="sidebar">
+        <style>
+            /* 1) Fundo escuro na sidebar inteira */
+            .sidebar {
+                background-color: #0c326f !important;
+            }
 
-    /* ===== Links brancos (título, páginas e filhos) ===== */
-    .sidebar-nav a {
-        color: #ffffff !important;
-    }
+            /* 2) Links em branco (título, itens e filhos) */
+            .sidebar-nav a {
+                color: #ffffff !important;
+            }
 
-    .sidebar-nav a:hover {
-        color: #f0f0f0 !important;
-    }
-</style>
+            .sidebar-nav a:hover {
+                color: #f0f0f0 !important;
+            }
 
-<nav class="sidebar-nav">
-    <!-- Título + logo SUS -->
-    <a href="{{ '/' | relative_url }}" class="site-title lh-tight"
-        style="display:flex; align-items:center; margin-bottom:1rem; padding:0;">
-        <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS"
-            style="width:1.5rem; height:1.5rem; margin-right:0.5rem;">
-        <span>{{ site.title }}</span>
-    </a>
+            /* 3) Pequenos ajustes de espaçamento */
+            .sidebar-nav {
+                padding-top: 1rem;
+            }
+        </style>
 
-    <!-- Menu principal (páginas de topo) -->
-    {% include components/nav/pages.html %}
+        <nav class="sidebar-nav">
+            <!-- Título + logo SUS -->
+            <a href="{{ '/' | relative_url }}" class="site-title lh-tight"
+                style="display:flex; align-items:center; margin-bottom:1rem; padding:0;">
+                <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS"
+                    style="width:1.5rem; height:1.5rem; margin-right:0.5rem;">
+                <span>{{ site.title }}</span>
+            </a>
 
-    <!-- Sub‑menu (filhos da página ativa) -->
-    {% include components/nav/children.html %}
-</nav>
+            <!-- Menu principal (páginas de topo) -->
+            {% include components/nav/pages.html %}
+
+            <!-- Sub‑menu (filhos da página ativa) -->
+            {% include components/nav/children.html %}
+        </nav>
+
+        <!-- Rodapé baixo da sidebar -->
+        {% capture nav_footer_custom %}{% include nav_footer_custom.html %}{% endcapture %}
+        {% if nav_footer_custom != "" %}
+        {{ nav_footer_custom }}
+        {% else %}
+        <footer class="site-footer">
+            This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation
+            theme for Jekyll.
+        </footer>
+        {% endif %}
+    </div>
