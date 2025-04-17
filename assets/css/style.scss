@@ -12,10 +12,17 @@
   color: #f0f0f0 !important;
 }
 
-/* Faz com que o site-title fique um flex container,  para alinhar ícone e texto no mesmo eixo. */
+/* Torna o título um inline-flex para ícone + texto juntos */
   .site-title {
-  display: flex;
-  align-items: center;
+    display: inline-flex !important;
+    align-items: center;
+    margin-bottom: 0.6rem;      /* reduz o espaço abaixo do título */
+    padding: 0;                 /* remove qualquer padding indesejado */
+}
+
+/* Se quiser que o título não ocupe 100% da largura */
+  .sidebar-nav a.site-title {
+    width: auto !important;
 }
 
 /* Pseudo‑elemento que injeta sua imagem antes do texto */
@@ -28,4 +35,5 @@
   width: 1.5rem;    /* ajuste o tamanho do ícone aqui */
   height: 1.5rem;
   margin-right: 0.5rem; /* espaço entre ícone e texto */
+  vertical-align: middle;     /* alinha o ícone no meio do texto */
 }
