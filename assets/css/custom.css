@@ -1,66 +1,41 @@
-/*------------------------------------------------------------
-  1) Fundo de toda a sidebar
-------------------------------------------------------------*/
+/* 1) cor de fundo da sidebar */
 .side-bar {
   background-color: #0c326f !important;
   width: 20rem !important;
-  /* largura fixa suficiente para o texto */
-  min-width: 16rem !important;
+  /* alarga para caber o texto */
 }
 
-/*------------------------------------------------------------
-    2) Links da navegação (cor e hover)
-  ------------------------------------------------------------*/
-.sidebar-nav a,
-.site-nav a {
-  color: #ffffff !important;
+/* 2) links dentro da nav */
+.sidebar-nav a {
+  color: #fff !important;
 }
 
-.sidebar-nav a:hover,
-.site-nav a:hover {
+.sidebar-nav a:hover {
   color: #f0f0f0 !important;
 }
 
-/*------------------------------------------------------------
-    3) Espaçamento interno da lista
-  ------------------------------------------------------------*/
-.sidebar-nav {
-  padding-top: 1rem !important;
-  width: 20rem !important;
-}
-
-/*------------------------------------------------------------
-    4) Remove qualquer pseudo‑elemento que já tenha sido injetado
-       (para evitar duplicatas de ícone antes do texto)
-  ------------------------------------------------------------*/
-.site-nav .site-title::before {
-  content: none !important;
-}
-
-/*------------------------------------------------------------
-    5) Estiliza o título (logo + texto) dentro do header da sidebar
-  ------------------------------------------------------------*/
+/* 3) cabeçalho da sidebar */
 .site-header .site-title {
-  display: inline-flex !important;
-  align-items: center !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
-  max-width: none !important;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: inherit;
 }
 
-/*------------------------------------------------------------
-    6) Aumentar o tamanho do ícone SUS
-  ------------------------------------------------------------*/
 .site-header .site-title img {
-  width: 4rem !important;
-  /* experimente 4rem até achar o ideal */
-  height: 4rem !important;
-  margin-right: 0.75rem !important;
+  width: 3rem;
+  /* aumenta o logo */
+  height: 3rem;
+  margin-right: 0.5rem;
 }
 
-/*------------------------------------------------------------
-    7) Ajuste fino na fonte do texto (se ainda estiver apertado)
-  ------------------------------------------------------------*/
 .site-header .site-title span {
-  white-space: nowrap !important;
+  font-size: 1rem;
+  /* ajusta o texto */
+}
+
+/* 4) afasta um pouco o conteúdo do topo */
+.sidebar-nav {
+  padding-top: 1rem;
 }
