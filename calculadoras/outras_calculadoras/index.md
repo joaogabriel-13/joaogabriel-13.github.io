@@ -25,7 +25,7 @@ parent: Calculadoras
     <label>Peso (kg):
       <input type="number" id="peso-sodio" min="0" step="0.1" required />
     </label>
-  </div>>
+  </div>
   <div>
     <label>Categoria sexo/idade:
       <select id="sexo-idade-sodio">
@@ -70,7 +70,7 @@ parent: Calculadoras
 </details>
 
 <form id="iron-form" class="calc-box">
-  <div:>
+  <div>
     <label>Peso (kg):
       <input type="number" id="peso-ferro" min="0" step="0.1" required />
     </label>
