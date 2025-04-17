@@ -1,11 +1,10 @@
-/* 1) cor de fundo da sidebar */
+/* fundo e largura da sidebar */
 .side-bar {
   background-color: #0c326f !important;
   width: 20rem !important;
-  /* alarga para caber o texto */
 }
 
-/* 2) links dentro da nav */
+/* links da nav */
 .sidebar-nav a {
   color: #fff !important;
 }
@@ -14,28 +13,24 @@
   color: #f0f0f0 !important;
 }
 
-/* 3) cabeçalho da sidebar */
-.site-header .site-title {
+/* cabeçalho da sidebar (logo + texto) */
+.site-header-custom {
+  display: flex;
+  align-items: center;
+}
+
+.site-header-custom .site-title {
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  overflow: visible;
-  text-overflow: inherit;
 }
 
-.site-header .site-title img {
+.site-header-custom .site-title img {
   width: 3rem;
-  /* aumenta o logo */
   height: 3rem;
   margin-right: 0.5rem;
 }
 
-.site-header .site-title span {
+.site-header-custom .site-title span {
   font-size: 1rem;
-  /* ajusta o texto */
-}
-
-/* 4) afasta um pouco o conteúdo do topo */
-.sidebar-nav {
-  padding-top: 1rem;
 }
