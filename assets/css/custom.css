@@ -1,5 +1,6 @@
-/* ---------- 1) Fixar e dimensionar sidebar ---------- */
-
+/* --------------------------------------------------------------------
+   1) Container fixo da sidebar
+ -------------------------------------------------------------------- */
 .side-bar {
   position: fixed;
   top: 0;
@@ -10,33 +11,40 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  z-index: 10;
+  z-index: 100;
+  /* acima do main-content */
 }
 
-/* ---------- 2) Search header ---------- */
-
+/* --------------------------------------------------------------------
+   2) Search header sempre no topo, fundo branco
+ -------------------------------------------------------------------- */
 .side-bar .search {
-  background-color: white;
-  /* branco sólido */
+  background-color: #fff;
   padding: 0.75rem 1rem;
-  /* espaçamento confortável */
   border-bottom: 1px solid #ddd;
-  /* separador */
 }
 
-/* Force o campo de pesquisa a ocupar 100% da largura */
 .side-bar .search-input-wrap {
   width: 100%;
 }
 
-/* ---------- 3) Header custom (logo + título) ---------- */
-
+/* --------------------------------------------------------------------
+   3) Nosso header custom (logo + título)
+ -------------------------------------------------------------------- */
 .site-header-custom {
-  background-color: rgba(255, 255, 255, 0.15);
-  /* leve “cinza claro” */
-  margin: 0 1rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  /* tom claro, menos claro que hover */
+  margin: 0.75rem 1rem;
   padding: 0.75rem 1rem;
   border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.site-header-custom .site-title {
+  display: inline-flex !important;
+  align-items: center;
+  text-decoration: none !important;
 }
 
 .site-header-custom img {
@@ -45,26 +53,20 @@
   margin-right: 0.5rem;
 }
 
-.site-header-custom .site-title {
-  display: inline-flex !important;
-  align-items: center;
-  max-width: none !important;
-  overflow: visible !important;
-  white-space: nowrap !important;
-}
-
 .site-header-custom .site-title span {
-  font-size: 0.95rem !important;
   color: #fff;
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 
-/* ---------- 4) Navegação rolável ---------- */
-
+/* --------------------------------------------------------------------
+   4) Menu rolável
+ -------------------------------------------------------------------- */
 .sidebar-nav {
   flex: 1;
-  /* ocupa o restante da altura */
+  /* ocupa todo o espaço livre */
   overflow-y: auto;
-  padding-top: 1rem;
+  padding: 1rem 0;
 }
 
 .sidebar-nav a {
@@ -75,8 +77,19 @@
   color: #f0f0f0 !important;
 }
 
-/* ---------- 5) Cleanup pseudo‑elemento antigo ---------- */
+/* --------------------------------------------------------------------
+   5) Footer lá embaixo
+ -------------------------------------------------------------------- */
+.site-footer {
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  text-align: center;
+}
 
+/* --------------------------------------------------------------------
+   6) Remover pseudo‑elementos antigos
+ -------------------------------------------------------------------- */
 .site-nav .site-title::before {
   content: none !important;
 }

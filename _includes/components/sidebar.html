@@ -1,24 +1,16 @@
-<div class="side-bar">
-  {%- comment -%} 
-    1) search_header primeiro, para aparecer no topo 
-  {%- endcomment -%}
+<div class="side-bar">  
+  {% comment %} 1) Campo de busca no topo {% endcomment %}
   {% include components/search_header.html %}
 
-  {%- comment -%}
-    2) nosso header custom (logo + título)
-  {%- endcomment -%}
+  {% comment %} 2) Nosso header custom (logo + título) {% endcomment %}
   {% include header_custom.html %}
 
-  {%- comment -%}
-    3) menu de navegação
-  {%- endcomment -%}
+  {% comment %} 3) Menu rolável {% endcomment %}
   <nav class="sidebar-nav" aria-label="Main">
     {% include components/site_nav.html %}
   </nav>
 
-  {%- comment -%}
-    4) footer
-  {%- endcomment -%}
+  {% comment %} 4) Footer {% endcomment %}
   <footer class="site-footer">
     This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
   </footer>
