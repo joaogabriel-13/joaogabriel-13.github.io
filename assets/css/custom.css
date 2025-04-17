@@ -1,5 +1,5 @@
 /* 1) fundo da sidebar */
-.sidebar {
+.side-bar {
     background-color: #0c326f !important;
 }
 
@@ -22,19 +22,10 @@
     content: none !important;
 }
 
-/* 5) reforça o truncamento do título */
-.site-title {
-    max-width: 220px;
-    /* mesmo valor do inline-style */
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
 /* 1) Aumenta o tamanho do ícone SUS */
 .site-header .site-title img {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
+    width: 3rem !important;
+    height: 3rem !important;
 }
 
 /* 2) Garante que todo o texto apareça, sem truncar */
@@ -42,10 +33,16 @@
     /* remove o “max-width” e o overflow escondido que cortam o texto */
     max-width: none !important;
     overflow: visible !important;
-    white-space: normal !important;
+    white-space: nowrap !important;
 }
 
 /* 3) (Opcional) Larga um pouco mais a sidebar para caber o texto inteiro */
 .side-bar {
-    width: 14rem !important;
+    width: 18rem !important;
+}
+
+/* SE PRECISAR REDUZIR UM POUCO A CORTE DE TEXTO */
+.site-header .site-title span {
+    font-size: 0.95rem !important;
+    /* torna o texto ligeiramente menor */
 }
