@@ -5,40 +5,42 @@
   /* ajuste se quiser mais ou menos */
 }
 
-/* 2) estilo da sua mini‑header na sidebar */
+/* Fundo suave no header customizado */
+/*    Use a mesma cor do hover com alpha mais baixo */
 .site-header-custom {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-}
+  background-color: rgba(143, 128, 250, 0.1) !important;
+  /* você pode afinar esse alpha (de 0.05 a 0.2) até ficar no tom desejado */
+  padding: 0.75rem 1rem;
+  /* garante um espaçamento confortável */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-.site-header-custom .site-title {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
+  .site-header-custom .site-title {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
 
-.site-header-custom .site-title img {
-  width: 3rem !important;
-  height: 3rem !important;
-  margin-right: 0.5rem;
-}
+  .site-header-custom .site-title img {
+    width: 3rem !important;
+    height: 3rem !important;
+    margin-right: 0.5rem;
+  }
 
-.site-header-custom .site-title span {
-  font-size: 1rem !important;
-  white-space: nowrap;
-}
+  .site-header-custom .site-title span {
+    font-size: 1rem !important;
+    white-space: nowrap;
+  }
 
-/* 3) links do menu */
-.sidebar-nav a {
-  color: #fff !important;
-}
+  /* 3) links do menu */
+  .sidebar-nav a {
+    color: #fff !important;
+  }
 
-.sidebar-nav a:hover {
-  color: #f0f0f0 !important;
-}
+  .sidebar-nav a:hover {
+    color: #f0f0f0 !important;
+  }
 
-/* 4) espaçamento interno do menu */
-.sidebar-nav {
-  padding-top: 1rem;
-}
+  /* 4) espaçamento interno do menu */
+  .sidebar-nav {
+    padding-top: 1rem;
+  }

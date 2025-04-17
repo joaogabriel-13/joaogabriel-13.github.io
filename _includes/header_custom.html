@@ -1,11 +1,12 @@
 {%- comment -%}
-  Só o logo+texto da sidebar
+  Tudo que você colocar aqui é injetado
+  *depois* do campo de busca padrão
 {%- endcomment -%}
 
+{%- include components/search_header.html -%}
 <div class="site-header-custom">
   <a href="{{ '/' | relative_url }}" class="site-title lh-tight">
-    <img src="{{ '/assets/sus-logo.png' | relative_url }}"
-         alt="Logo SUS">
+    <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS">
     <span>Meu Repositório de Arquivos</span>
   </a>
 </div>
