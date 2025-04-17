@@ -1,0 +1,38 @@
+{%- comment -%}
+Override de sidebar.html:
+• Injeta CSS inline para cores
+• Adiciona <img> do SUS junto ao título
+• Mantém menu e submenu originais
+{%- endcomment -%}
+
+<style>
+    /* ===== Fundo escuro em toda a sidebar ===== */
+    .sidebar {
+        background-color: #0c326f !important;
+    }
+
+    /* ===== Links brancos (título, páginas e filhos) ===== */
+    .sidebar-nav a {
+        color: #ffffff !important;
+    }
+
+    .sidebar-nav a:hover {
+        color: #f0f0f0 !important;
+    }
+</style>
+
+<nav class="sidebar-nav">
+    <!-- Título + logo SUS -->
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight"
+        style="display:flex; align-items:center; margin-bottom:1rem; padding:0;">
+        <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS"
+            style="width:1.5rem; height:1.5rem; margin-right:0.5rem;">
+        <span>{{ site.title }}</span>
+    </a>
+
+    <!-- Menu principal (páginas de topo) -->
+    {% include components/nav/pages.html %}
+
+    <!-- Sub‑menu (filhos da página ativa) -->
+    {% include components/nav/children.html %}
+</nav>
