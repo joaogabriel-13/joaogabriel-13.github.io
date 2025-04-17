@@ -1,20 +1,23 @@
-/* 1) Largura + fundo da sidebar inteira */
+/* 1) Largura e fundo da sidebar */
 .side-bar {
   width: 22rem !important;
   background-color: #0c326f !important;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 2) Bloco do header-custom com fundo mais claro */
-.side-bar .site-header-custom {
-  background-color: rgba(143, 128, 250, 0.1) !important;
-  padding: 1rem;
-  box-sizing: border-box;
-  margin-bottom: 1rem;
-}
-
-/* 3) Search box na sidebar (apelido ao include acima) */
+/* 2) Search box no topo da sidebar */
 .side-bar .search-input-wrap {
-  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+/* 3) Bloco do header-custom com fundo sutil */
+.side-bar .site-header-custom {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  margin: 0 1rem 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
 }
 
 /* 4) Logo SUS maior */
@@ -24,7 +27,7 @@
   margin-right: 0.5rem;
 }
 
-/* 5) Título inline-flex e sem truncar */
+/* 5) Título inline e sem truncar */
 .side-bar .site-header-custom .site-title {
   display: inline-flex !important;
   align-items: center;
@@ -33,12 +36,18 @@
   white-space: nowrap !important;
 }
 
-/* 6) Ajuste fino no tamanho do texto */
+/* 6) Texto ligeiramente menor para caber */
 .side-bar .site-header-custom .site-title span {
   font-size: 0.95rem !important;
 }
 
-/* 7) Links da nav */
+/* 7) Links da navegação */
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 0;
+}
+
 .sidebar-nav a {
   color: #fff !important;
 }
@@ -47,11 +56,7 @@
   color: #f0f0f0 !important;
 }
 
-.sidebar-nav {
-  padding-top: 1rem;
-}
-
-/* 8) Remove pseudo‑elementos antigos do título */
+/* 8) Remove pseudo‑elementos antigos do título padrão */
 .site-nav .site-title::before {
   content: none !important;
 }
