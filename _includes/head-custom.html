@@ -1,4 +1,41 @@
-<!-- (já existem estes links no head:) -->
-<link rel="stylesheet" href="{{ '/assets/css/style.css'  | relative_url }}">
-<!-- CSS customizado que sobrepõe cores e adiciona o logo -->
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+<style>
+    /* Cores do menu lateral */
+    .sidebar {
+        background-color: #0c326f !important;
+    }
+
+    .sidebar a {
+        color: #ffffff !important;
+    }
+
+    .sidebar a:hover {
+        color: #f0f0f0 !important;
+    }
+
+    /* Remove qualquer ícone no header */
+    .site-nav .site-title::before {
+        content: none !important;
+    }
+
+    /* Alinha ícone + texto no título da sidebar */
+    .sidebar-nav .site-title {
+        display: inline-flex !important;
+        align-items: center;
+        margin-bottom: 0.6rem !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
+
+    /* Injeta o logo SUS antes do texto */
+    .sidebar-nav .site-title::before {
+        content: "";
+        display: inline-block;
+        background-image: url("/assets/sus-logo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+    }
+</style>
