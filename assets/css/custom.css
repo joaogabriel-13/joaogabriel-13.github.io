@@ -1,8 +1,8 @@
-/* ----------------------------------------
-   Customizações do menu e logo do SUS
-   ---------------------------------------- */
+/* =====================================
+   Cores do menu e logo SUS na sidebar
+   ===================================== */
 
-/* 1) Cores do menu */
+/* 1) Fundo e links da sidebar */
 .sidebar {
     background-color: #0c326f !important;
 }
@@ -15,12 +15,12 @@
     color: #f0f0f0 !important;
 }
 
-/* 2) Cancelar ícone no header (título superior) */
+/* 2) Remove qualquer ícone injetado no header */
 .site-nav .site-title::before {
     content: none !important;
 }
 
-/* 3) Alinhar logo + texto no título da sidebar */
+/* 3) Alinha logo + texto no título da sidebar */
 .sidebar-nav .site-title {
     display: inline-flex !important;
     align-items: center;
@@ -29,7 +29,7 @@
     width: auto !important;
 }
 
-/* 4) Injeta o logo SUS antes do texto (apenas na sidebar) */
+/* 4) Injeta o logo do SUS antes do texto (somente na sidebar) */
 .sidebar-nav .site-title::before {
     content: "";
     display: inline-block;
