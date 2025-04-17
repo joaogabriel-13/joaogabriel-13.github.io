@@ -1,18 +1,27 @@
-function calcularDeficitFerro(peso, hbAlvo, hbAtual) {
-    return peso * (hbAlvo - hbAtual) * 2.4 + 500;
-}
+/* assets/js/deficit_ferro.js */
+(() => {
+    const FERRO_POR_AMPOLA = 100;   // constante interna
 
-function calcularNumeroAmpolas(deficitFerro, ferroPorAmpola = 100) {
-    return Math.ceil(deficitFerro / ferroPorAmpola);
-}
+    document
+        .getElementById('iron-form')
+        .addEventListener('submit', event => {
+            event.preventDefault();
 
-// Exemplo de uso:
-const peso = 70; // kg
-const hbAlvo = 14; // g/dL
-const hbAtual = 10; // g/dL
+            const peso = parseFloat(document.getElementById('peso-ferro').value);
+            const hbAtual = parseFloat(document.getElementById('hb-atual').value);
+            const hbAlvo = parseFloat(document.getElementById('hb-alvo').value);
 
-const deficitFerro = calcularDeficitFerro(peso, hbAlvo, hbAtual);
-const numeroAmpolas = calcularNumeroAmpolas(deficitFerro);
+            if (!(peso > 0) || hbAlvo <= hbAtual) {
+                document.getElementById('iron-result').innerText =
+                    '⚠️ Verifique os valores inseridos.';
+                return;
+            }
 
-console.log(`Déficit Total de Ferro: ${deficitFerro.toFixed(2)} mg`);
-console.log(`Número de Ampolas Necessárias: ${numeroAmpolas}`);
+            const deficit = peso * (hbAlvo - hbAtual) * 2.4 + 500;
+            const ampolas = Math.ceil(deficit / FERRO_POR_AMPOLA);
+
+            document.getElementById('iron-result').innerText =
+                `Déficit total de ferro: ${deficit.toFixed(0)} mg\n` +
+                `Número de ampolas (100 mg): ${ampolas}`;
+        });
+})();  
