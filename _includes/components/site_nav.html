@@ -1,0 +1,68 @@
+{%- comment -%}
+Override completo de site_nav.html:
+• Puxar o CSS customizado inline
+• Exibir logo + título + menu principal + submenu
+{%- endcomment -%}
+
+<style>
+    /* ————————————————————————————————————————
+     1) CORES DO MENU LATERAL
+     ———————————————————————————————————————— */
+    .sidebar {
+        background-color: #0c326f !important;
+    }
+
+    .sidebar a {
+        color: #ffffff !important;
+    }
+
+    .sidebar a:hover {
+        color: #f0f0f0 !important;
+    }
+
+    /* ————————————————————————————————————————
+     2) REMOVER ÍCONE DO HEADER (TÍTULO SUPERIOR)
+     ———————————————————————————————————————— */
+    .site-nav .site-title::before {
+        content: none !important;
+    }
+
+    /* ————————————————————————————————————————
+     3) ALINHAR ÍCONE + TEXTO NO TÍTULO DA SIDEBAR
+     ———————————————————————————————————————— */
+    .sidebar-nav .site-title {
+        display: inline-flex !important;
+        align-items: center;
+        margin-bottom: 0.6rem !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
+
+    /* ————————————————————————————————————————
+     4) INJETAR LOGO DO SUS ANTES DO TEXTO
+     ———————————————————————————————————————— */
+    .sidebar-nav .site-title::before {
+        content: "";
+        display: inline-block;
+        background-image: url("/assets/sus-logo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+    }
+</style>
+
+<nav class="sidebar-nav">
+    <!-- título + logo -->
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight flex items-center" style="margin-bottom: 1.5rem;">
+        <span>{{ site.title }}</span>
+    </a>
+
+    <!-- links principais (páginas do nível 1) -->
+    {% include components/nav/pages.html %}
+
+    <!-- sub‑links (filhos da página ativa) -->
+    {% include components/nav/children.html %}
+</nav>
