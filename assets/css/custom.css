@@ -1,46 +1,56 @@
-/* 1) fundo e largura da sidebar */
+/* 1) Largura total da sidebar */
 .side-bar {
-  background-color: #0c326f !important;
   width: 22rem !important;
-  /* ajuste se quiser mais ou menos */
+  background-color: #0c326f !important;
+  /* mantém o fundo azul escuro */
 }
 
-/* Fundo suave no header customizado */
-/*    Use a mesma cor do hover com alpha mais baixo */
-.site-header-custom {
+/* 2) Fundo suave só para o bloco do header customizado */
+.side-bar .site-header-custom {
   background-color: rgba(143, 128, 250, 0.1) !important;
-  /* você pode afinar esse alpha (de 0.05 a 0.2) até ficar no tom desejado */
-  padding: 0.75rem 1rem;
-  /* garante um espaçamento confortável */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* tom claro parecido com o hover */
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 1rem;
+  /* distância até os links */
+}
 
-  .site-header-custom .site-title {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-  }
+/* 3) Logo SUS maior */
+.side-bar .site-header-custom img {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  margin-right: 0.5rem;
+}
 
-  .site-header-custom .site-title img {
-    width: 3rem !important;
-    height: 3rem !important;
-    margin-right: 0.5rem;
-  }
+/* 4) Título inline-flex e sem truncamento */
+.side-bar .site-header-custom .site-title {
+  display: inline-flex !important;
+  align-items: center;
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
 
-  .site-header-custom .site-title span {
-    font-size: 1rem !important;
-    white-space: nowrap;
-  }
+/* 5) Ajuste fino no tamanho do texto (se ainda for necessário) */
+.side-bar .site-header-custom .site-title span {
+  font-size: 0.95rem !important;
+}
 
-  /* 3) links do menu */
-  .sidebar-nav a {
-    color: #fff !important;
-  }
+/* 6) Estilos gerais da navegação da sidebar */
+.sidebar-nav a {
+  color: #fff !important;
+}
 
-  .sidebar-nav a:hover {
-    color: #f0f0f0 !important;
-  }
+.sidebar-nav a:hover {
+  color: #f0f0f0 !important;
+}
 
-  /* 4) espaçamento interno do menu */
-  .sidebar-nav {
-    padding-top: 1rem;
-  }
+.sidebar-nav {
+  padding-top: 1rem;
+}
+
+/* Remove qualquer pseudo‑elemento antigo que injetava logo antes do título */
+.site-nav .site-title::before {
+  content: none !important;
+}
