@@ -10,26 +10,31 @@ Should not be cached, because nav_footer_custom.html might depend on page.
 {%- endcomment -%}
 
 <div class="side-bar">
-    <div class="site-header" role="banner" style="display:flex; align-items:center; padding:0.5rem 1rem;">
-        <a href="{{ "/" | relative_url }}" class="site-title lh-tight" style="
-             display: inline-flex;
-             align-items: center;
-             max-width: 100%;
-             overflow: hidden;
-             white-space: nowrap;
-             text-overflow: ellipsis;
-           ">
-            <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS"
-                style="width:1.5rem; height:1.5rem; margin-right:0.5rem;">
+    <div class="site-header" role="banner"
+        style="display:flex; align-items:center; padding:0.75rem 1rem;">
+        <a href="{{ "/" | relative_url }}"
+            class="site-title lh-tight"
+            style="
+            display: inline-flex;
+            align-items: center;
+            max-width: 220px;      /* mais espaço */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            ">
+            <img src="{{ '/assets/sus-logo.png' | relative_url }}"
+                alt="Logo SUS"
+                style="width:2rem; height:2rem; margin-right:0.6rem;">
             <span>Meu Repositório de Arquivos</span>
         </a>
-
-        <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
-            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-                <use xlink:href="#svg-menu"></use>
-            </svg>
-        </button>
+            <button id="menu-button" class="site-button btn-reset"
+                    aria-label="Toggle menu" aria-pressed="false">
+                <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+                    <use xlink:href="#svg-menu"></use>
+                </svg>
+            </button>
     </div>
+
 
     {% include_cached components/site_nav.html %}
 

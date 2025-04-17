@@ -1,9 +1,9 @@
-/* fundo da sidebar */
+/* 1) fundo da sidebar */
 .sidebar {
     background-color: #0c326f !important;
 }
 
-/* links em branco */
+/* 2) texto dos links */
 .sidebar-nav a {
     color: #fff !important;
 }
@@ -12,20 +12,20 @@
     color: #f0f0f0 !important;
 }
 
-/* espaçamento interno */
+/* 3) respiração interna */
 .sidebar-nav {
     padding-top: 1rem;
 }
 
-/* remove pseudo‑elementos antigos */
+/* 4) remove pseudo‑elementos antigos do título */
 .site-nav .site-title::before {
     content: none !important;
 }
 
-/* garante que o título nunca “vaze” */
+/* 5) reforça o truncamento do título */
 .site-title {
-    max-width: 180px;
-    /* ajuste esse valor se precisar */
+    max-width: 220px;
+    /* mesmo valor do inline-style */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
