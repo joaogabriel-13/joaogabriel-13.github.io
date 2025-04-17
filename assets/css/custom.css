@@ -1,6 +1,4 @@
-/* --------------------------------------------------------------------
-   1) Container fixo da sidebar
- -------------------------------------------------------------------- */
+/* 1) Container fixo da sidebar */
 .side-bar {
   position: fixed;
   top: 0;
@@ -12,12 +10,9 @@
   flex-direction: column;
   box-sizing: border-box;
   z-index: 100;
-  /* acima do main-content */
 }
 
-/* --------------------------------------------------------------------
-   2) Search header sempre no topo, fundo branco
- -------------------------------------------------------------------- */
+/* 2) Search box no topo */
 .side-bar .search {
   background-color: #fff;
   padding: 0.75rem 1rem;
@@ -28,12 +23,9 @@
   width: 100%;
 }
 
-/* --------------------------------------------------------------------
-   3) Nosso header custom (logo + título)
- -------------------------------------------------------------------- */
+/* 3) Nosso header custom (logo + título) */
 .site-header-custom {
   background-color: rgba(255, 255, 255, 0.12);
-  /* tom claro, menos claro que hover */
   margin: 0.75rem 1rem;
   padding: 0.75rem 1rem;
   border-radius: 0.25rem;
@@ -59,12 +51,9 @@
   white-space: nowrap;
 }
 
-/* --------------------------------------------------------------------
-   4) Menu rolável
- -------------------------------------------------------------------- */
+/* 4) Menu rolável */
 .sidebar-nav {
   flex: 1;
-  /* ocupa todo o espaço livre */
   overflow-y: auto;
   padding: 1rem 0;
 }
@@ -77,9 +66,7 @@
   color: #f0f0f0 !important;
 }
 
-/* --------------------------------------------------------------------
-   5) Footer lá embaixo
- -------------------------------------------------------------------- */
+/* 5) Footer */
 .site-footer {
   padding: 1rem;
   font-size: 0.85rem;
@@ -87,9 +74,7 @@
   text-align: center;
 }
 
-/* --------------------------------------------------------------------
-   6) Remover pseudo‑elementos antigos
- -------------------------------------------------------------------- */
+/* 6) Remover pseudo‑elemento original do title */
 .site-nav .site-title::before {
   content: none !important;
 }
