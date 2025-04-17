@@ -1,16 +1,17 @@
 {%- comment -%}
 Override completo de site_nav.html:
-• CSS inline para cores da sidebar
+• CSS inline para cores e logo
 • HTML com <img> do SUS + título
 • Menu principal + submenu
 {%- endcomment -%}
 
 <style>
-    /* ===== cores da sidebar ===== */
-    .sidebar-nav {
+    /* 1) Fundo de toda a sidebar */
+    .sidebar {
         background-color: #0c326f !important;
     }
 
+    /* 2) Texto dos links (título, principais e filhos) */
     .sidebar-nav a {
         color: #ffffff !important;
     }
@@ -18,19 +19,31 @@ Override completo de site_nav.html:
     .sidebar-nav a:hover {
         color: #f0f0f0 !important;
     }
+
+    /* 3) Remove qualquer pseudo-elemento injetado no header */
+    .site-nav .site-title::before {
+        content: none !important;
+    }
+
+    /* 4) Ajustes visuais no menu */
+    .sidebar-nav {
+        padding-top: 1rem;
+        /* respira um pouco abaixo do topo */
+    }
 </style>
 
 <nav class="sidebar-nav">
+    <!-- Título com logo -->
     <a href="{{ '/' | relative_url }}" class="site-title lh-tight"
-        style="display: flex; align-items: center; margin-bottom: 1rem;">
+        style="display:flex; align-items:center; margin-bottom:1rem;">
         <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS"
             style="width:1.5rem; height:1.5rem; margin-right:0.5rem;">
-        <span style="color: #ffffff;">{{ site.title }}</span>
+        <span>{{ site.title }}</span>
     </a>
 
-    {%- comment -%} Links principais (páginas de topo) {%- endcomment -%}
+    <!-- Links principais (páginas de topo) -->
     {% include components/nav/pages.html %}
 
-    {%- comment -%} Submenus (filhos da página ativa) {%- endcomment -%}
+    <!-- Submenus (filhos da página ativa) -->
     {% include components/nav/children.html %}
 </nav>
