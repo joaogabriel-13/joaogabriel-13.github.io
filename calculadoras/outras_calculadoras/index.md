@@ -21,27 +21,37 @@ parent: Calculadoras
 </details>
 
 <form id="hipo-form" class="calc-box">
-  <label>Peso (kg):
-    <input type="number" id="peso-sodio" min="0" step="0.1" required />
-  </label>
-  <label>Categoria sexo/idade:
-    <select id="sexo-idade-sodio">
-      <option value="adulto_m">Homem adulto</option>
-      <option value="adulto_f">Mulher adulta</option>
-      <option value="idoso_m">Homem idoso</option>
-      <option value="idoso_f">Mulher idosa</option>
-    </select>
-  </label>
-  <label>Δ[Na<sup>+</sup>] em 24 h (mEq/L):
-    <input type="number" id="delta-na" min="0" step="0.1" required />
-  </label>
-  <label>Solução:
-    <select id="solucao-sodio">
-      <option value="3">NaCl 3 %</option>
-      <option value="0.9">NaCl 0,9 %</option>
-    </select>
-  </label>
-  <button type="submit">Calcular</button>
+  <div>
+    <label>Peso (kg):
+      <input type="number" id="peso-sodio" min="0" step="0.1" required />
+    </label>
+  </div>>
+  <div>
+    <label>Categoria sexo/idade:
+      <select id="sexo-idade-sodio">
+        <option value="adulto_m">Homem adulto</option>
+        <option value="adulto_f">Mulher adulta</option>
+        <option value="idoso_m">Homem idoso</option>
+        <option value="idoso_f">Mulher idosa</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>Δ[Na<sup>+</sup>] em 24 h (mEq/L):
+      <input type="number" id="delta-na" min="0" step="0.1" required />
+    </label>
+  </div>
+  <div>
+    <label>Solução:
+      <select id="solucao-sodio">
+        <option value="3">NaCl 3 %</option>
+        <option value="0.9">NaCl 0,9 %</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <button type="submit">Calcular</button>
+  </div>
 </form>
 
 <pre id="hipo-result"></pre>
@@ -60,16 +70,22 @@ parent: Calculadoras
 </details>
 
 <form id="iron-form" class="calc-box">
-  <label>Peso (kg):
-    <input type="number" id="peso-ferro" min="0" step="0.1" required />
-  </label>
-  <label>Hb atual (g/dL):
-    <input type="number" id="hb-atual" min="0" step="0.1" required />
-  </label>
-  <label>Hb alvo (g/dL):
-    <input type="number" id="hb-alvo" min="0" step="0.1" value="15" required />
-  </label>
-  <button type="submit">Calcular</button>
+  <div:>
+    <label>Peso (kg):
+      <input type="number" id="peso-ferro" min="0" step="0.1" required />
+    </label>
+  </div>
+  <div>
+    <label>Hb atual (g/dL):
+      <input type="number" id="hb-atual" min="0" step="0.1" required />
+    </label>
+  </div>
+  <div>
+    <label>Hb alvo (g/dL):
+      <input type="number" id="hb-alvo" min="0" step="0.1" value="15" required />
+    </label>
+  </div>
+    <button type="submit">Calcular</button>
 </form>
 
 <pre id="iron-result"></pre>
