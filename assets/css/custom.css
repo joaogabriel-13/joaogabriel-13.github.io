@@ -1,48 +1,66 @@
-/* 1) fundo da sidebar */
+/*------------------------------------------------------------
+  1) Fundo de toda a sidebar
+------------------------------------------------------------*/
 .side-bar {
-    background-color: #0c326f !important;
+  background-color: #0c326f !important;
+  width: 20rem !important;
+  /* largura fixa suficiente para o texto */
+  min-width: 16rem !important;
 }
 
-/* 2) texto dos links */
-.sidebar-nav a {
-    color: #fff !important;
+/*------------------------------------------------------------
+    2) Links da navegação (cor e hover)
+  ------------------------------------------------------------*/
+.sidebar-nav a,
+.site-nav a {
+  color: #ffffff !important;
 }
 
-.sidebar-nav a:hover {
-    color: #f0f0f0 !important;
+.sidebar-nav a:hover,
+.site-nav a:hover {
+  color: #f0f0f0 !important;
 }
 
-/* 3) respiração interna */
+/*------------------------------------------------------------
+    3) Espaçamento interno da lista
+  ------------------------------------------------------------*/
 .sidebar-nav {
-    padding-top: 1rem;
+  padding-top: 1rem !important;
+  width: 20rem !important;
 }
 
-/* 4) remove pseudo‑elementos antigos do título */
+/*------------------------------------------------------------
+    4) Remove qualquer pseudo‑elemento que já tenha sido injetado
+       (para evitar duplicatas de ícone antes do texto)
+  ------------------------------------------------------------*/
 .site-nav .site-title::before {
-    content: none !important;
+  content: none !important;
 }
 
-/* 1) Aumenta o tamanho do ícone SUS */
-.site-header .site-title img {
-    width: 3rem !important;
-    height: 3rem !important;
-}
-
-/* 2) Garante que todo o texto apareça, sem truncar */
+/*------------------------------------------------------------
+    5) Estiliza o título (logo + texto) dentro do header da sidebar
+  ------------------------------------------------------------*/
 .site-header .site-title {
-    /* remove o “max-width” e o overflow escondido que cortam o texto */
-    max-width: none !important;
-    overflow: visible !important;
-    white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  max-width: none !important;
 }
 
-/* 3) (Opcional) Larga um pouco mais a sidebar para caber o texto inteiro */
-.side-bar {
-    width: 18rem !important;
+/*------------------------------------------------------------
+    6) Aumentar o tamanho do ícone SUS
+  ------------------------------------------------------------*/
+.site-header .site-title img {
+  width: 4rem !important;
+  /* experimente 4rem até achar o ideal */
+  height: 4rem !important;
+  margin-right: 0.75rem !important;
 }
 
-/* SE PRECISAR REDUZIR UM POUCO A CORTE DE TEXTO */
+/*------------------------------------------------------------
+    7) Ajuste fino na fonte do texto (se ainda estiver apertado)
+  ------------------------------------------------------------*/
 .site-header .site-title span {
-    font-size: 0.95rem !important;
-    /* torna o texto ligeiramente menor */
+  white-space: nowrap !important;
 }
