@@ -77,32 +77,3 @@ parent: Calculadoras
 <!-- Scripts usando filtro relative_url para funcionar em qualquer baseurl -->
 <script src="{{ '/assets/js/hiponatremia.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/deficit_ferro.js' | relative_url }}"></script>
-
-<style>
-.calc-box {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  max-width: 330px;
-  margin-bottom: 2rem;
-}
-.calc-box label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.95rem;
-}
-.calc-box button {
-  align-self: flex-start;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
-}
-pre {
-  background: #f7f7f7;
-  padding: 0.8rem;
-  border-radius: 0.4rem;
-  white-space: pre-wrap;
-}
-</style>
