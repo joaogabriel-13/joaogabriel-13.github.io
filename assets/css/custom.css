@@ -1,29 +1,30 @@
-/* 1) Largura total da sidebar */
+/* 1) Largura + fundo da sidebar inteira */
 .side-bar {
   width: 22rem !important;
   background-color: #0c326f !important;
-  /* mantém o fundo azul escuro */
 }
 
-/* 2) Fundo suave só para o bloco do header customizado */
+/* 2) Bloco do header-custom com fundo mais claro */
 .side-bar .site-header-custom {
   background-color: rgba(143, 128, 250, 0.1) !important;
-  /* tom claro parecido com o hover */
   padding: 1rem;
   box-sizing: border-box;
-  width: 100%;
   margin-bottom: 1rem;
-  /* distância até os links */
 }
 
-/* 3) Logo SUS maior */
+/* 3) Search box na sidebar (apelido ao include acima) */
+.side-bar .search-input-wrap {
+  margin-bottom: 1rem;
+}
+
+/* 4) Logo SUS maior */
 .side-bar .site-header-custom img {
   width: 2.5rem !important;
   height: 2.5rem !important;
   margin-right: 0.5rem;
 }
 
-/* 4) Título inline-flex e sem truncamento */
+/* 5) Título inline-flex e sem truncar */
 .side-bar .site-header-custom .site-title {
   display: inline-flex !important;
   align-items: center;
@@ -32,12 +33,12 @@
   white-space: nowrap !important;
 }
 
-/* 5) Ajuste fino no tamanho do texto (se ainda for necessário) */
+/* 6) Ajuste fino no tamanho do texto */
 .side-bar .site-header-custom .site-title span {
   font-size: 0.95rem !important;
 }
 
-/* 6) Estilos gerais da navegação da sidebar */
+/* 7) Links da nav */
 .sidebar-nav a {
   color: #fff !important;
 }
@@ -50,7 +51,7 @@
   padding-top: 1rem;
 }
 
-/* Remove qualquer pseudo‑elemento antigo que injetava logo antes do título */
+/* 8) Remove pseudo‑elementos antigos do título */
 .site-nav .site-title::before {
   content: none !important;
 }
