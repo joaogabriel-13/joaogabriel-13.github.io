@@ -1,6 +1,5 @@
 ---
 ---
-
 /* Meus ajustes de cor no menu */
 .sidebar {
   background-color: #0c326f !important;
@@ -12,28 +11,33 @@
   color: #f0f0f0 !important;
 }
 
-/* Torna o título um inline-flex para ícone + texto juntos */
-  .site-title {
-    display: inline-flex !important;
-    align-items: center;
-    margin-bottom: 0.6rem;      /* reduz o espaço abaixo do título */
-    padding: 0;                 /* remove qualquer padding indesejado */
+/* Cancela qualquer pseudo-elemento injetado no título do header */
+.site-nav .site-title::before {
+  content: none !important;
 }
 
-/* Se quiser que o título não ocupe 100% da largura */
-  .sidebar-nav a.site-title {
-    width: auto !important;
+/* Estilização do título na sidebar: ícone + texto alinhados */
+.sidebar-nav .site-title {
+  display: inline-flex !important;
+  align-items: center;
+  margin-bottom: 0.6rem !important;
+  padding: 0 !important;
 }
 
-/* Pseudo‑elemento que injeta sua imagem antes do texto */
-.site-title::before {
+/* Evita que o título ocupe toda a largura no menu */
+.sidebar-nav a.site-title {
+  width: auto !important;
+}
+
+/* Insere o logo SUS antes do texto, somente na sidebar */
+.sidebar-nav .site-title::before {
   content: "";
   display: inline-block;
   background-image: url("/assets/sus-logo.png");
   background-repeat: no-repeat;
   background-size: contain;
-  width: 1.5rem;    /* ajuste o tamanho do ícone aqui */
+  width: 1.5rem;
   height: 1.5rem;
-  margin-right: 0.5rem; /* espaço entre ícone e texto */
-  vertical-align: middle;     /* alinha o ícone no meio do texto */
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
