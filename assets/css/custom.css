@@ -1,8 +1,6 @@
 /* assets/css/custom.css */
 
-/* ——————————————
-   1) Fundo e texto da sidebar
-   —————————————— */
+/* ————— Fundo e links da sidebar ————— */
 .sidebar {
     background-color: #0c326f !important;
 }
@@ -15,16 +13,12 @@
     color: #f0f0f0 !important;
 }
 
-/* ——————————————
-     2) Remove ícone padrão no header
-     —————————————— */
+/* ————— Remove ícone no título superior ————— */
 .site-nav .site-title::before {
     content: none !important;
 }
 
-/* ——————————————
-     3) Alinha título + prepara espaço para o SUS
-     —————————————— */
+/* ————— Alinha e injeta logo do SUS na sidebar ————— */
 .sidebar-nav .site-title {
     display: inline-flex !important;
     align-items: center;
@@ -33,9 +27,6 @@
     width: auto !important;
 }
 
-/* ——————————————
-     4) Injeta logo do SUS antes do texto
-     —————————————— */
 .sidebar-nav .site-title::before {
     content: "";
     display: inline-block;
