@@ -1,0 +1,12 @@
+{%- comment -%}
+Override de title.html para incluir o logo SUS antes do texto
+{%- endcomment -%}
+
+<a href="{{ " /" | relative_url }}" class="site-title lh-tight" style="display:inline-flex; align-items:center;">
+
+    <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS"
+        style="width:1.5rem; height:1.5rem; margin-right:0.5rem;">
+
+    {{ site.title | default: "Meu Repositório de Arquivos" }}
+
+</a>
