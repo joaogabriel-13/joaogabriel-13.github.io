@@ -30,3 +30,22 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+/* 1) Aumenta o tamanho do ícone SUS */
+.site-header .site-title img {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+/* 2) Garante que todo o texto apareça, sem truncar */
+.site-header .site-title {
+    /* remove o “max-width” e o overflow escondido que cortam o texto */
+    max-width: none !important;
+    overflow: visible !important;
+    white-space: normal !important;
+}
+
+/* 3) (Opcional) Larga um pouco mais a sidebar para caber o texto inteiro */
+.side-bar {
+    width: 14rem !important;
+}
