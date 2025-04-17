@@ -1,20 +1,11 @@
-/* fundo e largura da sidebar */
+/* 1) fundo e largura da sidebar */
 .side-bar {
   background-color: #0c326f !important;
   width: 20rem !important;
-  /* ou adjust conforme precisar */
+  /* ajuste se quiser mais ou menos */
 }
 
-/* links dentro da nav da sidebar */
-.sidebar-nav a {
-  color: #fff !important;
-}
-
-.sidebar-nav a:hover {
-  color: #f0f0f0 !important;
-}
-
-/* seu cabeçalho custom */
+/* 2) estilo da sua mini‑header na sidebar */
 .site-header-custom {
   display: flex;
   align-items: center;
@@ -24,20 +15,30 @@
 .site-header-custom .site-title {
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .site-header-custom .site-title img {
-  width: 3rem;
-  height: 3rem;
+  width: 3rem !important;
+  height: 3rem !important;
   margin-right: 0.5rem;
 }
 
 .site-header-custom .site-title span {
-  font-size: 1rem;
+  font-size: 1rem !important;
   white-space: nowrap;
 }
 
-/* mantém respiração lá em cima */
+/* 3) links do menu */
+.sidebar-nav a {
+  color: #fff !important;
+}
+
+.sidebar-nav a:hover {
+  color: #f0f0f0 !important;
+}
+
+/* 4) espaçamento interno do menu */
 .sidebar-nav {
   padding-top: 1rem;
 }
