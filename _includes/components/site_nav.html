@@ -1,19 +1,19 @@
 {%- comment -%}
 Override do Just‑the‑Docs:
-Exibe logo (se existir) e o site.title, depois a lista de navegação.
+Exibe logo (se existir) e o site.title, depois a lista de navegação de páginas.
 {%- endcomment -%}
 
 <nav class="sidebar-nav">
     <a href="{{ '/' | relative_url }}" class="site-title lh-tight flex items-center" style="margin-bottom: 1.5rem;">
-        {%- if site.logo -%}
+        {% if site.logo %}
         <img src="{{ site.logo | relative_url }}" alt="{{ site.title | xml_escape }}"
             style="height:1.5rem; margin-right:0.5rem;" />
-        {%- endif -%}
+        {% endif %}
         <span>{{ site.title }}</span>
     </a>
 
     {%- comment -%}
-    este include puxa o menu do tema (páginas, seções, etc.)
+    Agora incluímos o include local de nav/pages.html
     {%- endcomment -%}
-    {% include components/nav_list.html %}
+    {% include components/nav/pages.html %}
 </nav>
