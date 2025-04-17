@@ -1,34 +1,51 @@
-/* 1) Largura e fundo da sidebar */
+/* ---------- 1) Fixar e dimensionar sidebar ---------- */
+
 .side-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
   width: 22rem !important;
-  background-color: #0c326f !important;
+  background-color: #0c326f;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
-/* 2) Search box no topo da sidebar */
+/* ---------- 2) Search header ---------- */
+
+.side-bar .search {
+  background-color: white;
+  /* branco sólido */
+  padding: 0.75rem 1rem;
+  /* espaçamento confortável */
+  border-bottom: 1px solid #ddd;
+  /* separador */
+}
+
+/* Force o campo de pesquisa a ocupar 100% da largura */
 .side-bar .search-input-wrap {
-  padding: 1rem;
+  width: 100%;
 }
 
-/* 3) Bloco do header-custom com fundo sutil */
-.side-bar .site-header-custom {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  margin: 0 1rem 1rem;
+/* ---------- 3) Header custom (logo + título) ---------- */
+
+.site-header-custom {
+  background-color: rgba(255, 255, 255, 0.15);
+  /* leve “cinza claro” */
+  margin: 0 1rem;
   padding: 0.75rem 1rem;
   border-radius: 0.25rem;
-  box-sizing: border-box;
 }
 
-/* 4) Logo SUS maior */
-.side-bar .site-header-custom img {
+.site-header-custom img {
   width: 2.5rem !important;
   height: 2.5rem !important;
   margin-right: 0.5rem;
 }
 
-/* 5) Título inline e sem truncar */
-.side-bar .site-header-custom .site-title {
+.site-header-custom .site-title {
   display: inline-flex !important;
   align-items: center;
   max-width: none !important;
@@ -36,16 +53,18 @@
   white-space: nowrap !important;
 }
 
-/* 6) Texto ligeiramente menor para caber */
-.side-bar .site-header-custom .site-title span {
+.site-header-custom .site-title span {
   font-size: 0.95rem !important;
+  color: #fff;
 }
 
-/* 7) Links da navegação */
+/* ---------- 4) Navegação rolável ---------- */
+
 .sidebar-nav {
   flex: 1;
+  /* ocupa o restante da altura */
   overflow-y: auto;
-  padding-top: 0;
+  padding-top: 1rem;
 }
 
 .sidebar-nav a {
@@ -56,7 +75,8 @@
   color: #f0f0f0 !important;
 }
 
-/* 8) Remove pseudo‑elementos antigos do título padrão */
+/* ---------- 5) Cleanup pseudo‑elemento antigo ---------- */
+
 .site-nav .site-title::before {
   content: none !important;
 }
