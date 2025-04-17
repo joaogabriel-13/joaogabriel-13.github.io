@@ -1,2 +1,19 @@
-/* Estilos personalizados podem ser adicionados aqui DEPOIS, se necessário,
-   usando as variáveis e estrutura do Just the Docs */
+--- --- @import "just-the-docs";
+
+/* =============================
+   Meus ajustes de cor no menu
+   ============================= */
+.sidebar {
+    background-color: #0c326f !important;
+    /* cor de fundo */
+}
+
+.sidebar a {
+    color: #ffffff !important;
+    /* links em branco */
+}
+
+.sidebar a:hover {
+    color: #f0f0f0 !important;
+    /* hover mais claro */
+}
