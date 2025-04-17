@@ -1,0 +1,15 @@
+{%- comment -%}
+Override do Just‑the‑Docs: exibe logo (se existir) e o site.title
+{%- endcomment -%}
+
+<nav class="sidebar-nav">
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight" style="display:inline-flex; align-items:center;">
+        {%- if site.logo -%}
+        <img src="{{ site.logo | relative_url }}" alt="{{ site.title | xml_escape }}"
+            style="height:1.5rem; margin-right:0.5rem;" />
+        {%- endif -%}
+        {{ site.title }}
+    </a>
+    <!-- resto do include permanece idêntico ao tema -->
+    {% include components/nav_list.html %}
+</nav>

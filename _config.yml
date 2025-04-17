@@ -1,7 +1,5 @@
 title: Meu Repositório de Arquivos
 description: Documentos, calculadoras e informações úteis.
 remote_theme: just-the-docs/just-the-docs
-# →  Logo do site (Just-the-Docs)
-logo: "/assets/sus-logo.png"        # caminho para a imagem do SUS
-logo_type: "image"                  # força a exibir imagem, não texto
+logo: "/assets/sus-logo.png"
 
