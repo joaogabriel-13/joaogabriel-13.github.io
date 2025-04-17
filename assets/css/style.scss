@@ -11,3 +11,21 @@
 .sidebar a:hover {
   color: #f0f0f0 !important;
 }
+
+/* Faz com que o site-title fique um flex container,  para alinhar ícone e texto no mesmo eixo. */
+  .site-title {
+  display: flex;
+  align-items: center;
+}
+
+/* Pseudo‑elemento que injeta sua imagem antes do texto */
+.site-title::before {
+  content: "";
+  display: inline-block;
+  background-image: url("/assets/sus-logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1.5rem;    /* ajuste o tamanho do ícone aqui */
+  height: 1.5rem;
+  margin-right: 0.5rem; /* espaço entre ícone e texto */
+}
