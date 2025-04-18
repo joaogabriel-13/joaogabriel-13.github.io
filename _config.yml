@@ -6,4 +6,7 @@ logo: "/assets/sus-logo.png"
 # --- adicione ou garanta que existam ---
 just_the_docs:
   search_enabled: true          # gera o arquivo de índice
+  # opcional: pré‑carrega o índice p/ ficar instantâneo
+  search:
+    preload: true
 # ---------------------------------------
