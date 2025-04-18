@@ -1,10 +1,9 @@
 {%- comment -%} head_custom.html {%- endcomment -%}
 
-<!-- 1. lunr primeiro -->
+<!-- lunr DEVE vir antes do script do tema -->
 <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
 
-<!-- 2. search‑data (index json) gera erro 404 se colocar antes do build,
-     por isso deixe o tema baixar sozinho quando precisar -->
+<!-- índice de busca é gerado automaticamente, não precisa linkar -->
 
-<!-- 3. script principal do tema -->
+<!-- script principal do Just‑the‑Docs -->
 <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
