@@ -1,63 +1,11 @@
-/* 1) Container fixo da sidebar */
+/* ---------- cores e largura ---------- */
 .side-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
+  background: #0c326f !important;
   width: 22rem !important;
-  background-color: #0c326f;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  z-index: 100;
+  /* você ajustou para 22rem */
 }
 
-/* 2) Search box no topo */
-.side-bar .search {
-  background-color: #fff;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.side-bar .search-input-wrap {
-  width: 100%;
-}
-
-/* 3) Nosso header custom (logo + título) */
-.site-header-custom {
-  background-color: rgba(255, 255, 255, 0.12);
-  margin: 0.75rem 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-}
-
-.site-header-custom .site-title {
-  display: inline-flex !important;
-  align-items: center;
-  text-decoration: none !important;
-}
-
-.site-header-custom img {
-  width: 2.5rem !important;
-  height: 2.5rem !important;
-  margin-right: 0.5rem;
-}
-
-.site-header-custom .site-title span {
-  color: #fff;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-/* 4) Menu rolável */
-.sidebar-nav {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem 0;
-}
-
+/* links do menu */
 .sidebar-nav a {
   color: #fff !important;
 }
@@ -66,15 +14,35 @@
   color: #f0f0f0 !important;
 }
 
-/* 5) Footer */
-.site-footer {
-  padding: 1rem;
-  font-size: 0.85rem;
-  color: #ccc;
-  text-align: center;
+/* ------------ logo + título ------------ */
+.site-header-custom {
+  padding: 0.75rem 1rem;
+  background: #143d8d;
+  /* tom um pouco mais claro */
 }
 
-/* 6) Remover pseudo‑elemento original do title */
-.site-nav .site-title::before {
-  content: none !important;
+.site-header-custom .site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-header-custom img {
+  width: 2.5rem;
+  /* logo maior */
+  height: 2.5rem;
+}
+
+/* -------- outras pequenas regras ------- */
+/* se quiser esconder o campo de busca duplicado */
+.side-bar .search {
+  display: none !important;
+}
+
+/* “respiração” do menu principal */
+.sidebar-nav {
+  padding-top: 1rem;
 }
