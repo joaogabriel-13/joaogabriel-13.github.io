@@ -1,5 +1,22 @@
 <div id="main-header" class="main-header">
+
+  <!-- 1) inserimos aqui o seu header_custom (logo + título) -->
+  {% include header_custom.html %}
+
+  <!-- 2) o botão de toggle precisa ficar NO header, não na sidebar -->
+  <button id="menu-button"
+          class="site-button btn-reset"
+          aria-label="Toggle menu"
+          aria-pressed="false">
+    <!-- aqui você pode por um ícone de “≡” se quiser -->
+  </button>
+
+  <!-- 3) depois o search bar e aux-links como antes -->
   {% if site.search_enabled != false %}
     {% include components/search_header.html %}
   {% endif %}
+  {% if site.aux_links %}
+    {% include components/aux_nav.html %}
+  {% endif %}
+
 </div>
