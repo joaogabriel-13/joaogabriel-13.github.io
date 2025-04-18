@@ -84,24 +84,5 @@
 }
 
 .skip-to-main {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-/* quando for focado, reaparece num lugar visível */
-.skip-to-main:focus {
-  left: 1rem;
-  top: 1rem;
-  width: auto;
-  height: auto;
-  padding: .5rem 1rem;
-  background: #fff;
-  color: #000;
-  text-decoration: none;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+  display: none;
 }
