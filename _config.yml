@@ -11,7 +11,4 @@ lang: pt-BR
 just_the_docs:
   search_enabled: true
 
-includes_dir: _includes
-# Acrescente isto:
-head: head_override.html
 

@@ -1,13 +1,10 @@
 {%- comment -%}
   head_custom.html
-  Carregado *depois* do head base.
+  Carregado depois do head base.
 {%- endcomment -%}
 
-<!-- Lunr + JS do tema -->
 <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/vendor/lunr.stemmer.support.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/vendor/lunr.pt.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/just-the-docs.js'     | relative_url }}"></script>
-
-<!-- Seu CSS extra -->
+<script src="{{ '/assets/js/vendor/lunr.pt.js'           | relative_url }}"></script>
+<script src="{{ '/assets/js/just-the-docs.js'             | relative_url }}"></script>
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
