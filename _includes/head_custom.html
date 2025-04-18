@@ -1,2 +1,7 @@
-<!-- head_custom.html -->
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+{%- comment -%} Ordem IMPORTANTE! {%- endcomment -%}
+
+<!-- 1) Lunr (mecanismo de busca) -->
+<script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+
+<!-- 2) Script do tema – precisa do Lunr já carregado -->
+<script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
