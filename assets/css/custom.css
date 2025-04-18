@@ -82,3 +82,19 @@
 .search-results li a:hover {
   background: #e5efff;
 }
+
+#menu-button {
+  display: none;
+  /* padrão desktop */
+}
+
+/* a partir de até 768px de largura, mostra o botão */
+@media (max-width: 768px) {
+  #menu-button {
+    display: block !important;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+  }
+}
