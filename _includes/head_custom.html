@@ -1,7 +1,13 @@
-{%- comment -%} Ordem IMPORTANTE! {%- endcomment -%}
+{%- comment -%}  head_custom.html  {%- endcomment -%}
 
-<!-- 1) Lunr (mecanismo de busca) -->
+<!-- 1) Lunr = motor de busca -->
 <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
 
-<!-- 2) Script do tema – precisa do Lunr já carregado -->
+<!-- 2) Script do tema (precisa do Lunr carregado) -->
 <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+
+<script
+  src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"
+  onerror="this.onerror=null;
+           this.src='https://cdn.jsdelivr.net/npm/lunr/lunr.min.js'">
+</script>
