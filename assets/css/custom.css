@@ -1,11 +1,12 @@
-/* ---------- cores e largura ---------- */
+/* fundo azul da sidebar */
 .side-bar {
-  background: #0c326f !important;
+  /*<- note que é “side-bar” */
+  background-color: #0c326f !important;
   width: 22rem !important;
-  /* você ajustou para 22rem */
+  /* se quiser a largura maior */
 }
 
-/* links do menu */
+/* links brancos */
 .sidebar-nav a {
   color: #fff !important;
 }
@@ -14,35 +15,23 @@
   color: #f0f0f0 !important;
 }
 
-/* ------------ logo + título ------------ */
+/* título + logo */
 .site-header-custom {
-  padding: 0.75rem 1rem;
-  background: #143d8d;
-  /* tom um pouco mais claro */
-}
-
-.site-header-custom .site-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
+  background: #163d83;
+  /* tom mais claro que hover */
+  padding: 1.25rem 1rem;
+  text-align: center;
 }
 
 .site-header-custom img {
-  width: 2.5rem;
+  width: 4.5rem;
+  height: auto;
   /* logo maior */
-  height: 2.5rem;
+  margin-bottom: .5rem;
 }
 
-/* -------- outras pequenas regras ------- */
-/* se quiser esconder o campo de busca duplicado */
-.side-bar .search {
-  display: none !important;
-}
-
-/* “respiração” do menu principal */
-.sidebar-nav {
-  padding-top: 1rem;
+.site-header-custom .site-title {
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
 }
