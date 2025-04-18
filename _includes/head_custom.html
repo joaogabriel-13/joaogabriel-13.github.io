@@ -1,13 +1,11 @@
-{%- comment -%}  head_custom.html  {%- endcomment -%}
+{%- comment -%}
+  head_custom.html
+  Este arquivo é inserido *depois* do <head> padrão do Just‑the‑Docs.
+  Use‑o apenas para scripts ou metas extras.
+{%- endcomment -%}
 
-<!-- 1) Lunr = motor de busca -->
+<!-- Lunr (motor de busca) – precisa vir antes do script do tema -->
 <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
 
-<!-- 2) Script do tema (precisa do Lunr carregado) -->
+<!-- Script principal do Just‑the‑Docs (usa o Lunr acima) -->
 <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
-
-<script
-  src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"
-  onerror="this.onerror=null;
-           this.src='https://cdn.jsdelivr.net/npm/lunr/lunr.min.js'">
-</script>
