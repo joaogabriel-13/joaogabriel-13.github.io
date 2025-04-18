@@ -1,24 +1,39 @@
-name: Build & Deploy Jekyll
+name: build & deploy Jekyll
 
 on:
   push:
-    branches: [ main ]
-
-permissions:          # ← NOVO
-  contents: write     # dá direito de criar/atualizar gh‑pages
+    branches: [ main ]      # publica sempre que fizer push no main
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
+
+    permissions:            # ——— permite ao bot fazer push
+      contents: write
+      pages: write
+      id-token: write
+
     steps:
+      # 1. pega o código
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      # … (bundle install, jekyll build)
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      # 2. instala Ruby + gems em cache
+      - uses: ruby/setup-ruby@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          ruby-version: '3.3'
+          bundler-cache: true   # cache de gems
+
+      # 3. compila o site Jekyll → _site/
+      - name: Build Jekyll
+        run: bundle exec jekyll build -d _site
+
+      # 4. (opcional) mostra o que foi gerado – bom p/ depurar
+      - run: ls -R _site
+
+      # 5. envia _site/ como artefato para o GitHub Pages
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: _site
+
+      # 6. publica no branch gh-pages
+      - uses: actions/deploy-pages@v2
