@@ -1,10 +1,5 @@
 <div id="main-header" class="main-header">
-    {% if site.search_enabled != false %}
-      {% include components/search_header.html %}
-    {% else %}
-      <div></div>
-    {% endif %}
-    {% if site.aux_links %}
-      {% include components/aux_nav.html %}
-    {% endif %}
-  </div>
+  {% if site.search_enabled != false %}
+    {% include components/search_header.html %}
+  {% endif %}
+</div>
