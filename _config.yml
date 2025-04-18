@@ -3,3 +3,7 @@ description: Documentos, calculadoras e informações úteis.
 remote_theme: just-the-docs/just-the-docs
 logo: "/assets/sus-logo.png"
 
+# --- adicione ou garanta que existam ---
+just_the_docs:
+  search_enabled: true          # gera o arquivo de índice
+# ---------------------------------------
