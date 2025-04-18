@@ -1,14 +1,12 @@
 {%- comment -%}
-Carregado depois do head padrão.
+  head_custom.html
+  Carregado *depois* do head base.
 {%- endcomment -%}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <!-- Lunr + JS do tema -->
-<script src="{{ '/assets/js/vendor/lunr.min.js'          | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/vendor/lunr.stemmer.support.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/vendor/lunr.pt.js'           | relative_url }}"></script>
-
+<script src="{{ '/assets/js/vendor/lunr.pt.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/just-the-docs.js'     | relative_url }}"></script>
 
 <!-- Seu CSS extra -->

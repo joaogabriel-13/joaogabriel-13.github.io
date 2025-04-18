@@ -85,7 +85,11 @@
 
 #menu-button {
   display: none;
-  /* padrão desktop */
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  /* ou a cor que preferir */
 }
 
 /* a partir de até 768px de largura, mostra o botão */
@@ -97,4 +101,19 @@
     left: 1rem;
     z-index: 1001;
   }
+}
+
+/* esconde a sidebar por padrão */
+body:not(.sidebar-visible) .side-bar {
+  transform: translateX(-100%);
+}
+
+/* quando clicado, mostra a sidebar */
+body.sidebar-visible .side-bar {
+  transform: translateX(0);
+}
+
+/* animação suave */
+.side-bar {
+  transition: transform 0.3s ease;
 }
