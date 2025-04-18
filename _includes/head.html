@@ -1,8 +1,10 @@
-<!-- estilos do tema -->
-<link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
+{%- comment -%} head_custom.html {%- endcomment -%}
 
-<!-- seu estilo custom – DEPOIS do tema -->
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-<script src="/assets/js/just-the-docs.js"></script>
+<!-- 1. lunr primeiro -->
+<script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
 
+<!-- 2. search‑data (index json) gera erro 404 se colocar antes do build,
+     por isso deixe o tema baixar sozinho quando precisar -->
+
+<!-- 3. script principal do tema -->
+<script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
