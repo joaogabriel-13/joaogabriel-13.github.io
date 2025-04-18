@@ -1,25 +1,22 @@
-# .github/workflows/deploy.yml
 name: Build & Deploy Jekyll
 
 on:
   push:
-    branches: [ main ]       # dispara quando você fizer push na branch main
-  workflow_dispatch:        # botão “Run workflow” manual
+    branches: [ main ]
+
+permissions:          # ← NOVO
+  contents: write     # dá direito de criar/atualizar gh‑pages
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '3.2'
-      - name: Install deps
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-      - name: Jekyll build
-        run: bundle exec jekyll build -d _site
+          fetch-depth: 0
+
+      # … (bundle install, jekyll build)
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
