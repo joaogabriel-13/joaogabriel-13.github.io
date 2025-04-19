@@ -9,74 +9,71 @@ layout: table_wrappers
     {%- comment -%} Skip‑link para acessibilidade {%- endcomment -%}
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    {%- comment -%} Campo de busca no topo, se habilitado {%- endcomment -%}
-    {% if site.search_enabled != false %}
-      {% include components/search_header.html %}
-    {% endif %}
-
-    {%- comment -%} Cabeçalho principal que o script espera {%- endcomment -%}
-    <header id="main-header" class="site-header">
-      {%- comment -%} Botão que dispara o menu no mobile {%- endcomment -%}
+    {%- comment -%} Cabeçalho principal: campo de busca + botão mobile + ícones SVG {%- endcomment -%}
+    <header id="main-header" class="main-header">
+      {% if site.search_enabled != false %}
+        {% include components/search_header.html %}
+      {% endif %}
       <button
         id="menu-button"
         class="site-button btn-reset"
         aria-label="Toggle menu"
-        aria-expanded="false">
+        aria-pressed="false">
         ☰
       </button>
-
-      {%- comment -%} Logo & título {%- endcomment -%}
-      <a class="site-title" href="{{ '/' | relative_url }}">
-        <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS">
-        <span>{{ site.title }}</span>
-      </a>
+      {% include icons/icons.html %}
     </header>
 
-    {%- comment -%} Ícones SVG usados pelo tema {%- endcomment -%}
-    {% include vendor/svg-icons.html %}
-
-    {%- comment -%} Sidebar (menu lateral) {%- endcomment -%}
+    {%- comment -%} Sidebar (logo + nav) {%- endcomment -%}
     {% include components/sidebar.html %}
 
     <div class="main" id="top">
-      <div class="main-content-wrap">
-        {%- comment -%} Breadcrumbs, se houver {%- endcomment -%}
-        {% include components/breadcrumbs.html %}
+      {% include components/header.html %}
 
+      <div class="main-content-wrap">
+        {% include components/breadcrumbs.html %}
         <div id="main-content" class="main-content">
           <main>
-            {{ content }}
-
-            {%- comment -%} Ancora nos headings, se habilitado {%- endcomment -%}
             {% if site.heading_anchors != false %}
               {% include vendor/anchor_headings.html
-                html=content
-                beforeHeading="true"
-                anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
-                anchorClass="anchor-heading"
-                anchorAttrs="aria-labelledby='%html_id%'" %}
+                 html=content
+                 beforeHeading="true"
+                 anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
+                 anchorClass="anchor-heading"
+                 anchorAttrs="aria-labelledby='%html_id%'"
+              %}
+            {% else %}
+              {{ content }}
             {% endif %}
 
-            {%- comment -%} TOC de página, se houver {%- endcomment -%}
             {% if page.has_toc != false %}
               {% include components/children_nav.html %}
             {% endif %}
           </main>
-
-          {%- comment -%} Rodapé {%- endcomment -%}
           {% include components/footer.html %}
         </div>
       </div>
 
-      {%- comment -%} Busca no footer, se habilitada {%- endcomment -%}
       {% if site.search_enabled != false %}
         {% include components/search_footer.html %}
       {% endif %}
     </div>
 
-    {%- comment -%} Mermaid, se habilitado {%- endcomment -%}
     {% if site.mermaid %}
       {% include components/mermaid.html %}
     {% endif %}
+
+    {%- comment -%}
+    Script para alternar a classe `sidebar-visible` no `<body>` quando o botão for clicado
+    {%- endcomment -%}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('menu-button');
+        btn.addEventListener('click', function () {
+          const visible = document.body.classList.toggle('sidebar-visible');
+          btn.setAttribute('aria-pressed', visible);
+        });
+      });
+    </script>
   </body>
 </html>
