@@ -31,10 +31,10 @@
   margin-top: 0.5rem;
 }
 
-.sidebar-nav a {
+.nav-list a {
   color: #fff !important;
 }
 
-.sidebar-nav a:hover {
+.nav-list a:hover {
   color: #f0f0f0 !important;
 }
