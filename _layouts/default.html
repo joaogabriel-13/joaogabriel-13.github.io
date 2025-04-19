@@ -5,68 +5,78 @@ layout: table_wrappers
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
-
   <body>
-    {%- comment -%} link de skip para acessibilidade {%- endcomment -%}
+    {%- comment -%} Skip‑link para acessibilidade {%- endcomment -%}
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    {%- comment -%} botão que abre/fecha a sidebar no mobile {%- endcomment -%}
-    <button
-      id="menu-button"
-      class="site-button btn-reset"
-      aria-label="Toggle menu"
-      aria-pressed="false">
-      ☰
-    </button>
-
-    {%- comment -%} campo de busca no cabeçalho {%- endcomment -%}
+    {%- comment -%} Campo de busca no topo, se habilitado {%- endcomment -%}
     {% if site.search_enabled != false %}
       {% include components/search_header.html %}
     {% endif %}
 
-    {%- comment -%} quaisquer alertas que você tenha {%- endcomment -%}
-    {% include components/alert.html %}
-    {%- comment -%}… outros alert_banner se houver {%- endcomment -%}
+    {%- comment -%} Cabeçalho principal que o script espera {%- endcomment -%}
+    <header id="main-header" class="site-header">
+      {%- comment -%} Botão que dispara o menu no mobile {%- endcomment -%}
+      <button
+        id="menu-button"
+        class="site-button btn-reset"
+        aria-label="Toggle menu"
+        aria-expanded="false">
+        ☰
+      </button>
 
-    {%- comment -%} SVGs do tema {%- endcomment -%}
+      {%- comment -%} Logo & título {%- endcomment -%}
+      <a class="site-title" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS">
+        <span>{{ site.title }}</span>
+      </a>
+    </header>
+
+    {%- comment -%} Ícones SVG usados pelo tema {%- endcomment -%}
     {% include vendor/svg-icons.html %}
-    {% include icons/icons.html %}
 
-    {%- comment -%} sidebar (logo + navegação) {%- endcomment -%}
-    {% if page.nav_enabled == true or (layout.nav_enabled == true and page.nav_enabled == nil) or (site.nav_enabled != false and layout.nav_enabled == nil and page.nav_enabled == nil) %}
-      {% include components/sidebar.html %}
-    {% endif %}
+    {%- comment -%} Sidebar (menu lateral) {%- endcomment -%}
+    {% include components/sidebar.html %}
 
     <div class="main" id="top">
-      {%- comment -%} cabeçalho principal com título do site {%- endcomment -%}
-      {% include components/header.html %}
-
       <div class="main-content-wrap">
+        {%- comment -%} Breadcrumbs, se houver {%- endcomment -%}
         {% include components/breadcrumbs.html %}
 
         <div id="main-content" class="main-content">
           <main>
             {{ content }}
 
+            {%- comment -%} Ancora nos headings, se habilitado {%- endcomment -%}
+            {% if site.heading_anchors != false %}
+              {% include vendor/anchor_headings.html
+                html=content
+                beforeHeading="true"
+                anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
+                anchorClass="anchor-heading"
+                anchorAttrs="aria-labelledby='%html_id%'" %}
+            {% endif %}
+
+            {%- comment -%} TOC de página, se houver {%- endcomment -%}
             {% if page.has_toc != false %}
               {% include components/children_nav.html %}
             {% endif %}
           </main>
 
+          {%- comment -%} Rodapé {%- endcomment -%}
           {% include components/footer.html %}
         </div>
       </div>
 
+      {%- comment -%} Busca no footer, se habilitada {%- endcomment -%}
       {% if site.search_enabled != false %}
         {% include components/search_footer.html %}
       {% endif %}
     </div>
 
+    {%- comment -%} Mermaid, se habilitado {%- endcomment -%}
     {% if site.mermaid %}
       {% include components/mermaid.html %}
     {% endif %}
-
-    {%- comment -%} por último, seu script de toggle da sidebar mobile {%- endcomment -%}
-    <script src="{{ '/assets/js/mobile-nav.js' | relative_url }}"></script>
   </body>
 </html>
