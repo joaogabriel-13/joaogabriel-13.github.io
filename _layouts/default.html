@@ -4,15 +4,11 @@ layout: table_wrappers
 
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
-  {%- comment -%} — meta, estilos e scripts do tema e do seu custom {%- endcomment -%}
   {% include head.html %}
-  {% include head_custom.html %}
-
   <body>
-    {%- comment -%} link de acesso rápido p/ conteúdo (acessibilidade) {%- endcomment -%}
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    {%- comment -%} wrapper que o JS do tema procura — NÃO REMOVA! {%- endcomment -%}
+    <!-- ESTE É O CONTAINER QUE O TEMA PRECISA -->
     <div id="main-header" class="main-header">
       {% if site.search_enabled != false %}
         {% include components/search_header.html %}
@@ -20,8 +16,7 @@ layout: table_wrappers
       {% if site.aux_links %}
         {% include components/aux_nav.html %}
       {% endif %}
-
-      {%- comment -%} botão “hamburger” p/ mobile {%- endcomment -%}
+      <!-- aqui vai o botão de menu -->
       <button id="menu-button"
               class="site-button btn-reset"
               aria-label="Toggle menu"
@@ -30,22 +25,23 @@ layout: table_wrappers
       </button>
     </div>
 
-    {%- comment -%} sua sidebar (logo + navegação) {%- endcomment -%}
     {% include components/sidebar.html %}
 
     <div class="main" id="top">
-      {%- comment -%} título da página (p.ex. “Bem‑vindo(a)”) {%- endcomment -%}
       {% include components/header.html %}
-
       <div class="main-content-wrap">
+        {% include components/breadcrumbs.html %}
         <div id="main-content" class="main-content">
           {{ content }}
+          {% include components/children_nav.html %}
         </div>
       </div>
-
-      {% if site.search_enabled != false %}
-        {% include components/search_footer.html %}
-      {% endif %}
+      {% include components/footer.html %}
+      {% include components/search_footer.html %}
     </div>
+
+    {% if site.mermaid %}
+      {% include components/mermaid.html %}
+    {% endif %}
   </body>
 </html>
