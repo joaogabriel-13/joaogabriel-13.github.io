@@ -1,9 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('menu-button');
     if (!btn) return;
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', () => {
         document.body.classList.toggle('sidebar-visible');
-        const pressed = document.body.classList.contains('sidebar-visible');
-        btn.setAttribute('aria-pressed', pressed);
+        btn.setAttribute(
+            'aria-pressed',
+            document.body.classList.contains('sidebar-visible')
+        );
     });
 });
