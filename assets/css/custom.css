@@ -5,30 +5,15 @@
 }
 
 /* Cabeçalho custom da sidebar */
-.site-header {
-  background: #163d83;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.site-header img {
+.site-logo img {
   width: 4.5rem;
   height: auto;
 }
 
-.site-header span {
+.site-logo span {
   color: #fff;
   font-weight: 600;
   line-height: 1.2;
-}
-
-.sidebar-nav {
-  margin-top: 0.5rem;
 }
 
 .nav-list a {
