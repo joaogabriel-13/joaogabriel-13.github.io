@@ -98,19 +98,18 @@
   /* escondido por padrão no desktop */
 }
 
-/* a partir de até 768px de largura, mostra o botão */
+/* botão só aparece no mobile e fica acima da sidebar */
 @media (max-width: 768px) {
   #menu-button {
     display: block !important;
-    position: fixed;
+    position: absolute;
     top: 1rem;
     left: 1rem;
     z-index: 1001;
-    /* acima da .side-bar */
     font-size: 1.5rem;
     background: none;
     border: none;
-    color: white;
+    color: #fff;
   }
 }
 
