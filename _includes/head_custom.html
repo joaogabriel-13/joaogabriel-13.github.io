@@ -1,12 +1,22 @@
-<!-- _includes/head_custom.html -->
+{%- comment -%}
+  head_custom.html
+  Este arquivo é injetado *dentro* do <head> do seu site,
+  após todos os elementos padrão do Just‑the‑Docs.
+{%- endcomment -%}
 
+<!-- Meta para responsividade em mobile -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Lunr (motor de busca) -->
 <script defer src="{{ '/assets/js/vendor/lunr.min.js'          | relative_url }}"></script>
 <script defer src="{{ '/assets/js/vendor/lunr.stemmer.support.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/vendor/lunr.pt.js'           | relative_url }}"></script>
 
+<!-- Script principal do tema -->
 <script defer src="{{ '/assets/js/just-the-docs.js'             | relative_url }}"></script>
 
-<!-- Seu JS de mobile nav -->
+<!-- Seu JavaScript de toggle da sidebar no mobile -->
 <script defer src="{{ '/assets/js/mobile-nav.js'                | relative_url }}"></script>
 
+<!-- Seu CSS extra de customizações -->
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
