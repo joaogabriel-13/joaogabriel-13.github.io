@@ -5,7 +5,7 @@
 }
 
 /* Cabeçalho custom da sidebar */
-.site-header-custom {
+.site-header {
   background: #163d83;
   display: flex;
   align-items: center;
