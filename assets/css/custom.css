@@ -1,10 +1,18 @@
 /* ---------- SIDEBAR ---------- */
 
 .side-bar {
-  background: #0c326f !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  /* estica até a base da viewport */
   width: 22rem !important;
-  padding-bottom: 2rem;
-  padding-top: 0 !important;
+  background: #0c326f;
+  overflow-y: auto;
+  /* scroll interno se for muito grande */
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  /* abaixo apenas do menu‐button se necessário */
 }
 
 /* header (logo + título) */
