@@ -1,40 +1,44 @@
 ---
 layout: table_wrappers
 ---
+
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
   <body>
-    <!-- Skip‑link para acessibilidade -->
+    <!-- Skip link (acessibilidade) -->
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    <!-- Botão de menu para mobile -->
+    <!-- Botão “☰” para mobile -->
     <button id="menu-button"
             class="site-button btn-reset"
-            aria-label="Toggle sidebar"
+            aria-label="Toggle menu"
             aria-pressed="false">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-        <use xlink:href="#svg-menu"></use>
-      </svg>
+      ☰
     </button>
 
-    <!-- Search no topo -->
+    <!-- Search Header -->
     {% if site.search_enabled != false %}
       {% include components/search_header.html %}
     {% endif %}
 
-    <!-- SVG icons e alertas, se houver -->
-    {% include vendor/svg-icons.html %}
-    {% include icons/icons.html %}
+    <!-- Alertas -->
     {% include components/alert.html %}
     {% include components/alert_banner.html %}
-    {# … outros alert_banner se precisar #}
 
-    <!-- Sidebar -->
-    {% include components/sidebar.html %}
+    <!-- SVG icons do tema -->
+    {% include vendor/svg-icons.html %}
+
+    <!-- Icones de UI -->
+    {% include icons/icons.html %}
+
+    <!-- Sidebar (logo + navegação) -->
+    {% if site.nav_enabled != false %}
+      {% include components/sidebar.html %}
+    {% endif %}
 
     <div class="main" id="top">
-      <!-- Cabeçalho principal do tema (inclui o div#main-header) -->
+      <!-- Cabeçalho principal do tema (logo + aux links) -->
       {% include components/header.html %}
 
       <div class="main-content-wrap">
@@ -46,8 +50,8 @@ layout: table_wrappers
               {% include components/children_nav.html %}
             {% endif %}
           </main>
-          {% include components/footer.html %}
         </div>
+        {% include components/footer.html %}
       </div>
 
       {% if site.search_enabled != false %}

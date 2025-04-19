@@ -1,11 +1,18 @@
 {%- comment -%}
-  head_custom.html
-  Carregado depois de head.html do tema
+  Carregado logo após o head padrão do Just‑the‑Docs
 {%- endcomment -%}
+
+<!-- Responsivo -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+
+<!-- Lunr.js e script do tema -->
+<script src="{{ '/assets/js/vendor/lunr.min.js'          | relative_url }}"></script>
 <script src="{{ '/assets/js/vendor/lunr.stemmer.support.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/vendor/lunr.pt.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/vendor/lunr.pt.js'           | relative_url }}"></script>
+<script src="{{ '/assets/js/just-the-docs.js'             | relative_url }}"></script>
+
+<!-- Seu CSS extra -->
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
+<!-- Script para o toggle mobile -->
 <script src="{{ '/assets/js/mobile-nav.js' | relative_url }}"></script>
