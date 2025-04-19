@@ -1,23 +1,22 @@
 /* ---------- SIDEBAR ---------- */
-
 .side-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  /* estica até o final da tela */
-  width: 22rem !important;
-  /* tua largura */
-  background: #0c326f !important;
-  padding: 0 !important;
-  overflow-y: auto;
-  /* scroll interno */
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
+  background: #0c326f;
+  width: 22rem;
+  padding-top: 0;
+  padding-bottom: 2rem;
+  transition: transform .3s ease;
 }
 
-/* header (logo + título) */
+/* mobile: esconde sidebar por padrão */
+body:not(.sidebar-visible) .side-bar {
+  transform: translateX(-100%);
+}
+
+body.sidebar-visible .side-bar {
+  transform: translateX(0);
+}
+
+/* ---------- HEADER CUSTOM ---------- */
 .site-header-custom {
   background: #163d83;
   display: flex;
@@ -25,7 +24,6 @@
   gap: .75rem;
   padding: 1.25rem 1rem;
   position: sticky;
-  /* fica visível mesmo com scroll */
   top: 0;
   z-index: 1;
 }
@@ -38,14 +36,13 @@
 .site-header-custom span {
   color: #fff;
   font-weight: 600;
-  line-height: 1.2;
 }
 
+/* ---------- NAV LINKS ---------- */
 .sidebar-nav {
   margin-top: .5rem;
 }
 
-/* links navegação */
 .sidebar-nav a {
   color: #fff !important;
 }
@@ -55,14 +52,6 @@
 }
 
 /* ---------- RESULTADOS DE BUSCA ---------- */
-.search-results {
-  display: none;
-}
-
-.search-results.active {
-  display: block;
-}
-
 .search-results {
   position: absolute;
   top: 100%;
@@ -74,6 +63,11 @@
   border: 1px solid #d0d0d0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, .08);
   z-index: 1000;
+  display: none;
+}
+
+.search-results.active {
+  display: block;
 }
 
 .search-results ul {
@@ -93,37 +87,21 @@
   background: #e5efff;
 }
 
+/* ---------- BOTÃO MOBILE ---------- */
 #menu-button {
   display: none;
-  /* escondido por padrão no desktop */
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  z-index: 1001;
 }
 
-/* botão só aparece no mobile e fica acima da sidebar */
 @media (max-width: 768px) {
   #menu-button {
     display: block !important;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1001;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: #fff;
   }
-}
-
-/* esconde a sidebar por padrão */
-body:not(.sidebar-visible) .side-bar {
-  transform: translateX(-100%);
-}
-
-/* quando ativado */
-body.sidebar-visible .side-bar {
-  transform: translateX(0);
-}
-
-/* animação suave */
-.side-bar {
-  transition: transform 0.3s ease;
 }

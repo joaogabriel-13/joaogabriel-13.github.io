@@ -1,0 +1,62 @@
+---
+layout: table_wrappers
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+  {% include head.html %}
+  <body>
+    <!-- Skip‑link para acessibilidade -->
+    <a class="skip-to-main" href="#main-content">Skip to main content</a>
+
+    <!-- Botão de menu para mobile -->
+    <button id="menu-button"
+            class="site-button btn-reset"
+            aria-label="Toggle sidebar"
+            aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <use xlink:href="#svg-menu"></use>
+      </svg>
+    </button>
+
+    <!-- Search no topo -->
+    {% if site.search_enabled != false %}
+      {% include components/search_header.html %}
+    {% endif %}
+
+    <!-- SVG icons e alertas, se houver -->
+    {% include vendor/svg-icons.html %}
+    {% include icons/icons.html %}
+    {% include components/alert.html %}
+    {% include components/alert_banner.html %}
+    {# … outros alert_banner se precisar #}
+
+    <!-- Sidebar -->
+    {% include components/sidebar.html %}
+
+    <div class="main" id="top">
+      <!-- Cabeçalho principal do tema (inclui o div#main-header) -->
+      {% include components/header.html %}
+
+      <div class="main-content-wrap">
+        {% include components/breadcrumbs.html %}
+        <div id="main-content" class="main-content">
+          <main>
+            {{ content }}
+            {% if page.has_toc != false %}
+              {% include components/children_nav.html %}
+            {% endif %}
+          </main>
+          {% include components/footer.html %}
+        </div>
+      </div>
+
+      {% if site.search_enabled != false %}
+        {% include components/search_footer.html %}
+      {% endif %}
+    </div>
+
+    {% if site.mermaid %}
+      {% include components/mermaid.html %}
+    {% endif %}
+  </body>
+</html>

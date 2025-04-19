@@ -1,19 +1,10 @@
-<!-- _includes/components/header_custom.html -->
-<div id="main-header" class="main-header">
-  {% if site.search_enabled != false %}
-    {% include components/search_header.html %}
-  {% endif %}
-
-  <!-- aqui dentro do main-header -->
-  <button id="menu-button"
-          class="site-button btn-reset"
-          aria-label="Toggle menu"
-          aria-pressed="false"
-          style="display:none">
-    ☰
-  </button>
-
-  {% if site.aux_links %}
-    {% include components/aux_nav.html %}
-  {% endif %}
+{%- comment -%}
+  header_custom.html
+  Injetado dentro da sidebar, acima dos links
+{%- endcomment -%}
+<div class="site-header-custom">
+  <a href="{{ '/' | relative_url }}" class="site-title lh-tight">
+    <img src="{{ '/assets/sus-logo.png' | relative_url }}" alt="Logo SUS">
+    <span>Meu Repositório de Arquivos</span>
+  </a>
 </div>
