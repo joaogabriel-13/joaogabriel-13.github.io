@@ -6,49 +6,35 @@ layout: table_wrappers
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
   <body>
-    {%- comment -%}
-    Skip‑link para acessibilidade
-    {%- endcomment -%}
+    <!-- 1) Skip‑link para acessibilidade -->
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    {%- comment -%}
-    Container que o just-the-docs.js procura (mainHeader) 🚩
-    {%- endcomment -%}
+    <!-- 2) Container que o just‑the‑docs.js procura (mainHeader) -->
     <div id="main-header" class="main-header">
-      {%- comment -%}
-      Campo de busca
-      {%- endcomment -%}
       {% if site.search_enabled != false %}
         {% include components/search_header.html %}
       {% endif %}
-
-      {%- comment -%}
-      Botão “☰” que o script irá ligar/desligar
-      {%- endcomment -%}
-      <button id="menu-button"
-              class="site-button btn-reset"
-              aria-label="Toggle menu"
-              aria-pressed="false">
+      <button
+        id="menu-button"
+        class="site-button btn-reset"
+        aria-label="Toggle menu"
+        aria-pressed="false"
+        style="display:none"
+      >
         ☰
       </button>
     </div>
 
-    {%- comment -%}
-    Qualquer banner/alerta extra que você tenha
-    {%- endcomment -%}
+    <!-- 3) Banners / alertas -->
     {% include components/alert.html %}
     {% include components/alert_banner.html %}
-    {# … outros alert_banner_x, se houver #}
+    {# … outros alert_banner_x se houver … #}
 
-    {%- comment -%}
-    Ícones SVG do tema
-    {%- endcomment -%}
+    <!-- 4) Ícones SVG necessários ao tema -->
     {% include vendor/svg-icons.html %}
     {% include icons/icons.html %}
 
-    {%- comment -%}
-    Sidebar (logo + navegação lateral)
-    {%- endcomment -%}
+    <!-- 5) A sidebar (logo + navegação lateral) -->
     {% if page.nav_enabled == true %}
       {% include components/sidebar.html %}
     {% elsif layout.nav_enabled == true and page.nav_enabled == nil %}
@@ -57,12 +43,9 @@ layout: table_wrappers
       {% include components/sidebar.html %}
     {% endif %}
 
+    <!-- 6) Conteúdo principal -->
     <div class="main" id="top">
-      {%- comment -%}
-      Cabeçalho superior (título da página, breadcrumbs, etc)
-      {%- endcomment -%}
       {% include components/header.html %}
-
       <div class="main-content-wrap">
         {% include components/breadcrumbs.html %}
         <div id="main-content" class="main-content">
