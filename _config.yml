@@ -1,14 +1,9 @@
 title: Meu Repositório de Arquivos
 description: Documentos, calculadoras e informações úteis.
-
-# Use o tema via remote_theme (recomendado pelo próprio projeto)
+logo: "/assets/sus-logo.png"
 remote_theme: just-the-docs/just-the-docs
-
-# Locale
 lang: pt-BR
 
 # (Opcional) Ative a busca nativa do tema
 just_the_docs:
   search_enabled: true
-
-
