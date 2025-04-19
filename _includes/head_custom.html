@@ -1,22 +1,41 @@
 {%- comment -%}
-  head_custom.html
-  Este arquivo é injetado *dentro* do <head> do seu site,
-  após todos os elementos padrão do Just‑the‑Docs.
-{%- endcomment -%}
+ Include as: {%- include head.html -%}
+ Depends on: site.ga_tracking, site.search_enabled, site.static_files, site.favicon_ico.
+{% endcomment -%}
 
-<!-- Meta para responsividade em mobile -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
 
-<!-- Lunr (motor de busca) -->
-<script defer src="{{ '/assets/js/vendor/lunr.min.js'          | relative_url }}"></script>
-<script defer src="{{ '/assets/js/vendor/lunr.stemmer.support.js' | relative_url }}"></script>
-<script defer src="{{ '/assets/js/vendor/lunr.pt.js'           | relative_url }}"></script>
+  <style id="jtd-nav-activation">
+    {% include css/activation.scss.liquid %}
+  </style>
 
-<!-- Script principal do tema -->
-<script defer src="{{ '/assets/js/just-the-docs.js'             | relative_url }}"></script>
+  {% if site.ga_tracking %}
+    {% assign ga_ids = site.ga_tracking | split: "," %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_ids.first }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      {% for id in ga_ids %}
+        gtag('config', '{{ id }}'{% unless site.ga_tracking_anonymize_ip %}, { 'anonymize_ip': true }{% endunless %});
+      {% endfor %}
+    </script>
+  {% endif %}
 
-<!-- Seu JavaScript de toggle da sidebar no mobile -->
-<script defer src="{{ '/assets/js/mobile-nav.js'                | relative_url }}"></script>
+  {% if site.search_enabled %}
+    <script defer src="{{ '/assets/js/vendor/lunr.min.js'       | relative_url }}"></script>
+  {% endif %}
 
-<!-- Seu CSS extra de customizações -->
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/just-the-docs.js'         | relative_url }}"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% include_cached favicon.html %}
+  {% seo %}
+
+  {% include head_custom.html %}
+</head>
