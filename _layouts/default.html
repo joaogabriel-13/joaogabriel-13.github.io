@@ -5,54 +5,40 @@ layout: table_wrappers
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
-  <body
-    {% comment %}
-      Adiciona a classe sidebar-visible se a navegação estiver habilitada
-    {% endcomment %}
-    {% if page.nav_enabled == true or layout.nav_enabled == true or site.nav_enabled != false %}
-      class="sidebar-visible"
-    {% endif %}
-  >
-    {%- comment -%}
-    Skip‑link para acessibilidade
-    {%- endcomment -%}
+  <body>
+    <!-- Skip‑link para acessibilidade -->
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    {%- comment -%}
-    Campo de busca (se ativado)
-    {%- endcomment -%}
+    <!-- Search -->
     {% if site.search_enabled != false %}
       {% include components/search_header.html %}
     {% endif %}
 
-    {%- comment -%}
-    Botão mobile para abrir/fechar sidebar
-    {%- endcomment -%}
-    <button
-      id="menu-button"
-      class="site-button btn-reset"
-      aria-label="Toggle menu"
-      aria-pressed="false"
-    >☰</button>
+    <!-- Header principal, onde vamos injetar o botão mobile -->
+    <header id="main-header" class="main-header">
+      <!-- Botão que dispara/fecha a sidebar no mobile -->
+      <button
+        id="menu-button"
+        class="site-button btn-reset"
+        aria-label="Toggle menu"
+        aria-pressed="false"
+      >☰</button>
 
-    {%- comment -%}
-    Ícones SVG internos (do tema)
-    {%- endcomment -%}
+      <!-- Logo original + título -->
+      {% include components/header.html %}
+    </header>
+
+    <!-- SVG icons, etc -->
     {% include icons/icons.html %}
 
-    {%- comment -%}
-    Sidebar (logo + navegação lateral)
-    {%- endcomment -%}
-    {% if page.nav_enabled == true or layout.nav_enabled == true or site.nav_enabled != false %}
+    <!-- A própria sidebar -->
+    {% if page.nav_enabled == true
+          or layout.nav_enabled == true
+          or site.nav_enabled != false %}
       {% include components/sidebar.html %}
     {% endif %}
 
     <div class="main" id="top">
-      {%- comment -%}
-      Cabeçalho principal (título da página, etc)
-      {%- endcomment -%}
-      {% include components/header.html %}
-
       <div class="main-content-wrap">
         {% include components/breadcrumbs.html %}
         <div id="main-content" class="main-content">
@@ -73,7 +59,6 @@ layout: table_wrappers
               {% include components/children_nav.html %}
             {% endif %}
           </main>
-
           {% include components/footer.html %}
         </div>
       </div>

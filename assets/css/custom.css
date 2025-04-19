@@ -52,6 +52,7 @@
   border: none;
   font-size: 1.5rem;
   z-index: 1002;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -61,8 +62,8 @@
     display: block !important;
   }
 
-  /* oculta sidebar */
-  .side-bar {
+  /* esconde a sidebar no mobile */
+  body:not(.sidebar-visible) .side-bar {
     transform: translateX(-100%);
   }
 
