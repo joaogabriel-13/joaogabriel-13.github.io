@@ -3,37 +3,91 @@ layout: table_wrappers
 ---
 
 <!DOCTYPE html>
-
 <html lang="{{ site.lang | default: 'en-US' }}">
-{% include head.html %}
-<body>
- <a class="skip-to-main" href="#main-content">Skip to main content</a>
-  <div class="main" id="top">
-    {% include components/header.html %}
-    <div class="main-content-wrap">
-      {% include components/breadcrumbs.html %}
-      <div id="main-content" class="main-content">
-        <main>
-          {% if site.heading_anchors != false %}
-            {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
-          {% else %}
-            {{ content }}
-          {% endif %}
+  {% include head.html %}
+  <body>
+    {%- comment -%}
+    Skip‑link para acessibilidade
+    {%- endcomment -%}
+    <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-          {% if page.has_toc != false %}
-            {% include components/children_nav.html %}
-          {% endif %}
-        </main>
-        {% include components/footer.html %}
-      </div>
-    </div>
+    {%- comment -%}
+    Botão “☰” que dispara a sidebar no mobile
+    {%- endcomment -%}
+    <button
+      id="menu-button"
+      class="site-button btn-reset"
+      aria-label="Toggle menu"
+      aria-pressed="false"
+    >☰</button>
+
+    {%- comment -%}
+    Search header (campo de busca)
+    {%- endcomment -%}
     {% if site.search_enabled != false %}
-      {% include components/search_footer.html %}
+      {% include components/search_header.html %}
     {% endif %}
-  </div>
 
-  {% if site.mermaid %}
-    {% include components/mermaid.html %}
-  {% endif %}
-</body>
+    {%- comment -%}
+    Qualquer banner/alerta que você tenha
+    {%- endcomment -%}
+    {% include components/alert.html %}
+    {% include components/alert_banner.html %}
+    {#… outros alert_banner_2, etc se houver #}
+
+    {%- comment -%}
+    Ícones SVG, nav lateral, etc
+    {%- endcomment -%}
+    {% include vendor/svg-icons.html %}
+    {% include icons/icons.html %}
+
+    {%- comment -%}
+    Incluir a sidebar (logo + menu) sempre que nav estiver habilitado
+    {%- endcomment -%}
+    {% if page.nav_enabled == true %}
+      {% include components/sidebar.html %}
+    {% elsif layout.nav_enabled == true and page.nav_enabled == nil %}
+      {% include components/sidebar.html %}
+    {% elsif site.nav_enabled != false and layout.nav_enabled == nil and page.nav_enabled == nil %}
+      {% include components/sidebar.html %}
+    {% endif %}
+
+    <div class="main" id="top">
+      {%- comment -%} cabeçalho principal do tema {%- endcomment -%}
+      {% include components/header.html %}
+
+      <div class="main-content-wrap">
+        {% include components/breadcrumbs.html %}
+        <div id="main-content" class="main-content">
+          <main>
+            {% if site.heading_anchors != false %}
+              {% include vendor/anchor_headings.html
+                 html=content
+                 beforeHeading="true"
+                 anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
+                 anchorClass="anchor-heading"
+                 anchorAttrs="aria-labelledby='%html_id%'"
+              %}
+            {% else %}
+              {{ content }}
+            {% endif %}
+
+            {% if page.has_toc != false %}
+              {% include components/children_nav.html %}
+            {% endif %}
+          </main>
+
+          {% include components/footer.html %}
+        </div>
+      </div>
+
+      {% if site.search_enabled != false %}
+        {% include components/search_footer.html %}
+      {% endif %}
+    </div>
+
+    {% if site.mermaid %}
+      {% include components/mermaid.html %}
+    {% endif %}
+  </body>
 </html>
