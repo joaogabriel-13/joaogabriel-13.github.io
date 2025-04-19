@@ -1,9 +1,6 @@
 /* ---------- SIDEBAR ---------- */
 .side-bar {
   background: #0c326f !important;
-  width: none;
-  padding-top: 0 !important;
-  padding-bottom: 2rem;
   transition: transform 0.3s ease;
 }
 
@@ -19,12 +16,12 @@
   z-index: 1;
 }
 
-.site-header-custom img {
+.site-header img {
   width: 4.5rem;
   height: auto;
 }
 
-.site-header-custom span {
+.site-header span {
   color: #fff;
   font-weight: 600;
   line-height: 1.2;
