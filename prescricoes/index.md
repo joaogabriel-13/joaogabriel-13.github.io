@@ -2,7 +2,7 @@
 layout: default # Ou none se não quiser o layout JtD nela
 title: Minhas Prescrições
 parent: Prescrições
-nav_order: 1
+nav_order: 6
 ---
 
 # Prescrições - Arquivos
