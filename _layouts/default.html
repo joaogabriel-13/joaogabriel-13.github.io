@@ -5,39 +5,52 @@ layout: table_wrappers
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
-  <body>
+  <body
+    {% comment %}
+      Adiciona a classe sidebar-visible se a navegação estiver habilitada
+    {% endcomment %}
+    {% if page.nav_enabled == true or layout.nav_enabled == true or site.nav_enabled != false %}
+      class="sidebar-visible"
+    {% endif %}
+  >
     {%- comment -%}
     Skip‑link para acessibilidade
     {%- endcomment -%}
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
     {%- comment -%}
-    Aqui unimos o campo de busca + botões auxiliares + botão mobile
-    dentro do elemento que o JS espera (div#main-header)
+    Campo de busca (se ativado)
     {%- endcomment -%}
-    <div id="main-header" class="main-header">
-      {% if site.search_enabled != false %}
-        {% include components/search_header.html %}
-      {% endif %}
-      {% if site.aux_links %}
-        {% include components/aux_nav.html %}
-      {% endif %}
-
-      <!-- botão que dispara a sidebar no mobile -->
-      <button id="menu-button"
-              class="site-button btn-reset"
-              aria-label="Toggle menu"
-              aria-pressed="false">
-        ☰
-      </button>
-    </div>
+    {% if site.search_enabled != false %}
+      {% include components/search_header.html %}
+    {% endif %}
 
     {%- comment -%}
-    A sidebar (logo + menu) permanece sempre fora do main-header
+    Botão mobile para abrir/fechar sidebar
     {%- endcomment -%}
-    {% include components/sidebar.html %}
+    <button
+      id="menu-button"
+      class="site-button btn-reset"
+      aria-label="Toggle menu"
+      aria-pressed="false"
+    >☰</button>
+
+    {%- comment -%}
+    Ícones SVG internos (do tema)
+    {%- endcomment -%}
+    {% include icons/icons.html %}
+
+    {%- comment -%}
+    Sidebar (logo + navegação lateral)
+    {%- endcomment -%}
+    {% if page.nav_enabled == true or layout.nav_enabled == true or site.nav_enabled != false %}
+      {% include components/sidebar.html %}
+    {% endif %}
 
     <div class="main" id="top">
+      {%- comment -%}
+      Cabeçalho principal (título da página, etc)
+      {%- endcomment -%}
       {% include components/header.html %}
 
       <div class="main-content-wrap">
@@ -46,11 +59,11 @@ layout: table_wrappers
           <main>
             {% if site.heading_anchors != false %}
               {% include vendor/anchor_headings.html
-                 html=content
-                 beforeHeading="true"
-                 anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
-                 anchorClass="anchor-heading"
-                 anchorAttrs="aria-labelledby='%html_id%'"
+                html=content
+                beforeHeading="true"
+                anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
+                anchorClass="anchor-heading"
+                anchorAttrs="aria-labelledby='%html_id%'"
               %}
             {% else %}
               {{ content }}
