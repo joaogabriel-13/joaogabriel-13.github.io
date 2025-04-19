@@ -44,8 +44,7 @@
 
 /* ---------- MOBILE NAV ---------- */
 #menu-button {
-  /* display: none; */
-  /* Linha comentada ou apagada para o teste */
+  display: none;
   position: absolute;
   top: 1rem;
   left: 1rem;
