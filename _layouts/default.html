@@ -6,9 +6,15 @@ layout: table_wrappers
 <html lang="{{ site.lang | default: 'en-US' }}">
   {% include head.html %}
   <body>
+    {%- comment -%}
+    Skip‑link para acessibilidade
+    {%- endcomment -%}
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
-    <!-- ESTE É O CONTAINER QUE O TEMA PRECISA -->
+    {%- comment -%}
+    Aqui unimos o campo de busca + botões auxiliares + botão mobile
+    dentro do elemento que o JS espera (div#main-header)
+    {%- endcomment -%}
     <div id="main-header" class="main-header">
       {% if site.search_enabled != false %}
         {% include components/search_header.html %}
@@ -16,7 +22,8 @@ layout: table_wrappers
       {% if site.aux_links %}
         {% include components/aux_nav.html %}
       {% endif %}
-      <!-- aqui vai o botão de menu -->
+
+      <!-- botão que dispara a sidebar no mobile -->
       <button id="menu-button"
               class="site-button btn-reset"
               aria-label="Toggle menu"
@@ -25,19 +32,42 @@ layout: table_wrappers
       </button>
     </div>
 
+    {%- comment -%}
+    A sidebar (logo + menu) permanece sempre fora do main-header
+    {%- endcomment -%}
     {% include components/sidebar.html %}
 
     <div class="main" id="top">
       {% include components/header.html %}
+
       <div class="main-content-wrap">
         {% include components/breadcrumbs.html %}
         <div id="main-content" class="main-content">
-          {{ content }}
-          {% include components/children_nav.html %}
+          <main>
+            {% if site.heading_anchors != false %}
+              {% include vendor/anchor_headings.html
+                 html=content
+                 beforeHeading="true"
+                 anchorBody="<svg viewBox='0 0 16 16' aria-hidden='true'><use xlink:href='#svg-link'></use></svg>"
+                 anchorClass="anchor-heading"
+                 anchorAttrs="aria-labelledby='%html_id%'"
+              %}
+            {% else %}
+              {{ content }}
+            {% endif %}
+
+            {% if page.has_toc != false %}
+              {% include components/children_nav.html %}
+            {% endif %}
+          </main>
+
+          {% include components/footer.html %}
         </div>
       </div>
-      {% include components/footer.html %}
-      {% include components/search_footer.html %}
+
+      {% if site.search_enabled != false %}
+        {% include components/search_footer.html %}
+      {% endif %}
     </div>
 
     {% if site.mermaid %}
