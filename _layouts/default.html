@@ -66,14 +66,5 @@ layout: table_wrappers
     {%- comment -%}
     Script para alternar a classe `sidebar-visible` no `<body>` quando o botão for clicado
     {%- endcomment -%}
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('menu-button');
-        btn.addEventListener('click', function () {
-          const visible = document.body.classList.toggle('sidebar-visible');
-          btn.setAttribute('aria-pressed', visible);
-        });
-      });
-    </script>
   </body>
 </html>

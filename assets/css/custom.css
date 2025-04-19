@@ -44,7 +44,8 @@
 
 /* ---------- MOBILE NAV ---------- */
 #menu-button {
-  display: none;
+  /* display: none; */
+  /* Linha comentada ou apagada para o teste */
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -53,6 +54,7 @@
   font-size: 1.5rem;
   z-index: 1002;
   color: #fff;
+  /* Note: A cor pode precisar de ajuste dependendo do fundo */
 }
 
 @media (max-width: 768px) {
