@@ -5,14 +5,16 @@
   top: 0;
   left: 0;
   bottom: 0;
-  /* estica até a base da viewport */
+  /* estica até o final da tela */
   width: 22rem !important;
-  background: #0c326f;
+  /* tua largura */
+  background: #0c326f !important;
+  padding: 0 !important;
   overflow-y: auto;
-  /* scroll interno se for muito grande */
+  /* scroll interno */
+  transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 1000;
-  /* abaixo apenas do menu‐button se necessário */
 }
 
 /* header (logo + título) */
@@ -93,21 +95,22 @@
 
 #menu-button {
   display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: #fff;
-  /* ou a cor que preferir */
+  /* escondido por padrão no desktop */
 }
 
 /* a partir de até 768px de largura, mostra o botão */
 @media (max-width: 768px) {
   #menu-button {
     display: block !important;
-    position: absolute;
+    position: fixed;
     top: 1rem;
     left: 1rem;
     z-index: 1001;
+    /* acima da .side-bar */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
   }
 }
 
@@ -116,7 +119,7 @@ body:not(.sidebar-visible) .side-bar {
   transform: translateX(-100%);
 }
 
-/* quando clicado, mostra a sidebar */
+/* quando ativado */
 body.sidebar-visible .side-bar {
   transform: translateX(0);
 }

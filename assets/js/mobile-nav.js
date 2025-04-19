@@ -3,10 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!btn) return;
 
     btn.addEventListener('click', () => {
-        document.body.classList.toggle('sidebar-visible');
-        btn.setAttribute(
-            'aria-pressed',
-            document.body.classList.contains('sidebar-visible')
-        );
+        const visible = document.body.classList.toggle('sidebar-visible');
+        btn.setAttribute('aria-pressed', visible);
     });
 });
