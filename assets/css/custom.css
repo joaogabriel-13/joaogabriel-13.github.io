@@ -5,9 +5,10 @@
 }
 
 /* Cabeçalho custom da sidebar */
-.site-logo img {
-  width: 4.5rem;
-  height: auto;
+.site-logo {
+  width: 200%;
+  height: 200%;
+  background-position: center;
 }
 
 .site-logo span {
