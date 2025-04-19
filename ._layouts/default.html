@@ -12,27 +12,42 @@ layout: table_wrappers
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
 
     {%- comment -%}
-    Search header (campo de busca)
+    Container que o just-the-docs.js procura (mainHeader) 🚩
     {%- endcomment -%}
-    {% if site.search_enabled != false %}
-      {% include components/search_header.html %}
-    {% endif %}
+    <div id="main-header" class="main-header">
+      {%- comment -%}
+      Campo de busca
+      {%- endcomment -%}
+      {% if site.search_enabled != false %}
+        {% include components/search_header.html %}
+      {% endif %}
+
+      {%- comment -%}
+      Botão “☰” que o script irá ligar/desligar
+      {%- endcomment -%}
+      <button id="menu-button"
+              class="site-button btn-reset"
+              aria-label="Toggle menu"
+              aria-pressed="false">
+        ☰
+      </button>
+    </div>
 
     {%- comment -%}
-    Qualquer banner/alerta que você tenha
+    Qualquer banner/alerta extra que você tenha
     {%- endcomment -%}
     {% include components/alert.html %}
     {% include components/alert_banner.html %}
-    {#… outros alert_banner_2, etc se houver #}
+    {# … outros alert_banner_x, se houver #}
 
     {%- comment -%}
-    Ícones SVG, nav lateral, etc
+    Ícones SVG do tema
     {%- endcomment -%}
     {% include vendor/svg-icons.html %}
     {% include icons/icons.html %}
 
     {%- comment -%}
-    Incluir a sidebar (logo + menu) sempre que nav estiver habilitado
+    Sidebar (logo + navegação lateral)
     {%- endcomment -%}
     {% if page.nav_enabled == true %}
       {% include components/sidebar.html %}
@@ -43,7 +58,9 @@ layout: table_wrappers
     {% endif %}
 
     <div class="main" id="top">
-      {%- comment -%} cabeçalho principal do tema {%- endcomment -%}
+      {%- comment -%}
+      Cabeçalho superior (título da página, breadcrumbs, etc)
+      {%- endcomment -%}
       {% include components/header.html %}
 
       <div class="main-content-wrap">
