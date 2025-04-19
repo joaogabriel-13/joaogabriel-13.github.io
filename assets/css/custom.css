@@ -1,6 +1,6 @@
 /* ---------- SIDEBAR ---------- */
 .side-bar {
-  background: #1d4e9c !important;
+  background: #092757 !important;
   transition: transform 0.3s ease;
 }
 
@@ -9,12 +9,6 @@
   width: 200%;
   height: 200%;
   background-position: center;
-}
-
-.site-logo span {
-  color: #fff;
-  font-weight: 600;
-  line-height: 1.2;
 }
 
 .nav-list a {
