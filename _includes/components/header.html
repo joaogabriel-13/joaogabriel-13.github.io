@@ -1,28 +1,38 @@
-<div id="main-header" class="main-header">
+{%- comment -%}
+  Este é o header principal, aparece acima da main-content
+  Nós injetamos aqui o logo + botão + search
+{%- endcomment -%}
 
-  {%- comment -%}
-    1) Logo + título
-  {%- endcomment -%}
-  {% include header_custom.html %}
-
-  {%- comment -%}
-    2) Botão “hambúrguer” para mobile – precisa estar **no header**, não na sidebar.
-  {%- endcomment -%}
-  <button id="menu-button"
-          class="site-button btn-reset"
-          aria-label="Toggle menu"
-          aria-pressed="false">
-    ☰
+<header class="site-header">
+  <!-- 1) botão mobile -->
+  <button
+    id="menu-button"
+    class="site-button btn-reset"
+    aria-label="Toggle menu"
+    aria-pressed="false">
+      ☰
   </button>
 
-  {%- comment -%}
-    3) Campo de busca e links auxiliares
-  {%- endcomment -%}
+  <!-- 2) seu logo + título -->
+  <a href="{{ '/' | relative_url }}" class="site-title lh-tight">
+    <img src="{{ '/assets/sus-logo.png'  | relative_url }}" alt="Logo SUS">
+    <span>Meu Repositório de Arquivos</span>
+  </a>
+
+  <!-- 3) campo de busca original -->
   {% if site.search_enabled != false %}
     {% include components/search_header.html %}
   {% endif %}
-  {% if site.aux_links %}
-    {% include components/aux_nav.html %}
-  {% endif %}
 
-</div>
+  <div id="main-header" class="main-header">
+    {% if site.search_enabled != false %}
+      {% include components/search_header.html %}
+    {% else %}
+      <div></div>
+    {% endif %}
+    {% include header_custom.html %}
+    {% if site.aux_links %}
+      {% include components/aux_nav.html %}
+    {% endif %}
+  </div>
+</header>
