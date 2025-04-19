@@ -1,7 +1,8 @@
 ---
-layout: default
-title: Prescrições
-nav_order: 5
+layout: default # Ou none se não quiser o layout JtD nela
+title: Minhas Prescrições
+parent: Prescrições
+nav_order: 1
 ---
 
 # Prescrições - Arquivos
