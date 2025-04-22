@@ -148,8 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   const pesoInput = document.getElementById('pesoPaciente');
   pesoInput && pesoInput.addEventListener('input', () => {
-    ['norepinefrina','dobutamina','dopamina','nitroprusseto']
-      .forEach(m => calcularDosePorTaxa(m));
+    ['norepinefrina','dobutamina','dopamina','nitroprusseto'].forEach(m => {
+      const taxaElem = document.getElementById('taxa' + capitalize(m));
+      if (taxaElem && taxaElem.value) {
+        calcularDosePorTaxa(m);
+      }
+    });
   });
 });
 </script>
