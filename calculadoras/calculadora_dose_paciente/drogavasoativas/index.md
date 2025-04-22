@@ -90,13 +90,13 @@ Informe o peso do paciente para calcular as doses das medicações:
 </div>
 
 <script>
-function calcularDosePorTaxa(medicamento) {
+window.calcularDosePorTaxa = function(medicamento) {
   let taxa = parseFloat(document.getElementById('taxa' + capitalize(medicamento)).value);
-  if (!taxa || taxa <= 0) return;
+  if (isNaN(taxa) || taxa <= 0) { alert('Insira uma taxa válida para ' + medicamento); return; }
   let peso;
   if (medicamento !== 'nitroglicerina') {
     peso = parseFloat(document.getElementById('pesoPaciente').value);
-    if (!peso || peso <= 0) return;
+    if (isNaN(peso) || peso <= 0) { alert('Insira o peso do paciente'); return; }
   }
 
   let resultado = '';
@@ -142,7 +142,7 @@ function calcularDosePorTaxa(medicamento) {
   document.getElementById('resultado' + capitalize(medicamento)).innerHTML = resultado;
 }
 
-function capitalize(str) {
+window.capitalize = function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
