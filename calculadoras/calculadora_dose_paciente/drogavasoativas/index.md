@@ -89,7 +89,6 @@ Informe o peso do paciente para calcular as doses das medicações:
   <div class="result" id="resultadoNitroglicerina"></div>
 </div>
 
-{% raw %}
 <script>
 window.calcularDosePorTaxa = function(medicamento) {
   const taxaElem = document.getElementById('taxa' + capitalize(medicamento));
@@ -154,4 +153,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-{% endraw %}
