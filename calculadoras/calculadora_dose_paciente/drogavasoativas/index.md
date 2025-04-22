@@ -140,11 +140,11 @@ window.calcularDosePorTaxa = function(medicamento) {
       break;
   }
   document.getElementById('resultado' + capitalize(medicamento)).innerHTML = resultado;
-}
+};
 
 window.capitalize = function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
-}
+};
 
 document.addEventListener('DOMContentLoaded', function() {
   const meds = ['norepinefrina','dobutamina','dopamina','nitroprusseto','nitroglicerina'];
