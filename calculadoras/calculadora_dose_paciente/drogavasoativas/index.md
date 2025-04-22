@@ -94,7 +94,7 @@ window.calcularDosePorTaxa = function(medicamento) {
   const taxaElem = document.getElementById('taxa' + capitalize(medicamento));
   const taxa = parseFloat(taxaElem && taxaElem.value);
   if (isNaN(taxa) || taxa <= 0) {
-    alert('Insira uma taxa válida para ' + medicamento);
+    document.getElementById('resultado' + capitalize(medicamento)).innerText = 'Insira uma taxa válida';
     return;
   }
   let peso;
@@ -102,7 +102,9 @@ window.calcularDosePorTaxa = function(medicamento) {
     const pesoElem = document.getElementById('pesoPaciente');
     peso = parseFloat(pesoElem && pesoElem.value);
     if (isNaN(peso) || peso <= 0) {
-      alert('Insira o peso do paciente');
+      ['norepinefrina','dobutamina','dopamina','nitroprusseto'].forEach(m => {
+        document.getElementById('resultado' + capitalize(m)).innerText = 'Insira o peso do paciente';
+      });
       return;
     }
   }
