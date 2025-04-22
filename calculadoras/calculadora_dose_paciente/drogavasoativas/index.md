@@ -90,73 +90,54 @@ Informe o peso do paciente para calcular as doses das medicações:
 </div>
 
 <script>
-window.calcularDosePorTaxa = function(medicamento) {
-  const taxaElem = document.getElementById('taxa' + capitalize(medicamento));
-  const taxa = parseFloat(taxaElem && taxaElem.value);
-  if (isNaN(taxa) || taxa <= 0) {
-    document.getElementById('resultado' + capitalize(medicamento)).innerText = 'Insira uma taxa válida';
+function calcularDosePorTaxa(medicamento) {
+  var taxa = parseFloat(document.getElementById('taxa' + capitalize(medicamento)).value);
+  var resultadoElem = document.getElementById('resultado' + capitalize(medicamento));
+  if (!taxa || taxa <= 0) {
+    resultadoElem.innerText = 'Insira uma taxa válida';
     return;
   }
-  let peso;
-  if (medicamento !== 'nitroglicerina') {
-    const pesoElem = document.getElementById('pesoPaciente');
-    peso = parseFloat(pesoElem && pesoElem.value);
-    if (isNaN(peso) || peso <= 0) {
-      ['norepinefrina','dobutamina','dopamina','nitroprusseto'].forEach(m => {
-        document.getElementById('resultado' + capitalize(m)).innerText = 'Insira o peso do paciente';
-      });
-      return;
-    }
+  if (medicamento === 'nitroglicerina') {
+    var doseMcgMin = taxa * 200 / 60;
+    resultadoElem.innerHTML = '<strong>200 mcg/ml:</strong> ' + taxa.toFixed(2) + ' ml/h = ' + doseMcgMin.toFixed(2) + ' mcg/min';
+    return;
   }
-  let resultado = '';
+  var peso = parseFloat(document.getElementById('pesoPaciente').value);
+  if (!peso || peso <= 0) {
+    resultadoElem.innerText = 'Insira o peso do paciente';
+    return;
+  }
+  var concent = [];
   switch (medicamento) {
-    case 'norepinefrina':
-      [64, 160, 200].forEach(conc => {
-        const dose = taxa * conc;
-        resultado += `<strong>${conc} mcg/ml:</strong> ${dose.toFixed(2)} mcg/h (${(dose/60/peso).toFixed(3)} mcg/kg/min)<br>`;
-      });
-      break;
-    case 'dobutamina':
-      [1000, 4000].forEach(conc => {
-        const dose = taxa * conc;
-        resultado += `<strong>${conc} mcg/ml:</strong> ${dose.toFixed(2)} mcg/h (${(dose/60/peso).toFixed(3)} mcg/kg/min)<br>`;
-      });
-      break;
-    case 'dopamina':
-      const doseDp = taxa * 1000;
-      resultado = `<strong>1 mg/ml:</strong> ${doseDp.toFixed(2)} mcg/h (${(doseDp/60/peso).toFixed(3)} mcg/kg/min)`;
-      break;
-    case 'nitroprusseto':
-      const doseNP = taxa * 200;
-      resultado = `<strong>200 mcg/ml:</strong> ${doseNP.toFixed(2)} mcg/h (${(doseNP/60/peso).toFixed(3)} mcg/kg/min)`;
-      break;
-    case 'nitroglicerina':
-      // taxa is ml/h, concentration 200 mcg/ml => dose mcg/min = taxa * 200 / 60
-      const doseMcgMin = taxa * 200 / 60;
-      resultado = `<strong>200 mcg/ml:</strong> ${taxa.toFixed(2)} ml/h = ${doseMcgMin.toFixed(2)} mcg/min`;
-      break;
+    case 'norepinefrina': concent = [64,160,200]; break;
+    case 'dobutamina':    concent = [1000,4000];   break;
+    case 'dopamina':      concent = [1000];        break;
+    case 'nitroprusseto': concent = [200];         break;
   }
-  document.getElementById('resultado' + capitalize(medicamento)).innerHTML = resultado;
-};
+  resultadoElem.innerHTML = concent.map(function(c) {
+    var doseH = taxa * c;
+    var doseKgMin = doseH/60/peso;
+    return '<strong>' + c + ' mcg/ml:</strong> ' + doseH.toFixed(2) + ' mcg/h (' + doseKgMin.toFixed(3) + ' mcg/kg/min)';
+  }).join('<br>');
+}
 
-window.capitalize = function(s) {
+function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
-};
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   ['norepinefrina','dobutamina','dopamina','nitroprusseto','nitroglicerina']
-    .forEach(m => {
-      const input = document.getElementById('taxa' + capitalize(m));
-      input && input.addEventListener('input', () => calcularDosePorTaxa(m));
+    .forEach(function(m) {
+      var inp = document.getElementById('taxa' + capitalize(m));
+      if (inp) inp.addEventListener('input', function() { calcularDosePorTaxa(m); });
     });
-  const pesoInput = document.getElementById('pesoPaciente');
-  pesoInput && pesoInput.addEventListener('input', () => {
-    ['norepinefrina','dobutamina','dopamina','nitroprusseto'].forEach(m => {
-      const taxaElem = document.getElementById('taxa' + capitalize(m));
-      if (taxaElem && taxaElem.value) {
-        calcularDosePorTaxa(m);
-      }
-    });
+  var pesoInput = document.getElementById('pesoPaciente');
+  if (pesoInput) pesoInput.addEventListener('input', function() {
+    ['norepinefrina','dobutamina','dopamina','nitroprusseto']
+      .forEach(function(m) {
+        var inp = document.getElementById('taxa' + capitalize(m));
+        if (inp && inp.value) calcularDosePorTaxa(m);
+      });
   });
 });
 </script>
