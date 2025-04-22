@@ -83,7 +83,7 @@ Informe o peso do paciente para calcular as doses das medicações:
 - **Concentração:** 200 mcg/ml  
 
 <div class="form-group">
-  <label for="taxaNitroglicerina">Taxa de infusão (mcg/min):</label>
+  <label for="taxaNitroglicerina">Taxa de infusão (ml/h):</label>
   <input type="number" id="taxaNitroglicerina" placeholder="Insira a taxa" min="0" step="any">
   <button onclick="calcularDosePorTaxa('nitroglicerina')">Calcular Dose pela Taxa</button>
   <div class="result" id="resultadoNitroglicerina"></div>
@@ -129,8 +129,9 @@ window.calcularDosePorTaxa = function(medicamento) {
       resultado = `<strong>200 mcg/ml:</strong> ${doseNP.toFixed(2)} mcg/h (${(doseNP/60/peso).toFixed(3)} mcg/kg/min)`;
       break;
     case 'nitroglicerina':
-      const mlMin = taxa / 200;
-      resultado = `Taxa necessária: ${(mlMin*60).toFixed(2)} ml/h para ${taxa} mcg/min`;
+      // taxa is ml/h, concentration 200 mcg/ml => dose mcg/min = taxa * 200 / 60
+      const doseMcgMin = taxa * 200 / 60;
+      resultado = `<strong>200 mcg/ml:</strong> ${taxa.toFixed(2)} ml/h = ${doseMcgMin.toFixed(2)} mcg/min`;
       break;
   }
   document.getElementById('resultado' + capitalize(medicamento)).innerHTML = resultado;
