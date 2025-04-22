@@ -91,10 +91,13 @@ Informe o peso do paciente para calcular as doses das medicações:
 
 <script>
 function calcularDosePorTaxa(medicamento) {
-  const peso = parseFloat(document.getElementById('pesoPaciente').value);
   let taxa = parseFloat(document.getElementById('taxa' + capitalize(medicamento)).value);
-  if ((!peso || peso <= 0) && medicamento !== 'nitroglicerina') return;
   if (!taxa || taxa <= 0) return;
+  let peso;
+  if (medicamento !== 'nitroglicerina') {
+    peso = parseFloat(document.getElementById('pesoPaciente').value);
+    if (!peso || peso <= 0) return;
+  }
 
   let resultado = '';
   switch (medicamento) {
