@@ -91,5 +91,84 @@ parent: Calculadoras
 <pre id="iron-result"></pre>
 
 <!-- Scripts usando filtro relative_url para funcionar em qualquer baseurl -->
-<script src="{{ '/assets/js/hiponatremia.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/deficit_ferro.js' | relative_url }}"></script>
+<script>
+// assets/js/hiponatremia.js  — versão isolada em IIFE
+(() => {
+    const DISTRIBUICAO_AGUA = {
+        adulto_m: 0.6,
+        adulto_f: 0.5,
+        idoso_m: 0.5,
+        idoso_f: 0.45,
+    };
+
+    function format(num, dec = 1) {
+        return Number(num).toFixed(dec);
+    }
+
+    /**
+     * Executa o cálculo quando o formulário é enviado.
+     */
+    function onSubmit(event) {
+        event.preventDefault();
+
+        const peso = parseFloat(document.getElementById('peso-sodio').value);
+        const categoria = document.getElementById('sexo-idade-sodio').value;
+        const deltaNa = parseFloat(document.getElementById('delta-na').value);
+        const solucao = document.getElementById('solucao-sodio').value; // "3" ou "0.9"
+
+        const outputEl = document.getElementById('hipo-result');
+
+        // Validação básica
+        if (!(peso > 0) || !(deltaNa > 0)) {
+            outputEl.innerText = '⚠️ Insira valores válidos.';
+            return;
+        }
+
+        // Cálculos principais
+        const act = peso * (DISTRIBUICAO_AGUA[categoria] || 0.5); // em litros
+        const sodioNecessario = deltaNa * act;                       // mEq
+        const concentracao = solucao === '3' ? 513 : 154;            // mEq/L
+
+        const volumeMl = (sodioNecessario / concentracao) * 1000;  // mL em 24 h
+        const taxaMlHora = volumeMl / 24;                            // mL/h
+
+        // Saída formatada
+        outputEl.innerText =
+            `ACT: ${format(act, 2)} L\n` +
+            `Na⁺ necessário: ${format(sodioNecessario, 1)} mEq\n` +
+            `Volume da solução (24 h): ${format(volumeMl, 0)} mL\n` +
+            `Taxa de infusão: ${format(taxaMlHora, 1)} mL/h`;
+    }
+
+    // Registra o listener após o DOM estar pronto
+    document.getElementById('hipo-form')?.addEventListener('submit', onSubmit);
+})();
+
+/* assets/js/deficit_ferro.js */
+(() => {
+    const FERRO_POR_AMPOLA = 100;   // constante interna
+
+    document
+        .getElementById('iron-form')
+        .addEventListener('submit', event => {
+            event.preventDefault();
+
+            const peso = parseFloat(document.getElementById('peso-ferro').value);
+            const hbAtual = parseFloat(document.getElementById('hb-atual').value);
+            const hbAlvo = parseFloat(document.getElementById('hb-alvo').value);
+
+            if (!(peso > 0) || hbAlvo <= hbAtual) {
+                document.getElementById('iron-result').innerText =
+                    '⚠️ Verifique os valores inseridos.';
+                return;
+            }
+
+            const deficit = peso * (hbAlvo - hbAtual) * 2.4 + 500;
+            const ampolas = Math.ceil(deficit / FERRO_POR_AMPOLA);
+
+            document.getElementById('iron-result').innerText =
+                `Déficit total de ferro: ${deficit.toFixed(0)} mg\n` +
+                `Número de ampolas (100 mg): ${ampolas}`;
+        });
+})();
+</script>
