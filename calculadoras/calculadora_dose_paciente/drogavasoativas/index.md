@@ -89,6 +89,21 @@ Informe o peso do paciente para calcular as doses das medicações:
   <div class="result" id="resultadoNitroglicerina"></div>
 </div>
 
+---
+
+## Epinefrina
+
+- **Dose mínima:** 0,1 mcg/kg/min  
+- **Dose máxima:** 2 mcg/kg/min  
+- **Concentração:** 60 mcg/ml  
+
+<div class="form-group">
+  <label for="taxaEpinefrina">Taxa de infusão (ml/h):</label>
+  <input type="number" id="taxaEpinefrina" placeholder="Insira a taxa" min="0" step="any">
+  <button onclick="calcularDosePorTaxa('epinefrina')">Calcular Dose pela Taxa</button>
+  <div class="result" id="resultadoEpinefrina"></div>
+</div>
+
 <script>
 function calcularDosePorTaxa(medicamento) {
   var taxa = parseFloat(document.getElementById('taxa' + capitalize(medicamento)).value);
@@ -113,6 +128,7 @@ function calcularDosePorTaxa(medicamento) {
     case 'dobutamina':    concent = [1000,4000];   break;
     case 'dopamina':      concent = [1000];        break;
     case 'nitroprusseto': concent = [200];         break;
+    case 'epinefrina':    concent = [60];          break;
   }
   resultadoElem.innerHTML = concent.map(function(c) {
     var doseH = taxa * c;
@@ -126,14 +142,14 @@ function capitalize(s) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  ['norepinefrina','dobutamina','dopamina','nitroprusseto','nitroglicerina']
+  ['norepinefrina','dobutamina','dopamina','nitroprusseto','nitroglicerina','epinefrina']
     .forEach(function(m) {
       var inp = document.getElementById('taxa' + capitalize(m));
       if (inp) inp.addEventListener('input', function() { calcularDosePorTaxa(m); });
     });
   var pesoInput = document.getElementById('pesoPaciente');
   if (pesoInput) pesoInput.addEventListener('input', function() {
-    ['norepinefrina','dobutamina','dopamina','nitroprusseto']
+    ['norepinefrina','dobutamina','dopamina','nitroprusseto','epinefrina']
       .forEach(function(m) {
         var inp = document.getElementById('taxa' + capitalize(m));
         if (inp && inp.value) calcularDosePorTaxa(m);
