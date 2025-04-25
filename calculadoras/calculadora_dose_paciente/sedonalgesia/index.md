@@ -228,22 +228,36 @@ document.addEventListener('DOMContentLoaded', function () {
   const meds = ['midazolam', 'fentanila', 'escetamina', 'propofol', 'dexmedetomidina'];
   const pesoInput = document.getElementById('pesoPaciente');
 
+  // Função para recalcular tudo quando o peso muda (mantida)
   function calcularTodasDoses() {
       meds.forEach(m => calcularDosePorTaxa(m));
   }
 
+  // Adiciona listener para o input de peso (mantido)
   if (pesoInput) {
       console.log('Adding listener for pesoPaciente');
       pesoInput.addEventListener('input', calcularTodasDoses);
   }
 
+  // Adiciona listeners para os inputs de taxa (mantido)
   meds.forEach(m => {
     const taxaInput = document.getElementById('taxa' + capitalize(m));
     if (taxaInput) {
       console.log(`Adding listener for ${taxaInput.id}`);
       taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
     }
-    // O botão onclick já está no HTML, não precisa adicionar listener aqui
-   })
- })
+
+    // <<< NOVO: Adiciona listeners para os BOTÕES >>>
+    // Encontra o botão usando o atributo data-medicamento que adicionamos
+    const calcButton = document.querySelector(`.btn-calcular[data-medicamento="${m}"]`);
+    if (calcButton) {
+        console.log(`Adding click listener for button ${m}`);
+        calcButton.addEventListener('click', function() {
+            // Chama a função com o nome do medicamento associado ao botão
+            calcularDosePorTaxa(m);
+        });
+    }
+    // <<< FIM DO NOVO >>>
+  });
+});
  </script>
