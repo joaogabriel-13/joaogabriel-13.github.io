@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', function () {
      // Button click handled by onclick attribute in HTML
   });
 
-   // Initial calculation run in case values are pre-filled
-   calcularTodasDosesPesoDependente(); // Calculate weight-dependent ones
-   calcularDosePorTaxa('nitroglicerina'); // Calculate nitroglicerina separately
-});
-</script>
+   // Initial calculation run removed - calculation will trigger on input/change
+   // calcularTodasDosesPesoDependente(); // Calculate weight-dependent ones
+   // calcularDosePorTaxa('nitroglicerina'); // Calculate nitroglicerina separately
+ });
+ </script>

@@ -20,41 +20,46 @@ parent: Calculadoras
   </ol>
 </details>
 
-<form id="hipo-form" class="calc-box">
-  <div>
-    <label>Peso (kg):
-      <input type="number" id="peso-sodio" min="0" step="0.1" required />
-    </label>
-  </div>
-  <div>
-    <label>Categoria sexo/idade:
-      <select id="sexo-idade-sodio">
-        <option value="adulto_m">Homem adulto</option>
-        <option value="adulto_f">Mulher adulta</option>
-        <option value="idoso_m">Homem idoso</option>
-        <option value="idoso_f">Mulher idosa</option>
-      </select>
-    </label>
-  </div>
-  <div>
-    <label>Δ[Na<sup>+</sup>] em 24 h (mEq/L):
-      <input type="number" id="delta-na" min="0" step="0.1" required />
-    </label>
-  </div>
-  <div>
-    <label>Solução:
-      <select id="solucao-sodio">
-        <option value="3">NaCl 3 %</option>
-        <option value="0.9">NaCl 0,9 %</option>
-      </select>
-    </label>
-  </div>
-  <div>
-    <button type="submit">Calcular</button>
-  </div>
-</form>
-
-<pre id="hipo-result"></pre>
+<table class="calculadora" aria-describedby="tbl-hiponatremia-desc">
+  <caption id="tbl-hiponatremia-desc">Calculadora de Taxa de Infusão de Sódio na Hiponatremia</caption>
+  <tbody>
+    <tr>
+      <th scope="row"><label for="peso-sodio">Peso</label></th>
+      <td data-label="Valor"><input type="number" id="peso-sodio" class="input-editavel" placeholder="Insira o peso" min="0" step="0.1" required></td>
+      <td data-label="Unidade">kg</td>
+    </tr>
+    <tr>
+      <th scope="row"><label for="sexo-idade-sodio">Categoria sexo/idade</label></th>
+      <td data-label="Valor" colspan="2">
+        <select id="sexo-idade-sodio" class="input-editavel" style="width: auto;">
+          <option value="adulto_m">Homem adulto</option>
+          <option value="adulto_f">Mulher adulta</option>
+          <option value="idoso_m">Homem idoso</option>
+          <option value="idoso_f">Mulher idosa</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><label for="delta-na">Δ[Na<sup>+</sup>] em 24 h</label></th>
+      <td data-label="Valor"><input type="number" id="delta-na" class="input-editavel" placeholder="Insira o Δ[Na⁺]" min="0" step="0.1" required></td>
+      <td data-label="Unidade">mEq/L</td>
+    </tr>
+    <tr>
+      <th scope="row"><label for="solucao-sodio">Solução</label></th>
+      <td data-label="Valor" colspan="2">
+        <select id="solucao-sodio" class="input-editavel" style="width: auto;">
+          <option value="3">NaCl 3 %</option>
+          <option value="0.9">NaCl 0,9 %</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Resultado</th>
+      <td data-label="Cálculo" colspan="2" class="resultado" id="hipo-result" aria-live="polite"></td>
+    </tr>
+  </tbody>
+</table>
+<!-- Botão de cálculo removido pois o JS atualiza em tempo real -->
 
 ---
 
@@ -69,29 +74,57 @@ parent: Calculadoras
   </ol>
 </details>
 
-<form id="iron-form" class="calc-box">
-  <div>
-    <label>Peso (kg):
-      <input type="number" id="peso-ferro" min="0" step="0.1" required />
-    </label>
-  </div>
-  <div>
-    <label>Hb atual (g/dL):
-      <input type="number" id="hb-atual" min="0" step="0.1" required />
-    </label>
-  </div>
-  <div>
-    <label>Hb alvo (g/dL):
-      <input type="number" id="hb-alvo" min="0" step="0.1" value="15" required />
-    </label>
-  </div>
-    <button type="submit">Calcular</button>
-</form>
-
-<pre id="iron-result"></pre>
+<table class="calculadora" aria-describedby="tbl-deficit-ferro-desc">
+  <caption id="tbl-deficit-ferro-desc">Calculadora de Déficit de Ferro e Número de Ampolas</caption>
+  <tbody>
+    <tr>
+      <th scope="row"><label for="peso-ferro">Peso</label></th>
+      <td data-label="Valor"><input type="number" id="peso-ferro" class="input-editavel" placeholder="Insira o peso" min="0" step="0.1" required></td>
+      <td data-label="Unidade">kg</td>
+    </tr>
+    <tr>
+      <th scope="row"><label for="hb-atual">Hb atual</label></th>
+      <td data-label="Valor"><input type="number" id="hb-atual" class="input-editavel" placeholder="Insira a Hb atual" min="0" step="0.1" required></td>
+      <td data-label="Unidade">g/dL</td>
+    </tr>
+    <tr>
+      <th scope="row"><label for="hb-alvo">Hb alvo</label></th>
+      <td data-label="Valor"><input type="number" id="hb-alvo" class="input-editavel" placeholder="Insira a Hb alvo" min="0" step="0.1" value="15" required></td>
+      <td data-label="Unidade">g/dL</td>
+    </tr>
+    <tr>
+      <th scope="row">Resultado</th>
+      <td data-label="Cálculo" colspan="2" class="resultado" id="iron-result" aria-live="polite"></td>
+    </tr>
+  </tbody>
+</table>
+<!-- Botão de cálculo removido pois o JS atualiza em tempo real -->
 
 <!-- Scripts usando filtro relative_url para funcionar em qualquer baseurl -->
 <script>
+// Helper function to safely get element value or return NaN
+function getNumericValue(id) {
+  const element = document.getElementById(id);
+  if (!element) return NaN;
+  const value = parseFloat(element.value);
+  // Treat empty string as NaN, but allow 0
+  return element.value === '' ? NaN : value;
+}
+
+// Helper function to safely get element value
+function getValue(id) {
+    const element = document.getElementById(id);
+    return element ? element.value : null;
+}
+
+// Helper function to set innerHTML safely
+function setResult(id, htmlContent) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.innerHTML = htmlContent;
+    }
+}
+
 // assets/js/hiponatremia.js  — versão isolada em IIFE
 (() => {
     const DISTRIBUICAO_AGUA = {
@@ -106,21 +139,23 @@ parent: Calculadoras
     }
 
     /**
-     * Executa o cálculo quando o formulário é enviado.
+     * Executa o cálculo quando os inputs mudam.
      */
-    function onSubmit(event) {
-        event.preventDefault();
-
-        const peso = parseFloat(document.getElementById('peso-sodio').value);
-        const categoria = document.getElementById('sexo-idade-sodio').value;
-        const deltaNa = parseFloat(document.getElementById('delta-na').value);
-        const solucao = document.getElementById('solucao-sodio').value; // "3" ou "0.9"
+    function calcularHiponatremia() {
+        const peso = getNumericValue('peso-sodio');
+        const categoria = getValue('sexo-idade-sodio');
+        const deltaNa = getNumericValue('delta-na');
+        const solucao = getValue('solucao-sodio'); // "3" ou "0.9"
 
         const outputEl = document.getElementById('hipo-result');
+        if (!outputEl) return;
+
+        // Clear previous result
+        outputEl.innerHTML = '';
 
         // Validação básica
-        if (!(peso > 0) || !(deltaNa > 0)) {
-            outputEl.innerText = '⚠️ Insira valores válidos.';
+        if (isNaN(peso) || peso <= 0 || isNaN(deltaNa) || deltaNa <= 0) {
+            // Don't show error immediately, just clear result if inputs are empty/invalid
             return;
         }
 
@@ -133,42 +168,67 @@ parent: Calculadoras
         const taxaMlHora = volumeMl / 24;                            // mL/h
 
         // Saída formatada
-        outputEl.innerText =
-            `ACT: ${format(act, 2)} L\n` +
-            `Na⁺ necessário: ${format(sodioNecessario, 1)} mEq\n` +
-            `Volume da solução (24 h): ${format(volumeMl, 0)} mL\n` +
-            `Taxa de infusão: ${format(taxaMlHora, 1)} mL/h`;
+        outputEl.innerHTML =
+            `ACT: <strong>${format(act, 2)} L</strong><br>` +
+            `Na⁺ necessário: <strong>${format(sodioNecessario, 1)} mEq</strong><br>` +
+            `Volume da solução (24 h): <strong>${format(volumeMl, 0)} mL</strong><br>` +
+            `Taxa de infusão: <strong>${format(taxaMlHora, 1)} mL/h</strong>`;
     }
 
-    // Registra o listener após o DOM estar pronto
-    document.getElementById('hipo-form')?.addEventListener('submit', onSubmit);
+    // Registra os listeners após o DOM estar pronto
+    document.addEventListener('DOMContentLoaded', function() {
+        ['peso-sodio', 'sexo-idade-sodio', 'delta-na', 'solucao-sodio'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                const eventType = (el.tagName === 'SELECT') ? 'change' : 'input';
+                el.addEventListener(eventType, calcularHiponatremia);
+            }
+        });
+         // Initial calculation removed - calculation will trigger on input/change
+         // calcularHiponatremia();
+    });
 })();
 
 /* assets/js/deficit_ferro.js */
 (() => {
     const FERRO_POR_AMPOLA = 100;   // constante interna
 
-    document
-        .getElementById('iron-form')
-        .addEventListener('submit', event => {
-            event.preventDefault();
+    /**
+     * Executa o cálculo quando os inputs mudam.
+     */
+    function calcularDeficitFerro() {
+        const peso = getNumericValue('peso-ferro');
+        const hbAtual = getNumericValue('hb-atual');
+        const hbAlvo = getNumericValue('hb-alvo');
 
-            const peso = parseFloat(document.getElementById('peso-ferro').value);
-            const hbAtual = parseFloat(document.getElementById('hb-atual').value);
-            const hbAlvo = parseFloat(document.getElementById('hb-alvo').value);
+        const outputEl = document.getElementById('iron-result');
+        if (!outputEl) return;
 
-            if (!(peso > 0) || hbAlvo <= hbAtual) {
-                document.getElementById('iron-result').innerText =
-                    '⚠️ Verifique os valores inseridos.';
-                return;
+        // Clear previous result
+        outputEl.innerHTML = '';
+
+        if (isNaN(peso) || peso <= 0 || isNaN(hbAtual) || isNaN(hbAlvo) || hbAlvo <= hbAtual) {
+            // Don't show error immediately, just clear result if inputs are empty/invalid
+            return;
+        }
+
+        const deficit = peso * (hbAlvo - hbAtual) * 2.4 + 500;
+        const ampolas = Math.ceil(deficit / FERRO_POR_AMPOLA);
+
+        outputEl.innerHTML =
+            `Déficit total de ferro: <strong>${deficit.toFixed(0)} mg</strong><br>` +
+            `Número de ampolas (100 mg): <strong>${ampolas}</strong>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        ['peso-ferro', 'hb-atual', 'hb-alvo'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', calcularDeficitFerro);
             }
-
-            const deficit = peso * (hbAlvo - hbAtual) * 2.4 + 500;
-            const ampolas = Math.ceil(deficit / FERRO_POR_AMPOLA);
-
-            document.getElementById('iron-result').innerText =
-                `Déficit total de ferro: ${deficit.toFixed(0)} mg\n` +
-                `Número de ampolas (100 mg): ${ampolas}`;
         });
+        // Initial calculation removed - calculation will trigger on input/change
+        // calcularDeficitFerro();
+    });
 })();
 </script>

@@ -146,8 +146,8 @@
     border: none;
     border-bottom: 1px solid #dee2e6;
     position: relative;
-    padding-left: 40% !important;
-    /* Ensure padding is applied */
+    padding-left: 50% !important;
+    /* Increased padding for data-label */
     text-align: right;
     /* Default alignment for mobile data cells */
   }
@@ -156,7 +156,8 @@
     position: absolute;
     top: 0;
     left: 0.5rem;
-    width: 35%;
+    width: 45%;
+    /* Adjusted width for data-label */
     padding-right: 0.5rem;
     white-space: nowrap;
     font-weight: 600;
