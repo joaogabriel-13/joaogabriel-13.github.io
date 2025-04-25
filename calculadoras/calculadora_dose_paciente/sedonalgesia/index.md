@@ -157,6 +157,7 @@ function getNumericValue(id) {
 }
 
 function calcularDosePorTaxa(medicamento) {
+  console.log(`calcularDosePorTaxa triggered for ${medicamento}`); // Log function entry
   const peso = getNumericValue('pesoPaciente');
   const taxaInputId = 'taxa' + capitalize(medicamento);
   const taxa = getNumericValue(taxaInputId);
@@ -164,22 +165,24 @@ function calcularDosePorTaxa(medicamento) {
 
   if (!resultadoElement) return; // Exit if result element doesn't exist
 
-  // Clear previous result and check inputs
-  resultadoElement.innerHTML = '';
+  // Validation checks
   if (isNaN(peso) || peso <= 0) {
-    resultadoElement.innerHTML = '<i>Por favor, insira um peso válido.</i>'; // Updated validation message
+    // Reverted: Just return if weight is invalid/empty
+    // Keep existing result content if validation fails
     return;
   }
    if (isNaN(taxa)) {
-     // Don't display error if taxa is simply empty, just clear result
-     // Set a message indicating taxa is needed
-     resultadoElement.innerHTML = '<i>Insira a taxa de infusão.</i>';
+     // Reverted: Just return if taxa is invalid/empty
+     // Keep existing result content if validation fails
      return;
    }
   if (taxa < 0) {
-     resultadoElement.innerHTML = '<i>Taxa de infusão não pode ser negativa.</i>'; // Updated validation message
+     // Reverted: Just return if taxa is negative
+     // Keep existing result content if validation fails
      return;
    }
+   // Clear result only AFTER validation passes
+   resultadoElement.innerHTML = '';
    // No special message for taxa === 0, let the calculation proceed to show 0 dose.
    // if (taxa === 0) { ... }
 
@@ -236,6 +239,7 @@ function capitalize(str) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded for sedonalgesia'); // Log DOM ready
   const meds = ['midazolam', 'fentanila', 'escetamina', 'propofol', 'dexmedetomidina'];
   const pesoInput = document.getElementById('pesoPaciente');
 
@@ -245,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (pesoInput) {
+      console.log('Adding listener for pesoPaciente'); // Log listener attachment
       pesoInput.addEventListener('input', calcularTodasDoses);
   }
 
@@ -252,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
   meds.forEach(m => {
     const taxaInput = document.getElementById('taxa' + capitalize(m));
     if (taxaInput) {
+      console.log(`Adding listener for ${taxaInput.id}`); // Log listener attachment
       taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
     }
     // Also trigger calculation on button click (though input event handles real-time)
@@ -262,53 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
    });
 
--   // Initial calculation run removed - calculation will trigger on input/change
--   // calcularTodasDoses(); 
+     // Calculation triggers on input/change via listeners above
  });
  </script>
-   const peso = parseFloat(document.getElementById('pesoPaciente').value);
-  if (!peso || peso <= 0) { return; }
-  let taxa = parseFloat(document.getElementById('taxa' + capitalize(medicamento)).value);
-  if (!taxa || taxa <= 0) { return; }
-  let resultado = '';
-  switch (medicamento) {
-    case 'midazolam':
-      resultado += calcularConcentracoes([1,2,3], taxa, peso, 'mg', 'mg/kg/h');
-      break;
-    case 'fentanila':
-      resultado = `<strong>10 mcg/ml:</strong> ${(taxa*10).toFixed(2)} mcg/h (${((taxa*10)/(60*peso)).toFixed(3)} mcg/kg/min)`;
-      break;
-    case 'escetamina':
-      resultado += calcularConcentracoes([1,10], taxa, peso, 'mg', 'mg/kg/h');
-      break;
-    case 'propofol':
-      resultado = `<strong>10 mg/ml:</strong> ${(taxa*10).toFixed(2)} mg/h (${((taxa*10)/peso).toFixed(3)} mg/kg/h)`;
-      break;
-    case 'dexmedetomidina':
-      resultado = `<strong>4 mcg/ml:</strong> ${(taxa*4).toFixed(2)} mcg/h (${((taxa*4)/peso).toFixed(3)} mcg/kg/h)`;
-      break;
-  }
-  document.getElementById('resultado' + capitalize(medicamento)).innerHTML = resultado;
-}
-
-function calcularConcentracoes(lista, taxa, peso, unidade1, unidade2) {
-  return lista.map(c => {
-    const dose = taxa * c;
-    return `<strong>${c} ${unidade1}/ml:</strong> ${dose.toFixed(2)} ${unidade1}/h (${(dose/peso).toFixed(3)} ${unidade2})`;
-  }).join('<br>');
-}
-
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  const meds = ['midazolam','fentanila','escetamina','propofol','dexmedetomidina'];
-  const pesoInput = document.getElementById('pesoPaciente');
-  if (pesoInput) pesoInput.addEventListener('input', () => meds.forEach(m => calcularDosePorTaxa(m)));
-  meds.forEach(m => {
-    const inp = document.getElementById('taxa' + capitalize(m));
-    if (inp) inp.addEventListener('input', () => calcularDosePorTaxa(m));
-  });
-});
-</script>
+<!-- Extraneous code removed -->

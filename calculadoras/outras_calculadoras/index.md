@@ -142,6 +142,7 @@ function setResult(id, htmlContent) {
      * Executa o cálculo quando os inputs mudam.
      */
     function calcularHiponatremia() {
+        console.log('calcularHiponatremia triggered'); // Log function entry
         const peso = getNumericValue('peso-sodio');
         const categoria = getValue('sexo-idade-sodio');
         const deltaNa = getNumericValue('delta-na');
@@ -150,15 +151,14 @@ function setResult(id, htmlContent) {
         const outputEl = document.getElementById('hipo-result');
         if (!outputEl) return;
 
-        // Clear previous result
-        outputEl.innerHTML = '';
-
         // Validação básica
         if (isNaN(peso) || peso <= 0 || isNaN(deltaNa) || deltaNa <= 0) {
-            // Show a message if inputs are invalid/empty, instead of just returning
-            outputEl.innerHTML = '<i>Preencha os campos com valores válidos.</i>';
+            // Reverted: Just return if inputs are invalid/empty
+            // Keep existing result content if validation fails
             return;
         }
+        // Clear previous result only AFTER validation passes
+        outputEl.innerHTML = '';
 
         // Cálculos principais
         const act = peso * (DISTRIBUICAO_AGUA[categoria] || 0.5); // em litros
@@ -178,15 +178,16 @@ function setResult(id, htmlContent) {
 
     // Registra os listeners após o DOM estar pronto
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded for hiponatremia'); // Log DOM ready
         ['peso-sodio', 'sexo-idade-sodio', 'delta-na', 'solucao-sodio'].forEach(id => {
             const el = document.getElementById(id);
             if (el) {
+                console.log(`Adding listener for ${id}`); // Log listener attachment
                 const eventType = (el.tagName === 'SELECT') ? 'change' : 'input';
                 el.addEventListener(eventType, calcularHiponatremia);
             }
         });
-         // Initial calculation removed - calculation will trigger on input/change
-         // calcularHiponatremia();
+        // Calculation triggers on input/change via listeners above
     });
 })();
 
@@ -198,6 +199,7 @@ function setResult(id, htmlContent) {
      * Executa o cálculo quando os inputs mudam.
      */
     function calcularDeficitFerro() {
+        console.log('calcularDeficitFerro triggered'); // Log function entry
         const peso = getNumericValue('peso-ferro');
         const hbAtual = getNumericValue('hb-atual');
         const hbAlvo = getNumericValue('hb-alvo');
@@ -205,14 +207,13 @@ function setResult(id, htmlContent) {
         const outputEl = document.getElementById('iron-result');
         if (!outputEl) return;
 
-        // Clear previous result
-        outputEl.innerHTML = '';
-
         if (isNaN(peso) || peso <= 0 || isNaN(hbAtual) || isNaN(hbAlvo) || hbAlvo <= hbAtual) {
-             // Show a message if inputs are invalid/empty, instead of just returning
-            outputEl.innerHTML = '<i>Verifique os valores inseridos (Hb alvo > Hb atual).</i>';
+             // Reverted: Just return if inputs are invalid/empty
+             // Keep existing result content if validation fails
             return;
         }
+        // Clear previous result only AFTER validation passes
+        outputEl.innerHTML = '';
 
         const deficit = peso * (hbAlvo - hbAtual) * 2.4 + 500;
         const ampolas = Math.ceil(deficit / FERRO_POR_AMPOLA);
@@ -223,14 +224,15 @@ function setResult(id, htmlContent) {
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded for deficit_ferro'); // Log DOM ready
         ['peso-ferro', 'hb-atual', 'hb-alvo'].forEach(id => {
             const el = document.getElementById(id);
             if (el) {
+                console.log(`Adding listener for ${id}`); // Log listener attachment
                 el.addEventListener('input', calcularDeficitFerro);
             }
         });
-        // Initial calculation removed - calculation will trigger on input/change
-        // calcularDeficitFerro();
+        // Calculation triggers on input/change via listeners above
     });
 })();
 </script>

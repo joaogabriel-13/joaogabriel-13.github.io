@@ -184,26 +184,29 @@ function getNumericValue(id) {
 }
 
 function calcularDosePorTaxa(medicamento) {
+  console.log(`calcularDosePorTaxa triggered for ${medicamento}`); // Log function entry
   const taxaInputId = 'taxa' + capitalize(medicamento);
   const taxa = getNumericValue(taxaInputId);
   const resultadoElement = document.getElementById('resultado' + capitalize(medicamento));
 
   if (!resultadoElement) return; // Exit if result element doesn't exist
 
-  // Clear previous result and check taxa input
-  resultadoElement.innerHTML = '';
+  // Validation checks for taxa
    if (isNaN(taxa)) {
-     // Don't display error if taxa is simply empty, just clear result
+     // Reverted: Just return if taxa is invalid/empty
+     // Keep existing result content if validation fails
      return;
    }
   if (taxa < 0) {
-     resultadoElement.innerHTML = 'Taxa de infusão não pode ser negativa.';
+     // Reverted: Just return if taxa is negative
+     // Keep existing result content if validation fails
      return;
-  }
-   if (taxa === 0) {
-       // Calculate for zero if meaningful, otherwise show message or clear
-       // For most drugs here, 0 rate means 0 dose.
    }
+   // Clear result only AFTER taxa validation passes
+   resultadoElement.innerHTML = '';
+   // No special message for taxa === 0, let the calculation proceed to show 0 dose.
+   // if (taxa === 0) { ... }
+   // Stray brace removed here
 
   let resultadoHtml = '';
   let dosePorHora, dosePorPeso, doseMcgMin;
@@ -219,9 +222,16 @@ function calcularDosePorTaxa(medicamento) {
   // For other drugs, check weight
   const peso = getNumericValue('pesoPaciente');
   if (isNaN(peso) || peso <= 0) {
-    resultadoElement.innerHTML = 'Por favor, insira um peso válido.';
+    // Reverted: Just return if weight is invalid/empty
+    // Keep existing result content if validation fails
     return;
   }
+  // Clear result only AFTER weight validation passes (for weight-dependent drugs)
+  // Note: Nitroglicerina doesn't depend on weight, so its result is cleared earlier if taxa is valid.
+  if (medicamento !== 'nitroglicerina') {
+      resultadoElement.innerHTML = '';
+  }
+
 
   let concent = []; // Concentrations in mcg/ml
   switch (medicamento) {
@@ -251,6 +261,7 @@ function capitalize(str) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded for drogovasoativas'); // Log DOM ready
   const meds = ['norepinefrina', 'dobutamina', 'dopamina', 'nitroprusseto', 'nitroglicerina', 'epinefrina'];
   const pesoInput = document.getElementById('pesoPaciente');
 
@@ -260,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (pesoInput) {
+      console.log('Adding listener for pesoPaciente'); // Log listener attachment
       pesoInput.addEventListener('input', calcularTodasDosesPesoDependente);
   }
 
@@ -267,13 +279,12 @@ document.addEventListener('DOMContentLoaded', function () {
   meds.forEach(m => {
     const taxaInput = document.getElementById('taxa' + capitalize(m));
     if (taxaInput) {
+      console.log(`Adding listener for ${taxaInput.id}`); // Log listener attachment
       taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
     }
      // Button click handled by onclick attribute in HTML
   });
 
-   // Initial calculation run removed - calculation will trigger on input/change
-   // calcularTodasDosesPesoDependente(); // Calculate weight-dependent ones
-   // calcularDosePorTaxa('nitroglicerina'); // Calculate nitroglicerina separately
+     // Calculation triggers on input/change via listeners above
  });
  </script>

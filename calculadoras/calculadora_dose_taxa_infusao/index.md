@@ -179,6 +179,7 @@ function setResult(id, htmlContent) {
 
 // --- Calculadora de Taxa de Infusão (com peso) ---
 function calcularTaxaInfusao() {
+  console.log('calcularTaxaInfusao triggered'); // Log function entry
   const dose = getNumericValue('dosagem');
   const unidadeDose = getValue('unidadeDosagem');
   const peso = getNumericValue('pesoPaciente');
@@ -189,8 +190,12 @@ function calcularTaxaInfusao() {
   let resultado = '';
 
   if (isNaN(dose) || isNaN(peso) || isNaN(concentracao) || peso <= 0 || concentracao <= 0) {
-    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
+    // Reverted: Just return if inputs are invalid/empty
+    // Keep existing result content if validation fails
+    return;
   } else {
+    // Clear result only AFTER validation passes
+    setResult('resultadoTaxaInfusao', '');
     // Ajuste de concentração para mcg/ml (base unit for calculation)
     let concEmMcgMl = (unidadeConc === 'mg/ml') ? concentracao * 1000 : concentracao;
 
@@ -213,6 +218,7 @@ function calcularTaxaInfusao() {
 
 // --- Calculadora de Dosagem (com peso) ---
 function calcularDosagem() {
+  console.log('calcularDosagem triggered'); // Log function entry
   const taxa = getNumericValue('taxaDosagem');
   const peso = getNumericValue('pesoPacienteDosagem');
   const concentracao = getNumericValue('concentracaoDosagem');
@@ -223,8 +229,12 @@ function calcularDosagem() {
   let resultado = '';
 
   if (isNaN(taxa) || isNaN(peso) || isNaN(concentracao) || peso <= 0 || concentracao <= 0) {
-    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
+    // Reverted: Just return if inputs are invalid/empty
+    // Keep existing result content if validation fails
+    return;
   } else {
+    // Clear result only AFTER validation passes
+    setResult('resultadoDosagem', '');
     // Ajuste de concentração para mcg/ml
     let concEmMcgMl = (unidadeConc === 'mg/ml') ? concentracao * 1000 : concentracao;
 
@@ -245,6 +255,7 @@ function calcularDosagem() {
 
 // --- Calculadora de Taxa de Infusão (Independente do Peso, U/min ou U/h) ---
 function calcularTaxaInfusaoIndependente() {
+  console.log('calcularTaxaInfusaoIndependente triggered'); // Log function entry
   const dose = getNumericValue('doseInfusao');
   const unidadeDose = getValue('unidadeDoseInfusao');
   const concentracao = getNumericValue('concentracaoInfusao'); // Assume U/mL
@@ -253,8 +264,12 @@ function calcularTaxaInfusaoIndependente() {
   let resultado = '';
 
   if (isNaN(dose) || isNaN(concentracao) || concentracao <= 0) {
-    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
+    // Reverted: Just return if inputs are invalid/empty
+    // Keep existing result content if validation fails
+    return;
   } else {
+    // Clear result only AFTER validation passes
+    setResult('resultadoTaxaInfusaoIndependente', '');
     if (unidadeDose === 'U/min') {
       // dose (U/min) * 60 (min/h) / conc (U/ml) = taxa (ml/h)
       taxa = (dose * 60) / concentracao;
@@ -274,6 +289,7 @@ function calcularTaxaInfusaoIndependente() {
 
 // --- Calculadora de Dose (Independente do Peso, U/min ou U/h) ---
 function calcularDoseIndependente() {
+  console.log('calcularDoseIndependente triggered'); // Log function entry
   const taxa = getNumericValue('taxaDose');
   const concentracao = getNumericValue('concentracaoDose'); // Assume U/mL
   const unidadeDoseDesejada = getValue('unidadeDoseDesejada');
@@ -282,8 +298,12 @@ function calcularDoseIndependente() {
   let resultado = '';
 
   if (isNaN(taxa) || isNaN(concentracao) || concentracao <= 0) {
-    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
+    // Reverted: Just return if inputs are invalid/empty
+    // Keep existing result content if validation fails
+    return;
   } else {
+    // Clear result only AFTER validation passes
+    setResult('resultadoDoseIndependente', '');
     if (unidadeDoseDesejada === 'U/min') {
       // taxa (ml/h) * conc (U/ml) / 60 (min/h) = dose (U/min)
       dose = (taxa * concentracao) / 60;
@@ -301,6 +321,7 @@ function calcularDoseIndependente() {
 
 // --- Setup Event Listeners ---
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOMContentLoaded for dose_taxa_infusao'); // Log DOM ready
   const calculators = [
     { func: calcularTaxaInfusao, ids: ['dosagem', 'unidadeDosagem', 'pesoPaciente', 'concentracao', 'unidadeConcentracao'] },
     { func: calcularDosagem, ids: ['taxaDosagem', 'pesoPacienteDosagem', 'concentracaoDosagem', 'unidadeConcentracaoDosagem', 'unidadeDosagemDesejada'] },
@@ -312,12 +333,12 @@ document.addEventListener('DOMContentLoaded', function() {
     calc.ids.forEach(id => {
       const el = document.getElementById(id);
       if (el) {
+        console.log(`Adding listener for ${id}`); // Log listener attachment
         const eventType = (el.tagName === 'SELECT') ? 'change' : 'input';
        el.addEventListener(eventType, calc.func);
        }
      });
--    // Initial calculation on load removed - calculation will trigger on input/change
--    // calc.func(); 
+     // Calculation triggers on input/change via listeners above
    });
  });
  </script>
