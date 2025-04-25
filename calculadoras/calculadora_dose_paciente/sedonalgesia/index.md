@@ -150,49 +150,38 @@ Informe o peso do paciente para calcular as doses das medicações:
 </table>
 
 <script>
-// Helper function to safely get element value or return NaN
+// Helper function (pode ficar fora ou dentro do DOMContentLoaded, mas fora é mais seguro)
 function getNumericValue(id) {
   const element = document.getElementById(id);
   return element ? parseFloat(element.value) : NaN;
 }
 
+// <<< MOVER A FUNÇÃO PARA CÁ >>>
 function calcularDosePorTaxa(medicamento) {
-  console.log(`calcularDosePorTaxa triggered for ${medicamento}`); // Log function entry
+  console.log(`calcularDosePorTaxa triggered for ${medicamento}`); // Log
   const peso = getNumericValue('pesoPaciente');
   const taxaInputId = 'taxa' + capitalize(medicamento);
   const taxa = getNumericValue(taxaInputId);
   const resultadoElement = document.getElementById('resultado' + capitalize(medicamento));
 
-  if (!resultadoElement) return; // Exit if result element doesn't exist
+  if (!resultadoElement) return;
 
-  // Validation checks
   if (isNaN(peso) || peso <= 0) {
-    // Reverted: Just return if weight is invalid/empty
-    // Keep existing result content if validation fails
     return;
   }
    if (isNaN(taxa)) {
-     // Reverted: Just return if taxa is invalid/empty
-     // Keep existing result content if validation fails
      return;
    }
   if (taxa < 0) {
-     // Reverted: Just return if taxa is negative
-     // Keep existing result content if validation fails
      return;
    }
-   // Clear result only AFTER validation passes
    resultadoElement.innerHTML = '';
-   // No special message for taxa === 0, let the calculation proceed to show 0 dose.
-   // if (taxa === 0) { ... }
-
 
    let resultadoHtml = '';
   let dosePorHora, dosePorPeso;
 
   switch (medicamento) {
     case 'midazolam':
-      // Calculate for each concentration
       [1, 2, 3].forEach(c => {
         dosePorHora = taxa * c;
         dosePorPeso = dosePorHora / peso;
@@ -200,13 +189,11 @@ function calcularDosePorTaxa(medicamento) {
       });
       break;
     case 'fentanila':
-      // Concentração fixa: 10 mcg/ml
-      dosePorHora = taxa * 10; // mcg/h
-      dosePorPeso = dosePorHora / (60 * peso); // mcg/kg/min
+      dosePorHora = taxa * 10;
+      dosePorPeso = dosePorHora / (60 * peso);
       resultadoHtml = `<strong>10 mcg/ml:</strong> ${dosePorHora.toFixed(2)} mcg/h (${dosePorPeso.toFixed(3)} mcg/kg/min)`;
       break;
     case 'escetamina':
-       // Calculate for each concentration
       [1, 10].forEach(c => {
         dosePorHora = taxa * c;
         dosePorPeso = dosePorHora / peso;
@@ -214,15 +201,13 @@ function calcularDosePorTaxa(medicamento) {
       });
       break;
     case 'propofol':
-      // Concentração fixa: 10 mg/ml
-      dosePorHora = taxa * 10; // mg/h
-      dosePorPeso = dosePorHora / peso; // mg/kg/h
+      dosePorHora = taxa * 10;
+      dosePorPeso = dosePorHora / peso;
       resultadoHtml = `<strong>10 mg/ml:</strong> ${dosePorHora.toFixed(2)} mg/h (${dosePorPeso.toFixed(3)} mg/kg/h)`;
       break;
     case 'dexmedetomidina':
-      // Concentração fixa: 4 mcg/ml
-      dosePorHora = taxa * 4; // mcg/h
-      dosePorPeso = dosePorHora / peso; // mcg/kg/h
+      dosePorHora = taxa * 4;
+      dosePorPeso = dosePorHora / peso;
       resultadoHtml = `<strong>4 mcg/ml:</strong> ${dosePorHora.toFixed(2)} mcg/h (${dosePorPeso.toFixed(3)} mcg/kg/h)`;
       break;
     default:
@@ -231,44 +216,34 @@ function calcularDosePorTaxa(medicamento) {
   resultadoElement.innerHTML = resultadoHtml;
 }
 
-// Removed calcularConcentracoes as logic is now inline
-
+// Helper (pode ficar fora ou dentro)
 function capitalize(str) {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Código que PRECISA esperar o DOM carregar fica aqui dentro
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOMContentLoaded for sedonalgesia'); // Log DOM ready
+  console.log('DOMContentLoaded for sedonalgesia');
   const meds = ['midazolam', 'fentanila', 'escetamina', 'propofol', 'dexmedetomidina'];
   const pesoInput = document.getElementById('pesoPaciente');
 
-  // Function to trigger calculation for all meds based on peso change
   function calcularTodasDoses() {
       meds.forEach(m => calcularDosePorTaxa(m));
   }
 
   if (pesoInput) {
-      console.log('Adding listener for pesoPaciente'); // Log listener attachment
+      console.log('Adding listener for pesoPaciente');
       pesoInput.addEventListener('input', calcularTodasDoses);
   }
 
-  // Add event listeners to each taxa input to recalculate its specific dose
   meds.forEach(m => {
     const taxaInput = document.getElementById('taxa' + capitalize(m));
     if (taxaInput) {
-      console.log(`Adding listener for ${taxaInput.id}`); // Log listener attachment
+      console.log(`Adding listener for ${taxaInput.id}`);
       taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
     }
-    // Also trigger calculation on button click (though input event handles real-time)
-    const button = taxaInput?.closest('tbody')?.querySelector('.btn-calcular');
-     if (button) {
-         // The onclick is already set in HTML, but ensure it calls the updated function
-         // No need to add listener here if onclick attribute is present and correct
-      }
+    // O botão onclick já está no HTML, não precisa adicionar listener aqui
    });
-
-     // Calculation triggers on input/change via listeners above
  });
  </script>
-<!-- Extraneous code removed -->
