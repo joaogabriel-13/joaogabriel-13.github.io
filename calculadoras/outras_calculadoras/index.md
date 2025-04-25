@@ -155,7 +155,8 @@ function setResult(id, htmlContent) {
 
         // Validação básica
         if (isNaN(peso) || peso <= 0 || isNaN(deltaNa) || deltaNa <= 0) {
-            // Don't show error immediately, just clear result if inputs are empty/invalid
+            // Show a message if inputs are invalid/empty, instead of just returning
+            outputEl.innerHTML = '<i>Preencha os campos com valores válidos.</i>';
             return;
         }
 
@@ -208,7 +209,8 @@ function setResult(id, htmlContent) {
         outputEl.innerHTML = '';
 
         if (isNaN(peso) || peso <= 0 || isNaN(hbAtual) || isNaN(hbAlvo) || hbAlvo <= hbAtual) {
-            // Don't show error immediately, just clear result if inputs are empty/invalid
+             // Show a message if inputs are invalid/empty, instead of just returning
+            outputEl.innerHTML = '<i>Verifique os valores inseridos (Hb alvo > Hb atual).</i>';
             return;
         }
 

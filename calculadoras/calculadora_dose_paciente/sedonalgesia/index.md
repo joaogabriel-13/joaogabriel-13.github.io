@@ -167,15 +167,17 @@ function calcularDosePorTaxa(medicamento) {
   // Clear previous result and check inputs
   resultadoElement.innerHTML = '';
   if (isNaN(peso) || peso <= 0) {
-    resultadoElement.innerHTML = 'Por favor, insira um peso válido.';
+    resultadoElement.innerHTML = '<i>Por favor, insira um peso válido.</i>'; // Updated validation message
     return;
   }
    if (isNaN(taxa)) {
      // Don't display error if taxa is simply empty, just clear result
+     // Set a message indicating taxa is needed
+     resultadoElement.innerHTML = '<i>Insira a taxa de infusão.</i>';
      return;
    }
   if (taxa < 0) {
-     resultadoElement.innerHTML = 'Taxa de infusão não pode ser negativa.';
+     resultadoElement.innerHTML = '<i>Taxa de infusão não pode ser negativa.</i>'; // Updated validation message
      return;
    }
    // No special message for taxa === 0, let the calculation proceed to show 0 dose.

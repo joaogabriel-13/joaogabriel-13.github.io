@@ -189,7 +189,7 @@ function calcularTaxaInfusao() {
   let resultado = '';
 
   if (isNaN(dose) || isNaN(peso) || isNaN(concentracao) || peso <= 0 || concentracao <= 0) {
-    resultado = 'Preencha todos os campos com valores válidos.';
+    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
   } else {
     // Ajuste de concentração para mcg/ml (base unit for calculation)
     let concEmMcgMl = (unidadeConc === 'mg/ml') ? concentracao * 1000 : concentracao;
@@ -223,7 +223,7 @@ function calcularDosagem() {
   let resultado = '';
 
   if (isNaN(taxa) || isNaN(peso) || isNaN(concentracao) || peso <= 0 || concentracao <= 0) {
-    resultado = 'Preencha todos os campos com valores válidos.';
+    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
   } else {
     // Ajuste de concentração para mcg/ml
     let concEmMcgMl = (unidadeConc === 'mg/ml') ? concentracao * 1000 : concentracao;
@@ -253,7 +253,7 @@ function calcularTaxaInfusaoIndependente() {
   let resultado = '';
 
   if (isNaN(dose) || isNaN(concentracao) || concentracao <= 0) {
-    resultado = 'Preencha todos os campos com valores válidos.';
+    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
   } else {
     if (unidadeDose === 'U/min') {
       // dose (U/min) * 60 (min/h) / conc (U/ml) = taxa (ml/h)
@@ -282,7 +282,7 @@ function calcularDoseIndependente() {
   let resultado = '';
 
   if (isNaN(taxa) || isNaN(concentracao) || concentracao <= 0) {
-    resultado = 'Preencha todos os campos com valores válidos.';
+    resultado = '<i>Preencha todos os campos com valores válidos.</i>'; // Updated validation message
   } else {
     if (unidadeDoseDesejada === 'U/min') {
       // taxa (ml/h) * conc (U/ml) / 60 (min/h) = dose (U/min)
