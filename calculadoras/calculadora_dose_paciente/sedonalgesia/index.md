@@ -244,6 +244,6 @@ document.addEventListener('DOMContentLoaded', function () {
       taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
     }
     // O botão onclick já está no HTML, não precisa adicionar listener aqui
-   });
- });
+   })
+ })
  </script>
