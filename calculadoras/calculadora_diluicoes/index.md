@@ -23,24 +23,24 @@ Informe **três** valores para descobrir o quarto.
   <tbody>
     <tr>
       <th scope="row"><label for="c1">Concentração inicial (C1)</label></th>
-      <td><input type="number" id="c1" class="input-editavel" min="0" step="any" aria-describedby="unit-c1"></td>
-      <td id="unit-c1"><span>mg/mL</span></td>
-      <td rowspan="4" id="resultadoDiluição" class="resultado" aria-live="polite"></td>
+      <td data-label="Valor"><input type="number" id="c1" class="input-editavel" min="0" step="any" aria-describedby="unit-c1"></td>
+      <td data-label="Unidade" id="unit-c1"><span>mg/mL</span></td>
+      <td data-label="Resultado" rowspan="4" id="resultadoDiluição" class="resultado" aria-live="polite"></td>
     </tr>
     <tr>
       <th scope="row"><label for="v1">Volume inicial (V1)</label></th>
-      <td><input type="number" id="v1" class="input-editavel" min="0" step="any" aria-describedby="unit-v1"></td>
-      <td id="unit-v1"><span>mL</span></td>
+      <td data-label="Valor"><input type="number" id="v1" class="input-editavel" min="0" step="any" aria-describedby="unit-v1"></td>
+      <td data-label="Unidade" id="unit-v1"><span>mL</span></td>
     </tr>
     <tr>
       <th scope="row"><label for="c2">Concentração final (C2)</label></th>
-      <td><input type="number" id="c2" class="input-editavel" min="0" step="any" aria-describedby="unit-c2"></td>
-      <td id="unit-c2"><span>mg/mL</span></td>
+      <td data-label="Valor"><input type="number" id="c2" class="input-editavel" min="0" step="any" aria-describedby="unit-c2"></td>
+      <td data-label="Unidade" id="unit-c2"><span>mg/mL</span></td>
     </tr>
     <tr>
       <th scope="row"><label for="v2">Volume final (V2)</label></th>
-      <td><input type="number" id="v2" class="input-editavel" min="0" step="any" aria-describedby="unit-v2"></td>
-      <td id="unit-v2"><span>mL</span></td>
+      <td data-label="Valor"><input type="number" id="v2" class="input-editavel" min="0" step="any" aria-describedby="unit-v2"></td>
+      <td data-label="Unidade" id="unit-v2"><span>mL</span></td>
     </tr>
   </tbody>
 </table>
@@ -66,24 +66,24 @@ Determine os volumes que devem ser misturados de duas soluções distintas para 
   <tbody>
     <tr>
       <th scope="row"><label for="c1Alt">Concentração Solução 1 (C1)</label></th>
-      <td><input type="number" id="c1Alt" class="input-editavel" min="0" step="any" aria-describedby="unit-c1Alt"></td>
-      <td id="unit-c1Alt"><span>mg/mL</span></td>
-      <td rowspan="4" id="resultadoDiluiçãoAlt" class="resultado" aria-live="polite"></td>
+      <td data-label="Valor"><input type="number" id="c1Alt" class="input-editavel" min="0" step="any" aria-describedby="unit-c1Alt"></td>
+      <td data-label="Unidade" id="unit-c1Alt"><span>mg/mL</span></td>
+      <td data-label="Resultado" rowspan="4" id="resultadoDiluiçãoAlt" class="resultado" aria-live="polite"></td>
     </tr>
     <tr>
       <th scope="row"><label for="c2Alt">Concentração Solução 2 (C2)</label></th>
-      <td><input type="number" id="c2Alt" class="input-editavel" min="0" step="any" aria-describedby="unit-c2Alt"></td>
-      <td id="unit-c2Alt"><span>mg/mL</span></td>
+      <td data-label="Valor"><input type="number" id="c2Alt" class="input-editavel" min="0" step="any" aria-describedby="unit-c2Alt"></td>
+      <td data-label="Unidade" id="unit-c2Alt"><span>mg/mL</span></td>
     </tr>
     <tr>
       <th scope="row"><label for="cfAlt">Concentração final desejada (Cf)</label></th>
-      <td><input type="number" id="cfAlt" class="input-editavel" min="0" step="any" aria-describedby="unit-cfAlt"></td>
-      <td id="unit-cfAlt"><span>mg/mL</span></td>
+      <td data-label="Valor"><input type="number" id="cfAlt" class="input-editavel" min="0" step="any" aria-describedby="unit-cfAlt"></td>
+      <td data-label="Unidade" id="unit-cfAlt"><span>mg/mL</span></td>
     </tr>
     <tr>
       <th scope="row"><label for="vfAlt">Volume final desejado (Vf)</label></th>
-      <td><input type="number" id="vfAlt" class="input-editavel" min="0" step="any" aria-describedby="unit-vfAlt"></td>
-      <td id="unit-vfAlt"><span>mL</span></td>
+      <td data-label="Valor"><input type="number" id="vfAlt" class="input-editavel" min="0" step="any" aria-describedby="unit-vfAlt"></td>
+      <td data-label="Unidade" id="unit-vfAlt"><span>mL</span></td>
     </tr>
   </tbody>
 </table>

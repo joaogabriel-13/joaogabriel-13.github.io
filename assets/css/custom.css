@@ -26,6 +26,8 @@
   margin: 1.5rem 0;
   border-collapse: collapse;
   table-layout: fixed;
+  font-family: sans-serif;
+  /* Add default sans-serif font */
 }
 
 .calculadora caption {
@@ -44,7 +46,32 @@
 
 .calculadora thead th {
   background: #f8f9fa;
-  text-align: center;
+  /* Adjust alignment based on column content */
+  vertical-align: bottom;
+  /* Align headers better with content */
+  padding-bottom: 0.75rem;
+  /* Add a bit more space */
+}
+
+/* Align specific headers */
+.calculadora thead th:nth-child(1) {
+  /* Variável */
+  text-align: left;
+}
+
+.calculadora thead th:nth-child(2) {
+  /* Valor */
+  text-align: right;
+}
+
+.calculadora thead th:nth-child(3) {
+  /* Unidade */
+  text-align: left;
+}
+
+.calculadora thead th:nth-child(4) {
+  /* Resultado */
+  text-align: right;
 }
 
 .calculadora th[scope="row"] {
@@ -119,7 +146,10 @@
     border: none;
     border-bottom: 1px solid #dee2e6;
     position: relative;
-    padding-left: 40%;
+    padding-left: 40% !important;
+    /* Ensure padding is applied */
+    text-align: right;
+    /* Default alignment for mobile data cells */
   }
 
   .calculadora td:before {
@@ -131,17 +161,17 @@
     white-space: nowrap;
     font-weight: 600;
     content: attr(data-label);
-  }
-
-  .calculadora td:nth-child(2) {
-    text-align: right;
-  }
-
-  .calculadora td:nth-child(3) {
     text-align: left;
+    /* Keep labels left-aligned */
   }
 
-  .calculadora td:nth-child(4) {
+  /* Remove specific mobile alignments now that default is right */
+  /* .calculadora td:nth-child(2) { text-align: right; } */
+  /* .calculadora td:nth-child(3) { text-align: left; } */
+  /* .calculadora td:nth-child(4) { text-align: right; } */
+
+  /* Ensure result cell still aligns right if needed, though parent td handles it */
+  .calculadora .resultado {
     text-align: right;
   }
 }
