@@ -177,16 +177,12 @@ function calcularDosePorTaxa(medicamento) {
   if (taxa < 0) {
      resultadoElement.innerHTML = 'Taxa de infusão não pode ser negativa.';
      return;
-  }
-   if (taxa === 0) {
-       resultadoElement.innerHTML = 'Taxa de infusão é zero.'; // Or calculate for zero if meaningful
-       // Depending on desired behavior, you might calculate or just show this message.
-       // For now, just showing message. Calculation for zero might be needed.
-       // Let's calculate for zero as well, as it might be a valid state.
    }
+   // No special message for taxa === 0, let the calculation proceed to show 0 dose.
+   // if (taxa === 0) { ... }
 
 
-  let resultadoHtml = '';
+   let resultadoHtml = '';
   let dosePorHora, dosePorPeso;
 
   switch (medicamento) {
@@ -261,14 +257,14 @@ document.addEventListener('DOMContentLoaded', function () {
      if (button) {
          // The onclick is already set in HTML, but ensure it calls the updated function
          // No need to add listener here if onclick attribute is present and correct
-     }
-  });
+      }
+   });
 
-   // Initial calculation run in case values are pre-filled (e.g., browser cache)
-   calcularTodasDoses();
-});
-</script>
-  const peso = parseFloat(document.getElementById('pesoPaciente').value);
+-   // Initial calculation run removed - calculation will trigger on input/change
+-   // calcularTodasDoses(); 
+ });
+ </script>
+   const peso = parseFloat(document.getElementById('pesoPaciente').value);
   if (!peso || peso <= 0) { return; }
   let taxa = parseFloat(document.getElementById('taxa' + capitalize(medicamento)).value);
   if (!taxa || taxa <= 0) { return; }

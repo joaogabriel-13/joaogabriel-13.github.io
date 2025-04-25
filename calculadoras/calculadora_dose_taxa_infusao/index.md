@@ -313,11 +313,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const el = document.getElementById(id);
       if (el) {
         const eventType = (el.tagName === 'SELECT') ? 'change' : 'input';
-        el.addEventListener(eventType, calc.func);
-      }
-    });
-    // Initial calculation on load
-    calc.func();
-  });
-});
-</script>
+       el.addEventListener(eventType, calc.func);
+       }
+     });
+-    // Initial calculation on load removed - calculation will trigger on input/change
+-    // calc.func(); 
+   });
+ });
+ </script>
