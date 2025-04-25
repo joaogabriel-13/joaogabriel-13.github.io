@@ -32,7 +32,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('midazolam')">Calcular Dose pela Taxa</button></td>
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="midazolam">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -59,7 +59,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('fentanila')">Calcular Dose pela Taxa</button></td>
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="fentanila">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -86,7 +86,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('escetamina')">Calcular Dose pela Taxa</button></td>
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="escetamina">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -113,7 +113,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('propofol')">Calcular Dose pela Taxa</button></td>
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="propofol">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -140,7 +140,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('dexmedetomidina')">Calcular Dose pela Taxa</button></td>
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="dexmedetomidina">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -150,13 +150,13 @@ Informe o peso do paciente para calcular as doses das medicações:
 </table>
 
 <script>
-// Helper function (pode ficar fora ou dentro do DOMContentLoaded, mas fora é mais seguro)
+// Helper function
 function getNumericValue(id) {
   const element = document.getElementById(id);
   return element ? parseFloat(element.value) : NaN;
 }
 
-// <<< MOVER A FUNÇÃO PARA CÁ >>>
+// Função principal de cálculo
 function calcularDosePorTaxa(medicamento) {
   console.log(`calcularDosePorTaxa triggered for ${medicamento}`); // Log
   const peso = getNumericValue('pesoPaciente');
@@ -166,18 +166,15 @@ function calcularDosePorTaxa(medicamento) {
 
   if (!resultadoElement) return;
 
-  if (isNaN(peso) || peso <= 0) {
-    return;
+  // Limpa resultado anterior se o peso ou taxa forem inválidos (exceto 0)
+  if (isNaN(peso) || peso <= 0 || isNaN(taxa) || taxa < 0) {
+      resultadoElement.innerHTML = ''; // Limpa se inválido
+      return; // Sai se inválido
   }
-   if (isNaN(taxa)) {
-     return;
-   }
-  if (taxa < 0) {
-     return;
-   }
-   resultadoElement.innerHTML = '';
+  // Se for válido (incluindo taxa 0), continua e calcula (mostrando 0 se taxa for 0)
+  resultadoElement.innerHTML = ''; // Garante que limpa antes de mostrar resultado novo
 
-   let resultadoHtml = '';
+  let resultadoHtml = '';
   let dosePorHora, dosePorPeso;
 
   switch (medicamento) {
@@ -216,48 +213,55 @@ function calcularDosePorTaxa(medicamento) {
   resultadoElement.innerHTML = resultadoHtml;
 }
 
-// Helper (pode ficar fora ou dentro)
+// Helper
 function capitalize(str) {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Código que PRECISA esperar o DOM carregar fica aqui dentro
+// Código que PRECISA esperar o DOM carregar
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOMContentLoaded for sedonalgesia');
   const meds = ['midazolam', 'fentanila', 'escetamina', 'propofol', 'dexmedetomidina'];
   const pesoInput = document.getElementById('pesoPaciente');
 
-  // Função para recalcular tudo quando o peso muda (mantida)
+  // Função para recalcular tudo quando o peso muda
   function calcularTodasDoses() {
-      meds.forEach(m => calcularDosePorTaxa(m));
+      // Itera sobre os medicamentos e recalcula a dose se a taxa já tiver um valor
+      meds.forEach(m => {
+          const taxaInputId = 'taxa' + capitalize(m);
+          const taxaInput = document.getElementById(taxaInputId);
+          // Só recalcula se já houver um valor na taxa para evitar limpar resultados desnecessariamente
+          if (taxaInput && taxaInput.value !== '') {
+              calcularDosePorTaxa(m);
+          }
+      });
   }
 
-  // Adiciona listener para o input de peso (mantido)
+  // Adiciona listener para o input de peso
   if (pesoInput) {
       console.log('Adding listener for pesoPaciente');
       pesoInput.addEventListener('input', calcularTodasDoses);
   }
 
-  // Adiciona listeners para os inputs de taxa (mantido)
+  // Adiciona listeners para os inputs de taxa E para os botões
   meds.forEach(m => {
     const taxaInput = document.getElementById('taxa' + capitalize(m));
     if (taxaInput) {
       console.log(`Adding listener for ${taxaInput.id}`);
+      // Recalcula ao digitar a taxa
       taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
     }
 
-    // <<< NOVO: Adiciona listeners para os BOTÕES >>>
-    // Encontra o botão usando o atributo data-medicamento que adicionamos
+    // Adiciona listeners para os BOTÕES
     const calcButton = document.querySelector(`.btn-calcular[data-medicamento="${m}"]`);
     if (calcButton) {
         console.log(`Adding click listener for button ${m}`);
+        // Recalcula ao clicar no botão (útil se o usuário só preencher a taxa e clicar)
         calcButton.addEventListener('click', function() {
-            // Chama a função com o nome do medicamento associado ao botão
             calcularDosePorTaxa(m);
         });
     }
-    // <<< FIM DO NOVO >>>
   });
 });
- </script>
+</script>
