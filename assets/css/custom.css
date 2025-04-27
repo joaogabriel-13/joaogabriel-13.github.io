@@ -123,56 +123,115 @@
 }
 
 /* Responsividade */
-@media (max-width: 576px) {
-
-  .calculadora,
-  .calculadora thead,
-  .calculadora tbody,
-  .calculadora th,
-  .calculadora td,
-  .calculadora tr {
-    display: block;
-  }
+@media (max-width: 600px) {
+  /* Ajustado para 600px como no exemplo anterior, ou mantenha 576px se preferir */
 
   .calculadora thead {
-    display: none;
+    /* Esconde o cabeçalho original em telas pequenas */
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
   }
 
   .calculadora tr {
-    margin-bottom: 0.75rem;
+    /* Transforma linhas em blocos */
+    display: block;
+    margin-bottom: 0.625em;
+    /* Espaçamento entre blocos */
+    border: 1px solid #dee2e6;
+    /* Borda ao redor do bloco */
   }
 
   .calculadora td {
-    border: none;
-    border-bottom: 1px solid #dee2e6;
-    position: relative;
-    padding-left: 50% !important;
-    /* Increased padding for data-label */
+    /* Transforma células em blocos e adiciona label */
+    display: block;
     text-align: right;
-    /* Default alignment for mobile data cells */
+    /* Alinha valor à direita */
+    border: none;
+    /* Remove bordas internas das células */
+    border-bottom: 1px solid #eee;
+    /* Adiciona separador entre "linhas" dentro do bloco */
+    position: relative;
+    padding: 0.5rem 0.5rem 0.5rem 50%;
+    /* Padding: top right bottom left (espaço para label) */
+    min-height: 1.5em;
+    /* Garante altura mínima para visualização */
+    vertical-align: middle;
+    /* Tenta alinhar verticalmente */
   }
 
-  .calculadora td:before {
+  .calculadora td::before {
+    /* Usar ::before (dois-pontos duplos) */
+    /* Adiciona o label (do data-label) antes do conteúdo */
+    content: attr(data-label);
+    /* Usa o atributo data-label */
     position: absolute;
     top: 0;
-    left: 0.5rem;
+    /* Alinha ao topo */
+    left: 6px;
+    /* Espaçamento à esquerda */
     width: 45%;
-    /* Adjusted width for data-label */
-    padding-right: 0.5rem;
+    /* Largura do label */
+    padding: 0.5rem 10px 0.5rem 0;
+    /* Padding: top right bottom left */
     white-space: nowrap;
-    font-weight: 600;
-    content: attr(data-label);
+    /* Evita quebra de linha no label */
     text-align: left;
-    /* Keep labels left-aligned */
+    /* Alinha label à esquerda */
+    font-weight: bold;
+    vertical-align: middle;
+    /* Tenta alinhar verticalmente */
+    line-height: 1.5em;
+    /* Ajusta altura da linha para alinhar com o conteúdo se necessário */
   }
 
-  /* Remove specific mobile alignments now that default is right */
-  /* .calculadora td:nth-child(2) { text-align: right; } */
-  /* .calculadora td:nth-child(3) { text-align: left; } */
-  /* .calculadora td:nth-child(4) { text-align: right; } */
+  .calculadora td:last-child {
+    border-bottom: 0;
+    /* Remove borda inferior da última célula do bloco */
+  }
 
-  /* Ensure result cell still aligns right if needed, though parent td handles it */
-  .calculadora .resultado {
+  /* Ajustes específicos */
+  .calculadora td.resultado {
+    padding-left: 0.5rem;
+    /* Remove padding extra do resultado se não usar data-label */
     text-align: right;
+    /* Mantém alinhamento à direita */
+    background-color: #e9ecef;
+    /* Mantém fundo */
+    font-weight: bold;
+  }
+
+  .calculadora td.resultado::before {
+    /* Se a célula de resultado tiver data-label, manterá o padrão. */
+    /* Se não tiver, pode adicionar um label fixo aqui se desejar: */
+    /* content: "Resultado:"; */
+    /* Ou pode remover o ::before especificamente para .resultado se não quiser label: */
+    content: "";
+    /* Remove o label para a célula de resultado */
+    padding: 0;
+    width: 0;
+  }
+
+  .calculadora .input-editavel,
+  .calculadora select {
+    width: auto;
+    /* Permite que o input/select ajuste o tamanho */
+    max-width: 100%;
+    /* Evita que ultrapasse o container */
+    text-align: right;
+    /* Mantém alinhamento do input */
+  }
+
+  /* Remover larguras fixas desnecessárias no mobile */
+  .calculadora th[scope="row"],
+  .calculadora td:nth-child(2),
+  .calculadora td:nth-child(3),
+  .calculadora td:nth-child(4) {
+    width: auto;
   }
 }

@@ -1,2 +1,119 @@
----
----
+
+/* Estilos base para a tabela (opcional, ajuste conforme necessário) */
+.calculadora {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.calculadora th,
+.calculadora td {
+  padding: 8px;
+  border: 1px solid #ddd; /* Adiciona bordas para clareza */
+  text-align: left;
+  vertical-align: middle; /* Alinha verticalmente ao centro */
+}
+
+.calculadora th {
+  background-color: #f2f2f2; /* Cor de fundo para cabeçalhos */
+  font-weight: bold;
+}
+
+.calculadora caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.calculadora .input-editavel,
+.calculadora select {
+  width: 100%; /* Faz inputs ocuparem a largura da célula */
+  padding: 6px;
+  box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.calculadora .resultado {
+  font-weight: bold;
+  background-color: #e6f7ff; /* Cor de fundo para resultados */
+  min-height: 30px; /* Garante altura mínima */
+}
+
+/* Estilos responsivos para telas menores (ex: < 600px) */
+@media screen and (max-width: 600px) {
+  .calculadora thead {
+    /* Esconde o cabeçalho original em telas pequenas */
+    display: none;
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .calculadora tr {
+    /* Transforma linhas em blocos */
+    display: block;
+    margin-bottom: 0.625em;
+    border: 1px solid #ddd; /* Adiciona borda ao redor de cada "bloco" */
+  }
+
+  .calculadora td {
+    /* Transforma células em blocos e adiciona label */
+    display: block;
+    text-align: right; /* Alinha valor à direita */
+    border: none; /* Remove bordas internas das células */
+    border-bottom: 1px solid #eee; /* Adiciona separador entre "linhas" dentro do bloco */
+    position: relative;
+    padding-left: 50%; /* Espaço para o label */
+  }
+
+  .calculadora td::before {
+    /* Adiciona o label (do data-label) antes do conteúdo */
+    content: attr(data-label); /* Usa o atributo data-label */
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left; /* Alinha label à esquerda */
+    font-weight: bold;
+  }
+
+  .calculadora td:last-child {
+    border-bottom: 0; /* Remove borda inferior da última célula do bloco */
+  }
+
+  /* Ajustes específicos para células que ocupam múltiplas colunas ou não têm label */
+  .calculadora td[colspan="2"]::before,
+  .calculadora td[colspan="3"]::before {
+     /* Ajuste se necessário, ou remova se não precisar de label */
+     content: attr(data-label); /* Mantém o label se existir */
+  }
+
+  .calculadora td.resultado {
+    padding-left: 6px; /* Remove padding extra do resultado */
+    text-align: left; /* Alinha resultado à esquerda */
+  }
+   .calculadora td.resultado::before {
+     content: "Resultado:"; /* Adiciona um label fixo se não houver data-label */
+     /* Ou remova o ::before se não quiser label para resultado */
+   }
+
+  .calculadora .input-editavel,
+  .calculadora select {
+    width: auto; /* Permite que o input/select ajuste o tamanho */
+    max-width: 100%; /* Evita que ultrapasse o container */
+  }
+
+  /* Garante que o cabeçalho da linha (th) seja exibido como label */
+   .calculadora th[scope="row"] {
+      display: none; /* Esconde o th original */
+   }
+   /* Se você usou th para labels, pode precisar ajustar o seletor td::before */
+   /* Exemplo: Se o label está no th, você pode precisar buscar o texto do th correspondente */
+
+}
