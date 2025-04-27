@@ -176,4 +176,4 @@ Informe o peso do paciente para calcular as doses das medicações:
   </tbody>
 </table>
 
-<script src="{{ 'assets/js/calculadora_dose_paciente/drogas_vasoativas.js' | relative_url }}" defer></script>
+<script src="{{ 'assets/js/calculadoras/calculadora_dose_paciente/drogas_vasoativas.js' | relative_url }}" defer></script>
