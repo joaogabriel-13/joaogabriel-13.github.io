@@ -32,7 +32,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="midazolam">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="midazolam">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -59,7 +59,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="fentanila">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="fentanila">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -86,7 +86,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="escetamina">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="escetamina">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -113,7 +113,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="propofol">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="propofol">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -140,7 +140,7 @@ Informe o peso do paciente para calcular as doses das medicações:
     </tr>
     <tr>
       <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="dexmedetomidina">Calcular Dose pela Taxa</button></td> {/* onclick removido, data-medicamento adicionado */}
+      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="dexmedetomidina">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>
