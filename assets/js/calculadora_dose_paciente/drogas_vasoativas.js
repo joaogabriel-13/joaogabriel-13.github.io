@@ -1,4 +1,3 @@
-<script>
 // Helper function to safely get element value or return NaN
 function getNumericValue(id) {
   const element = document.getElementById(id);
@@ -109,4 +108,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
      // Calculation triggers on input/change via listeners above
  });
- </script>

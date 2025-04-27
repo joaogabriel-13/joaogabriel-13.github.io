@@ -1,4 +1,3 @@
-<script>
 // Helper function
 function getNumericValue(id) {
   const element = document.getElementById(id);
@@ -152,4 +151,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
   console.log('DEBUG: Setup de listeners concluído.');
 })
-</script>
