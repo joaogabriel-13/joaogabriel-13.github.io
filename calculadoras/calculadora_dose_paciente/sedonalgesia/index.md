@@ -150,6 +150,8 @@ Informe o peso do paciente para calcular as doses das medicações:
 </table>
 
 <script>
+alert('Script Sedonalgesia Carregado!'); // <--- ADICIONE ESTA LINHA AQUI
+
 // Helper function
 function getNumericValue(id) {
   const element = document.getElementById(id);
@@ -158,110 +160,16 @@ function getNumericValue(id) {
 
 // Função principal de cálculo
 function calcularDosePorTaxa(medicamento) {
-  console.log(`calcularDosePorTaxa triggered for ${medicamento}`); // Log
-  const peso = getNumericValue('pesoPaciente');
-  const taxaInputId = 'taxa' + capitalize(medicamento);
-  const taxa = getNumericValue(taxaInputId);
-  const resultadoElement = document.getElementById('resultado' + capitalize(medicamento));
-
-  if (!resultadoElement) return;
-
-  // Limpa resultado anterior se o peso ou taxa forem inválidos (exceto 0)
-  if (isNaN(peso) || peso <= 0 || isNaN(taxa) || taxa < 0) {
-      resultadoElement.innerHTML = ''; // Limpa se inválido
-      return; // Sai se inválido
-  }
-  // Se for válido (incluindo taxa 0), continua e calcula (mostrando 0 se taxa for 0)
-  resultadoElement.innerHTML = ''; // Garante que limpa antes de mostrar resultado novo
-
-  let resultadoHtml = '';
-  let dosePorHora, dosePorPeso;
-
-  switch (medicamento) {
-    case 'midazolam':
-      [1, 2, 3].forEach(c => {
-        dosePorHora = taxa * c;
-        dosePorPeso = dosePorHora / peso;
-        resultadoHtml += `<strong>${c} mg/ml:</strong> ${dosePorHora.toFixed(2)} mg/h (${dosePorPeso.toFixed(3)} mg/kg/h)<br>`;
-      });
-      break;
-    case 'fentanila':
-      dosePorHora = taxa * 10;
-      dosePorPeso = dosePorHora / (60 * peso);
-      resultadoHtml = `<strong>10 mcg/ml:</strong> ${dosePorHora.toFixed(2)} mcg/h (${dosePorPeso.toFixed(3)} mcg/kg/min)`;
-      break;
-    case 'escetamina':
-      [1, 10].forEach(c => {
-        dosePorHora = taxa * c;
-        dosePorPeso = dosePorHora / peso;
-        resultadoHtml += `<strong>${c} mg/ml:</strong> ${dosePorHora.toFixed(2)} mg/h (${dosePorPeso.toFixed(3)} mg/kg/h)<br>`;
-      });
-      break;
-    case 'propofol':
-      dosePorHora = taxa * 10;
-      dosePorPeso = dosePorHora / peso;
-      resultadoHtml = `<strong>10 mg/ml:</strong> ${dosePorHora.toFixed(2)} mg/h (${dosePorPeso.toFixed(3)} mg/kg/h)`;
-      break;
-    case 'dexmedetomidina':
-      dosePorHora = taxa * 4;
-      dosePorPeso = dosePorHora / peso;
-      resultadoHtml = `<strong>4 mcg/ml:</strong> ${dosePorHora.toFixed(2)} mcg/h (${dosePorPeso.toFixed(3)} mcg/kg/h)`;
-      break;
-    default:
-      resultadoHtml = 'Medicamento desconhecido.';
-  }
-  resultadoElement.innerHTML = resultadoHtml;
+  // ... resto da função calcularDosePorTaxa ...
 }
 
 // Helper
 function capitalize(str) {
-  if (!str) return '';
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  // ... resto da função capitalize ...
 }
 
 // Código que PRECISA esperar o DOM carregar
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOMContentLoaded for sedonalgesia');
-  const meds = ['midazolam', 'fentanila', 'escetamina', 'propofol', 'dexmedetomidina'];
-  const pesoInput = document.getElementById('pesoPaciente');
-
-  // Função para recalcular tudo quando o peso muda
-  function calcularTodasDoses() {
-      // Itera sobre os medicamentos e recalcula a dose se a taxa já tiver um valor
-      meds.forEach(m => {
-          const taxaInputId = 'taxa' + capitalize(m);
-          const taxaInput = document.getElementById(taxaInputId);
-          // Só recalcula se já houver um valor na taxa para evitar limpar resultados desnecessariamente
-          if (taxaInput && taxaInput.value !== '') {
-              calcularDosePorTaxa(m);
-          }
-      });
-  }
-
-  // Adiciona listener para o input de peso
-  if (pesoInput) {
-      console.log('Adding listener for pesoPaciente');
-      pesoInput.addEventListener('input', calcularTodasDoses);
-  }
-
-  // Adiciona listeners para os inputs de taxa E para os botões
-  meds.forEach(m => {
-    const taxaInput = document.getElementById('taxa' + capitalize(m));
-    if (taxaInput) {
-      console.log(`Adding listener for ${taxaInput.id}`);
-      // Recalcula ao digitar a taxa
-      taxaInput.addEventListener('input', () => calcularDosePorTaxa(m));
-    }
-
-    // Adiciona listeners para os BOTÕES
-    const calcButton = document.querySelector(`.btn-calcular[data-medicamento="${m}"]`);
-    if (calcButton) {
-        console.log(`Adding click listener for button ${m}`);
-        // Recalcula ao clicar no botão (útil se o usuário só preencher a taxa e clicar)
-        calcButton.addEventListener('click', function() {
-            calcularDosePorTaxa(m);
-        });
-    }
-  });
+  // ... resto do código dentro do DOMContentLoaded ...
 });
 </script>
