@@ -31,10 +31,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <td data-label="Unidade">ml/h</td>
     </tr>
     <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="midazolam">Calcular Dose pela Taxa</button></td> 
-    </tr>
-    <tr>
       <th scope="row">Resultado</th>
       <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoMidazolam" aria-live="polite"></td>
     </tr>
@@ -56,10 +52,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <th scope="row"><label for="taxaFentanila">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaFentanila" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
       <td data-label="Unidade">ml/h</td>
-    </tr>
-    <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="fentanila">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -85,10 +77,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <td data-label="Unidade">ml/h</td>
     </tr>
     <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="escetamina">Calcular Dose pela Taxa</button></td> 
-    </tr>
-    <tr>
       <th scope="row">Resultado</th>
       <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoEscetamina" aria-live="polite"></td>
     </tr>
@@ -112,10 +100,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <td data-label="Unidade">ml/h</td>
     </tr>
     <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="propofol">Calcular Dose pela Taxa</button></td> 
-    </tr>
-    <tr>
       <th scope="row">Resultado</th>
       <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoPropofol" aria-live="polite"></td>
     </tr>
@@ -137,10 +121,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <th scope="row"><label for="taxaDexmedetomidina">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaDexmedetomidina" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
       <td data-label="Unidade">ml/h</td>
-    </tr>
-    <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" data-medicamento="dexmedetomidina">Calcular Dose pela Taxa</button></td> 
     </tr>
     <tr>
       <th scope="row">Resultado</th>

@@ -31,10 +31,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <td data-label="Unidade">ml/h</td>
     </tr>
     <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('norepinefrina')">Calcular Dose pela Taxa</button></td>
-    </tr>
-    <tr>
       <th scope="row">Resultado</th>
       <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoNorepinefrina" aria-live="polite"></td>
     </tr>
@@ -56,10 +52,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <th scope="row"><label for="taxaDobutamina">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaDobutamina" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
       <td data-label="Unidade">ml/h</td>
-    </tr>
-    <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('dobutamina')">Calcular Dose pela Taxa</button></td>
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -85,10 +77,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <td data-label="Unidade">ml/h</td>
     </tr>
     <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('dopamina')">Calcular Dose pela Taxa</button></td>
-    </tr>
-    <tr>
       <th scope="row">Resultado</th>
       <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoDopamina" aria-live="polite"></td>
     </tr>
@@ -110,10 +98,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <th scope="row"><label for="taxaNitroprusseto">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaNitroprusseto" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
       <td data-label="Unidade">ml/h</td>
-    </tr>
-    <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('nitroprusseto')">Calcular Dose pela Taxa</button></td>
     </tr>
     <tr>
       <th scope="row">Resultado</th>
@@ -139,10 +123,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <td data-label="Unidade">ml/h</td>
     </tr>
     <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('nitroglicerina')">Calcular Dose pela Taxa</button></td>
-    </tr>
-    <tr>
       <th scope="row">Resultado</th>
       <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoNitroglicerina" aria-live="polite"></td>
     </tr>
@@ -164,10 +144,6 @@ Informe o peso do paciente para calcular as doses das medicações:
       <th scope="row"><label for="taxaEpinefrina">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaEpinefrina" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
       <td data-label="Unidade">ml/h</td>
-    </tr>
-    <tr>
-      <th scope="row">Ação</th>
-      <td data-label="Calcular" colspan="2"><button class="btn-calcular" onclick="calcularDosePorTaxa('epinefrina')">Calcular Dose pela Taxa</button></td>
     </tr>
     <tr>
       <th scope="row">Resultado</th>
