@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: none # Mude de 'default' para 'none' temporariamente
 title: Sedação e Analgesia
 nav_order: 1
 parent: Calculadora de Doses por Paciente
