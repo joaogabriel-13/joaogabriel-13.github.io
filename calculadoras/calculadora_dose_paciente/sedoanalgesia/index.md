@@ -129,4 +129,27 @@ Informe o peso do paciente para calcular as doses das medicações:
   </tbody>
 </table>
 
+---
+
+## Morfina
+
+- **Dose mínima:** 0,07 mg/kg/h
+- **Dose máxima:** 0,5 mg/kg/h
+- **Concentração:** 1 mg/ml
+
+<table class="calculadora" aria-describedby="tbl-morfina-desc">
+  <caption id="tbl-morfina-desc">Cálculo de Dose - Morfina</caption>
+  <tbody>
+    <tr>
+      <th scope="row"><label for="taxaMorfina">Taxa de infusão</label></th>
+      <td data-label="Valor"><input type="number" id="taxaMorfina" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
+      <td data-label="Unidade">ml/h</td>
+    </tr>
+    <tr>
+      <th scope="row">Resultado</th>
+      <td data-label="Dose Calculada" colspan="2" class="resultado" id="resultadoMorfina" aria-live="polite"></td>
+    </tr>
+  </tbody>
+</table>
+
 <script src="{{ 'assets/js/calculadoras/calculadora_dose_paciente/sedoanalgesia.js' | relative_url }}" defer></script>

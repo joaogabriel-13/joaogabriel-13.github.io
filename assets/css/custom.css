@@ -161,8 +161,6 @@
     /* Padding: top right bottom left (espaço para label) */
     min-height: 1.5em;
     /* Garante altura mínima para visualização */
-    vertical-align: middle;
-    /* Tenta alinhar verticalmente */
   }
 
   .calculadora td::before {
@@ -184,9 +182,8 @@
     text-align: left;
     /* Alinha label à esquerda */
     font-weight: bold;
-    vertical-align: middle;
-    /* Tenta alinhar verticalmente */
     line-height: 1.5em;
+    /* Use line-height para tentar alinhar verticalmente */
     /* Ajusta altura da linha para alinhar com o conteúdo se necessário */
   }
 
