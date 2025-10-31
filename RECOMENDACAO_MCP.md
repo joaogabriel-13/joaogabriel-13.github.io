@@ -104,6 +104,8 @@ npm install -g @modelcontextprotocol/server-postgres
 
 Crie um arquivo `.mcp-config.json` na raiz do repositório:
 
+**Nota:** Para obter o caminho correto do seu repositório, execute `pwd` no terminal dentro da pasta do repositório.
+
 ```json
 {
   "mcpServers": {
@@ -119,7 +121,7 @@ Crie um arquivo `.mcp-config.json` na raiz do repositório:
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/home/runner/work/joaogabriel-13.github.io/joaogabriel-13.github.io"
+        "/caminho/para/seu/repositorio"
       ]
     },
     "brave-search": {
