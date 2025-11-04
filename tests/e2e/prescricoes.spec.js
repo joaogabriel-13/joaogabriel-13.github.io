@@ -43,15 +43,15 @@ test.describe('Prescrições - Prescriptions Page', () => {
     // Click theme toggle to test functionality
     await themeToggle.click();
 
-    // Wait a bit for theme transition
-    await page.waitForTimeout(300);
+    // Wait for DOM updates after click
+    await page.waitForLoadState('domcontentloaded');
 
     // Verify theme data attribute changed
     const htmlElement = page.locator('html');
     const dataTheme = await htmlElement.getAttribute('data-theme');
     
-    // Theme should toggle (either null/light or dark)
-    expect(dataTheme === 'dark' || dataTheme === null || dataTheme === 'light').toBeTruthy();
+    // Theme should be one of the valid values
+    expect(['dark', 'light', null]).toContain(dataTheme);
   });
 
   test('minhas prescricoes should have tab navigation', async ({ page }) => {
@@ -71,12 +71,8 @@ test.describe('Prescrições - Prescriptions Page', () => {
       const firstTab = tabs.first();
       await firstTab.click();
 
-      // Wait for content to show
-      await page.waitForTimeout(100);
-
-      // Check if tab has active class
-      const hasActiveClass = await firstTab.evaluate(el => el.classList.contains('active'));
-      expect(hasActiveClass).toBeTruthy();
+      // Wait for active class to be applied
+      await expect(firstTab).toHaveClass(/active/);
     }
   });
 
