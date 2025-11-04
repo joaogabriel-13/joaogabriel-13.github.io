@@ -1,0 +1,26 @@
+# Playwright
+node_modules/
+playwright-report/
+test-results/
+.playwright/
+
+# Package manager
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
