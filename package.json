@@ -1,0 +1,19 @@
+{
+  "name": "joaogabriel-13.github.io",
+  "version": "1.0.0",
+  "description": "Meu primeiro site com GitHub Pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}
