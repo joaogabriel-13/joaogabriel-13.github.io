@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mapeamento dos medicamentos, suas concentrações e unidades de dose
   const medicamentos = {
-    midazolam: { concentracoes: [1, 2, 3], unidadeDose: 'mg/kg/h', inputId: 'taxaMidazolam', resultadoId: 'resultadoMidazolam' }, // Exemplo, ajuste as concentrações se necessário
+    midazolam: { concentracoes: [1, 2, 3], unidadeDose: 'mg/kg/h', inputId: 'taxaMidazolam', resultadoId: 'resultadoMidazolam', concentracaoId: 'concentracaoMidazolam' }, // Exemplo, ajuste as concentrações se necessário
     fentanila: { concentracao: 10, unidadeDose: 'mcg/kg/min', inputId: 'taxaFentanila', resultadoId: 'resultadoFentanila' },
-    escetamina: { concentracoes: [1, 10], unidadeDose: 'mg/kg/h', inputId: 'taxaEscetamina', resultadoId: 'resultadoEscetamina' }, // Exemplo, ajuste as concentrações
+    escetamina: { concentracoes: [1, 10], unidadeDose: 'mg/kg/h', inputId: 'taxaEscetamina', resultadoId: 'resultadoEscetamina', concentracaoId: 'concentracaoEscetamina' }, // Exemplo, ajuste as concentrações
     propofol: { concentracao: 10, unidadeDose: 'mg/kg/h', inputId: 'taxaPropofol', resultadoId: 'resultadoPropofol' },
     dexmedetomidina: { concentracao: 4, unidadeDose: 'mcg/kg/h', inputId: 'taxaDexmedetomidina', resultadoId: 'resultadoDexmedetomidina' },
-    morfina: { concentracao: 1, unidadeDose: 'mg/kg/h', inputId: 'taxaMorfina', resultadoId: 'resultadoMorfina' } // Adicione esta linha
+    morfina: { concentracao: 1, unidadeDose: 'mg/kg/h', inputId: 'taxaMorfina', resultadoId: 'resultadoMorfina' }
   };
 
   // Função genérica para calcular a dose
@@ -133,13 +133,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Lógica para lidar com múltiplas ou única concentração
     let concentracao;
-    if (medicamentoInfo.concentracoes && medicamentoInfo.concentracoes.length > 0) {
-      // TODO: Implementar lógica para SELECIONAR a concentração desejada se houver múltiplas
-      // Por enquanto, usa a primeira concentração como padrão
+    if (medicamentoInfo.concentracaoId) {
+      const concentracaoSelect = document.getElementById(medicamentoInfo.concentracaoId);
+      if (concentracaoSelect) {
+        concentracao = parseFloat(concentracaoSelect.value);
+      } else {
+        // Fallback
+        concentracao = medicamentoInfo.concentracoes ? medicamentoInfo.concentracoes[0] : medicamentoInfo.concentracao;
+      }
+    } else if (medicamentoInfo.concentracoes && medicamentoInfo.concentracoes.length > 0) {
+      // Se tiver múltiplas concentrações mas nenhum select (fallback)
       concentracao = medicamentoInfo.concentracoes[0];
-      console.warn(`Medicamento ${medicamentoInfo.inputId} tem múltiplas concentrações. Usando ${concentracao} como padrão. Implementar seleção.`);
-      // Você precisará adicionar um <select> no HTML para o usuário escolher a concentração
-      // e ler o valor selecionado aqui.
     } else {
       concentracao = medicamentoInfo.concentracao;
     }
@@ -168,6 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
         inputEl.addEventListener('input', () => atualizarResultado(medInfo));
       } else {
         console.error(`Elemento '${medInfo.inputId}' não encontrado para ${medInfo.inputId}.`);
+      }
+
+      // Listener for concentration select
+      if (medInfo.concentracaoId) {
+        const concEl = document.getElementById(medInfo.concentracaoId);
+        if (concEl) {
+          concEl.addEventListener('change', () => atualizarResultado(medInfo));
+        }
       }
     });
   }

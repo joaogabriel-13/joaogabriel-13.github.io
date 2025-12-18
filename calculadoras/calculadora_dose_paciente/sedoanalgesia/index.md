@@ -26,6 +26,17 @@ Informe o peso do paciente para calcular as doses das medicações:
   <caption id="tbl-midazolam-desc">Cálculo de Dose - Midazolam</caption>
   <tbody>
     <tr>
+      <th scope="row"><label for="concentracaoMidazolam">Concentração</label></th>
+      <td data-label="Valor">
+        <select id="concentracaoMidazolam">
+          <option value="1">1 mg/ml</option>
+          <option value="2">2 mg/ml</option>
+          <option value="3">3 mg/ml</option>
+        </select>
+      </td>
+      <td data-label="Unidade">mg/ml</td>
+    </tr>
+    <tr>
       <th scope="row"><label for="taxaMidazolam">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaMidazolam" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
       <td data-label="Unidade">ml/h</td>
@@ -71,6 +82,16 @@ Informe o peso do paciente para calcular as doses das medicações:
 <table class="calculadora" aria-describedby="tbl-escetamina-desc">
   <caption id="tbl-escetamina-desc">Cálculo de Dose - Escetamina</caption>
   <tbody>
+    <tr>
+      <th scope="row"><label for="concentracaoEscetamina">Concentração</label></th>
+      <td data-label="Valor">
+        <select id="concentracaoEscetamina">
+          <option value="1">1 mg/ml</option>
+          <option value="10">10 mg/ml</option>
+        </select>
+      </td>
+      <td data-label="Unidade">mg/ml</td>
+    </tr>
     <tr>
       <th scope="row"><label for="taxaEscetamina">Taxa de infusão</label></th>
       <td data-label="Valor"><input type="number" id="taxaEscetamina" class="input-editavel" placeholder="Insira a taxa" min="0" step="any"></td>
