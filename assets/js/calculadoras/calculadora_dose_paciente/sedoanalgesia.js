@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     escetamina: { concentracoes: [1, 10], unidadeDose: 'mg/kg/h', inputId: 'taxaEscetamina', resultadoId: 'resultadoEscetamina', concentracaoId: 'concentracaoEscetamina' }, // Exemplo, ajuste as concentrações
     propofol: { concentracao: 10, unidadeDose: 'mg/kg/h', inputId: 'taxaPropofol', resultadoId: 'resultadoPropofol' },
     dexmedetomidina: { concentracao: 4, unidadeDose: 'mcg/kg/h', inputId: 'taxaDexmedetomidina', resultadoId: 'resultadoDexmedetomidina' },
-    morfina: { concentracao: 1, unidadeDose: 'mg/kg/h', inputId: 'taxaMorfina', resultadoId: 'resultadoMorfina' } // Adicione esta linha
+    morfina: { concentracao: 1, unidadeDose: 'mg/kg/h', inputId: 'taxaMorfina', resultadoId: 'resultadoMorfina' }
   };
 
   // Função genérica para calcular a dose
